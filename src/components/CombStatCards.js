@@ -4,30 +4,24 @@ import Statistics from "./Statistics";
 import CardCollection from "./cardCollection";
 import Options from "./Options";
 import DashBoard from "./Dashboard";
-import Navbar from "./NavBar";
 const CombStatCards = () => {
   return (
-    <div>
-      <div>
-        <Navbar />
-      </div>
-      <FullPage>
-        <Dashy>
-          <Options />
-        </Dashy>
-        <PageMain>
-          <Dashing>
-            <DashBoard />
-          </Dashing>
-          <div>
-            <CardCollection />
-          </div>
-          <div>
-            <Statistics />
-          </div>
-        </PageMain>
-      </FullPage>
-    </div>
+    <FullPage>
+      <Dashy>
+        <Options />
+      </Dashy>
+      <PageMain>
+        <Dashing>
+          <DashBoard />
+        </Dashing>
+        <div>
+          <CardCollection />
+        </div>
+        <div>
+          <Statistics />
+        </div>
+      </PageMain>
+    </FullPage>
   );
 };
 const FullPage = styled.div`

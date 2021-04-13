@@ -1,73 +1,74 @@
 import React from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 const Options = () => {
   return (
     <FullPage>
       <Fully>
         <ul>
           <li>
-            <a href="#">Dashboard</a>
+            <Link to="/">Dashboard</Link>
           </li>
           <li>
-            <a href="#">Items</a>
-          </li>
-        </ul>
-        <ul>
-          <li>
-            <a href="#">Customers</a>
-          </li>
-          <li>
-            <a href="#">Sales Order</a>
-          </li>
-          <li>
-            <a href="#">Packages</a>
-          </li>
-          <li>
-            <a href="#">Delivery Challans</a>
-          </li>
-          <li>
-            <a href="#">Invoices</a>
-          </li>
-          <li>
-            <a href="#">Payments Recieved</a>
-          </li>
-          <li>
-            <a href="#">Returns</a>
+            <Link to="/items">Items</Link>
           </li>
         </ul>
         <ul>
           <li>
-            <a href="#">Vendors</a>
+            <Link to="/">Customers</Link>
           </li>
           <li>
-            <a href="#">Purchase Orders</a>
+            <Link to="/">Sales Order</Link>
           </li>
           <li>
-            <a href="#">Bills</a>
+            <Link to="/">Packages</Link>
           </li>
           <li>
-            <a href="#">Payments Made</a>
+            <Link to="/">Delivery Challans</Link>
           </li>
           <li>
-            <a href="#">Vendor Credits</a>
-          </li>
-        </ul>
-        <ul>
-          <li>
-            <a href="#">Integrations</a>
+            <Link to="/invoice">Invoices</Link>
           </li>
           <li>
-            <a href="#">Reports</a>
+            <Link to="/">Payments Recieved</Link>
+          </li>
+          <li>
+            <Link to="/">Returns</Link>
           </li>
         </ul>
         <ul>
           <li>
-            <a href="#">Documents</a>
+            <Link to="/">Vendors</Link>
+          </li>
+          <li>
+            <Link to="/">Purchase Orders</Link>
+          </li>
+          <li>
+            <Link to="/">Bills</Link>
+          </li>
+          <li>
+            <Link to="/">Payments Made</Link>
+          </li>
+          <li>
+            <Link to="/">Vendor Credits</Link>
+          </li>
+        </ul>
+        <ul>
+          <li>
+            <Link to="/">Integrations</Link>
+          </li>
+          <li>
+            <Link to="/">Reports</Link>
+          </li>
+        </ul>
+        <ul>
+          <li>
+            <Link to="/">Documents</Link>
           </li>
         </ul>
       </Fully>
       <Collapse>
-        <a href="#"></a>
+        <Link to="/"></Link>
       </Collapse>
     </FullPage>
   );
