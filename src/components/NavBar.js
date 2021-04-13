@@ -4,7 +4,6 @@ import add from "../img/plus-circle.svg";
 import history from "../img/history-solid.svg";
 import search from "../img/search-solid.svg";
 import arrow from "../img/caret-down-solid.svg";
-import friends from "../img/refer-earn.svg";
 import bell from "../img/bell-regular.svg";
 import settings from "../img/settings.svg";
 import question from "../img/question-circle-regular.svg";
@@ -13,70 +12,88 @@ import me from "../img/me.svg";
 const NavBar = () => {
   return (
     <StyledNav>
-      <MainHead1>
+      <div className="box1">
         <h1>Inventory</h1>
-      </MainHead1>
-      <Row11>
-        <Row12345>
-          <div>
-            <img src={add} alt="" />
-          </div>
-          <div>
-            <img src={history} alt="" />
-          </div>
-        </Row12345>
-        <Searched>
-          <span>
+      </div>
+      <div className="searchplusadd">
+        <Image>
+          <img src={add} alt="" />
+        </Image>
+        <Image>
+          <img src={history} alt="" />
+        </Image>
+        <div className="search">
+          <div className="arrow">
             <img src={search} alt="" />
             <img src={arrow} alt="" />
-          </span>
-          <div>
+          </div>
+          <div className="input12">
             <input type="text" placeholder="Search In Customers" />
           </div>
-        </Searched>
-      </Row11>
-      <Clo11>
-        <Coling112>
-          <div>
-            <label>Upgrade</label>
-          </div>
-          <div>
-            <label>Vision</label>
-          </div>
-          <div>
-            <img src={friends} alt="" />
-          </div>
-        </Coling112>
-        <Coling12>
-          <div>
-            <img src={bell} alt="" />
-          </div>
-          <div>
-            <img src={settings} alt="" />
-          </div>
-          <div>
-            <img src={question} alt="" />
-          </div>
-        </Coling12>
-        <Roling12>
-          <img src={me} alt="" />
-        </Roling12>
-      </Clo11>
+        </div>
+      </div>
+      <div className="threemain">
+        <Image>
+          <img src={bell} alt="" />
+        </Image>
+        <Image>
+          <img src={settings} alt="" />
+        </Image>
+        <Image>
+          <img src={question} alt="" />
+        </Image>
+      </div>
+      <div className="userimage">
+        <img src={me} alt="" />
+      </div>
     </StyledNav>
   );
 };
-const MainHead1 = styled.div``;
 const StyledNav = styled.nav`
-  background: red;
+  display: grid;
+  .search {
+    border-radius: 20px;
+    padding: 0px 20px 0px 20px;
+    border: 2px solid black;
+    background: white;
+    display: flex;
+    input {
+      padding: 0px 2px;
+      height: 33px;
+      border: none;
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+  .arrow {
+    display: flex;
+  }
+  .box1 {
+    grid-area: b1;
+    padding: 0.5rem 0rem 0rem 1.5rem;
+  }
+  .searchplusadd {
+    display: flex;
+    justify-content: space-between;
+    grid-area: b2;
+  }
+  .threemain {
+    display: flex;
+    justify-content: space-between;
+    grid-area: b3;
+  }
+  .userimage {
+    cursor: pointer;
+    grid-area: b4;
+    padding-top: 0.2rem;
+  }
+  grid-template-areas: "b1 . . b2 . . . . . . . . . .  b3 .  b4";
 `;
-const Row12345 = styled.div``;
-
-const Row11 = styled.div``;
-
-const Searched = styled.div``;
-
-const Roling12 = styled.div``;
-const Clo11 = styled.div``;
-const Coling112 = styled.div``;
-const Coling12 = styled.div``;
+const Image = styled.div`
+  img {
+    padding-top: 0.5rem;
+  }
+  cursor: pointer;
+`;
 export default NavBar;

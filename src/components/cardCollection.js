@@ -44,9 +44,15 @@ const CardCollection = () => {
         <Cardy>
           <Car>
             <label>QUANTITY IN HAND</label>
+            <label className="help">
+              <span>1000000000</span>
+            </label>
           </Car>
           <Car>
             <label>QUANTITY TO BE RECEIVED</label>
+            <label className="help">
+              <span>1000000000</span>
+            </label>
           </Car>
         </Cardy>
       </Summary>
@@ -118,16 +124,20 @@ const Summary = styled.div`
   }
 `;
 const Cardy = styled.div`
-  margin-top: 1rem;
+  margin-top: 3rem;
   display: flex;
   flex-direction: column;
   row-gap: 12px;
 `;
 const Car = styled.div`
-  padding: 1rem 10rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 1rem 0rem 1rem 0rem;
   border-radius: 1rem;
   border: 1px solid black;
   label {
+    padding: 0rem 3rem 0rem 0rem;
     font-size: 1.2rem;
   }
 `;

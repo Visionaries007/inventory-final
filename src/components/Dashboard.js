@@ -19,7 +19,7 @@ const DashBoard = () => {
 };
 const Navigation = styled.div`
   margin: 0.5rem 0rem 0rem 0rem;
-  padding: 0rem 1rem;
+  padding: 1.3rem 1rem;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -33,7 +33,7 @@ const Navuser = styled.div`
     }
   }
   li {
-    font-size: 2.5rem;
+    font-size: 2rem;
     width: 200px;
     height: 5px;
   }
@@ -41,6 +41,9 @@ const Navuser = styled.div`
 const GST = styled.div`
   h2 {
     font-size: 1.5rem;
+  }
+  p {
+    font-size: 1rem;
   }
 `;
 export default DashBoard;
