@@ -8,28 +8,38 @@ import PurchaseOrder from "./PurchaseOrder";
 const Statistics = () => {
   return (
     <TableRow1>
-      <Row1>
+      <div className="box1">
         <ProductDetails />
+      </div>
+      <div className="box2">
         <TopSellingitems />
-      </Row1>
-      <Row1>
+      </div>
+      <div className="box3">
         <PurchaseOrder />
+      </div>
+      <div className="box4">
         <SalesOrder />
-      </Row1>
+      </div>
     </TableRow1>
   );
 };
 
 const TableRow1 = styled.div`
-  min-height: 100vh;
-  float: right;
-  width: 100%;
-`;
-const Row1 = styled.div`
-  margin: 40px 0px 0px;
-  padding: 0px 20px;
-  display: flex;
-  flex-direction: row;
-  gap: 12px;
+  display: grid;
+  .box1 {
+    grid-column: 1/3;
+  }
+  .box2 {
+    grid-column: 3/5;
+  }
+  .box3 {
+    grid-column: 1/2;
+  }
+  .box4 {
+    grid-column: 2/5;
+  }
+  grid-template-columns: repeat(4, 1fr);
+  padding: 1em;
+  grid-gap: 1em;
 `;
 export default Statistics;

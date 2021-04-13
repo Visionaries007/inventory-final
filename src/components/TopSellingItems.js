@@ -28,6 +28,7 @@ const Top = styled.div`
     font-size: 13px;
   }
   width: 100%;
+  height: 100%;
 `;
 const SellingSection = styled.div`
   display: flex;

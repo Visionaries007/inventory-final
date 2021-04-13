@@ -29,7 +29,7 @@ const DMain = styled.div`
   padding: 15px 12px;
   border: 2px solid black;
   width: 100%;
-  flex: 1;
+  height: 100%;
 `;
 
 const Detailer = styled.div`

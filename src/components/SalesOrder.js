@@ -34,7 +34,7 @@ const SellDet = styled.div`
   border: 2px solid black;
   padding: 15px 12px;
   width: 100%;
-  flex: 2;
+  height: 100%;
 `;
 const Selling = styled.div`
   display: flex;
