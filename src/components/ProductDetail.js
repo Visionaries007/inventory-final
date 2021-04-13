@@ -58,9 +58,9 @@ const ProductInfo = styled.div`
   flex-direction: column;
   border: 2px solid black;
   gap: 12px;
-  min-height: 30vh;
-  padding: 15px 12px;
   width: 100%;
+  height: 100%;
+  padding: 15px 12px;
 `;
 const Heading = styled.div`
   padding: 0px 10px;
