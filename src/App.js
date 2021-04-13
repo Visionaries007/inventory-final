@@ -1,9 +1,11 @@
 import React from "react";
-import "./app.scss";
+import "./styles/app.scss";
+import CombStatCards from "./components/CombStatCards";
 function App() {
   return (
     <div>
-      <h1>Inventory Managment App</h1>
+      <h2>Inventory Managment App</h2>
+      <CombStatCards />
     </div>
   );
 }
