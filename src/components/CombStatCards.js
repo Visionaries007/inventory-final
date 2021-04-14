@@ -7,9 +7,6 @@ import DashBoard from "./Dashboard";
 const CombStatCards = () => {
   return (
     <FullPage>
-      <Dashy>
-        <Options />
-      </Dashy>
       <PageMain>
         <Dashing>
           <DashBoard />
