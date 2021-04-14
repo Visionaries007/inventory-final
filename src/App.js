@@ -6,23 +6,29 @@ import Invoice from "./pages/invoice";
 import { Switch, Route } from "react-router-dom";
 import Navbar from "./components/NavBar";
 import styled from "styled-components";
+import Options from "./components/Options";
 function App() {
   return (
     <Apple>
       <div className="naving">
         <Navbar />
       </div>
-      <Switch>
-        <Route path="/" exact>
-          <CombStatCards />
-        </Route>
-        <Route path="/items">
-          <Items />
-        </Route>
-        <Route path="/invoice">
-          <Invoice />
-        </Route>
-      </Switch>
+      <BottomPage>
+        <Dashy>
+          <Options />
+        </Dashy>
+        <Switch>
+          <Route path="/" exact>
+            <CombStatCards />
+          </Route>
+          <Route path="/items">
+            <Items />
+          </Route>
+          <Route path="/invoice">
+            <Invoice />
+          </Route>
+        </Switch>
+      </BottomPage>
     </Apple>
   );
 }
@@ -32,5 +38,12 @@ const Apple = styled.div`
     background: #b0efff;
     width: 100%;
   }
+`;
+const BottomPage = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+const Dashy = styled.div`
+  height: 120vh;
 `;
 export default App;
