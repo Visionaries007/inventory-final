@@ -1,7 +1,7 @@
 import React from "react";
 import close from "../img/close.svg";
 import styled from "styled-components";
-const Items = () => {
+const AddItems = () => {
   return (
     <ItemMaking>
       <Heading12>
@@ -13,13 +13,21 @@ const Items = () => {
       <div>
         <form action="">
           <div>
-            <form>
-              <label>Type</label>
-              <input type="radio" id="Goods"></input>
-              <label for="Goods">Goods</label>
-              <input type="radio" id="Service"></input>
-              <label for="Service">Service</label>
-            </form>
+            <Forming>
+              <div>
+                <label>Type</label>
+              </div>
+              <Radios>
+                <Rady>
+                  <input type="radio" name="Itemsmap" id="Goods"></input>
+                  <label for="Goods">Goods</label>
+                </Rady>
+                <Rady>
+                  <input type="radio" name="Itemsmap" id="Service"></input>
+                  <label for="Service">Service</label>
+                </Rady>
+              </Radios>
+            </Forming>
           </div>
           <div>
             <label>Name*</label>
@@ -51,9 +59,7 @@ const Items = () => {
     </ItemMaking>
   );
 };
-const ItemMaking = styled.div`
-  width: 100%;
-`;
+const ItemMaking = styled.div``;
 const Heading12 = styled.div`
   display: flex;
   flex-direction: row;
@@ -67,4 +73,17 @@ const Heading12 = styled.div`
     padding: 8px 0px 0px;
   }
 `;
-export default Items;
+const Radios = styled.form`
+  display: flex;
+  padding: 0px 15px;
+  flex-direction: row;
+  justify-content: space-around;
+`;
+const Forming = styled.form`
+  display: flex;
+`;
+const Rady = styled.form`
+  margin: 0px 9.75px 0px 0px;
+  display: flex;
+`;
+export default AddItems;

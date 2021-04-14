@@ -10,60 +10,46 @@ const Options = () => {
             <Link to="/">Dashboard</Link>
           </li>
           <li>
-            <Link to="/items">Items</Link>
+            <Link to="/displayItems">Items</Link>
           </li>
         </ul>
         <ul>
           <li>
-            <Link to="/">Customers</Link>
+            <Link to="/displaycustomer">Customers</Link>
           </li>
           <li>
-            <Link to="/">Sales Order</Link>
+            <Link to="/displaysalesorder">Sales Order</Link>
           </li>
           <li>
-            <Link to="/">Packages</Link>
+            <Link to="/displaypackages">Packages</Link>
           </li>
           <li>
-            <Link to="/">Delivery Challans</Link>
+            <Link to="displayDeliverychallans">Delivery Challans</Link>
           </li>
           <li>
-            <Link to="/invoice">Invoices</Link>
+            <Link to="/displayinvoice">Invoices</Link>
           </li>
           <li>
-            <Link to="/">Payments Recieved</Link>
-          </li>
-          <li>
-            <Link to="/">Returns</Link>
+            <Link to="/displaypaymentrecieved">Payments Recieved</Link>
           </li>
         </ul>
         <ul>
           <li>
-            <Link to="/">Vendors</Link>
+            <Link to="/displaypurchaseorder">Purchase Orders</Link>
           </li>
+
           <li>
-            <Link to="/">Purchase Orders</Link>
-          </li>
-          <li>
-            <Link to="/">Bills</Link>
-          </li>
-          <li>
-            <Link to="/">Payments Made</Link>
-          </li>
-          <li>
-            <Link to="/">Vendor Credits</Link>
+            <Link to="/displaypaymentmade">Payments Made</Link>
           </li>
         </ul>
         <ul>
           <li>
-            <Link to="/">Integrations</Link>
-          </li>
-          <li>
-            <Link to="/">Reports</Link>
+            <Link to="/displayreport">Reports</Link>
           </li>
         </ul>
         <ul>
           <li>
-            <Link to="/">Documents</Link>
+            <Link to="/displaydocuments">Documents</Link>
           </li>
         </ul>
       </Fully>
