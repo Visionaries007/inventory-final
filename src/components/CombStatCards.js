@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import Statistics from "./Statistics";
 import CardCollection from "./cardCollection";
-import Options from "./Options";
 import DashBoard from "./Dashboard";
 const CombStatCards = () => {
   return (
@@ -25,8 +24,14 @@ const FullPage = styled.div`
   display: flex;
   flex-direction: row;
 `;
-const Dashing = styled.div``;
-const Dashy = styled.div``;
+const Dashing = styled.div`
+  position: webkit-sticky;
+  position: sticky;
+  top: 0;
+  background: white;
+  border: none;
+  box-shadow: 1px 1px #888888;
+`;
 const PageMain = styled.div`
   margin-left: 1rem;
 `;
