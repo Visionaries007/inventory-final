@@ -1,84 +1,39 @@
 import React from "react";
 import close from "../img/close.svg";
 import styled from "styled-components";
+import ItemsInfo from "../ItemsCollection/itemsinfo";
+import SalesPerInfo from "../ItemsCollection/salesperinfo";
+import NameItem from "../ItemsCollection/nameitem";
 const AddItems = () => {
   return (
     <ItemMaking>
       <Heading12>
-        <h3>Items Making</h3>
+        <h3>New Item</h3>
         <span>
           <img src={close} alt="" />
         </span>
       </Heading12>
-      <Flexer>
-        <div class="fill">
-          <form action="">
-            <div>
-              <Forming>
-                <Naming12>
-                  <label>Type</label>
-                </Naming12>
-                <Radios>
-                  <Rady>
-                    <input type="radio" name="item" id="Goods"></input>
-                    <label for="Goods">Goods</label>
-                    <input type="radio" name="item" id="Service"></input>
-                    <label for="Service">Service</label>
-                  </Rady>
-                </Radios>
-              </Forming>
-            </div>
-            <Naming>
-              <label>Name*</label>
-              <Bounce>
-                <input></input>
-              </Bounce>
-            </Naming>
-            <Naming>
-              <label>SKU</label>
-              <Bounce>
-                <input></input>
-              </Bounce>
-            </Naming>
-            <Naming>
-              <label>Unit*</label>
-              <Bounce>
-                <select>
-                  <option value="box">box</option>
-                  <option value="cm">cm</option>
-                  <option value="dz">dz</option>
-                  <option value="ft">ft</option>
-                  <option value="g">g</option>
-                  <option value="in">in</option>
-                  <option value="kg">kg</option>
-                  <option value="km">km</option>
-                  <option value="lb">lb</option>
-                  <option value="mg">mg</option>
-                  <option value="m">m</option>
-                  <option value="pcs">pcs</option>
-                </select>
-              </Bounce>
-            </Naming>
-          </form>
+      <Toper>
+        <div className="hello1">
+          <NameItem />
         </div>
-        <div className="picker">
-          <label for="myfile">Select a file:</label>
-          <input type="file" id="myfile" name="myfile"></input>
+        <div className="hello2">
+          <ItemsInfo />
         </div>
-      </Flexer>
+        <div className="hello3">
+          <SalesPerInfo />
+        </div>
+      </Toper>
     </ItemMaking>
   );
 };
-
-const ItemMaking = styled.div`
-  label {
-    font-size: 13px;
-
-    width: 100%;
-    height: 100%;
-  }
-`;
 const Heading12 = styled.div`
+  position: webkit-sticky;
+  position: sticky;
+  top: 0;
+  background: white;
+  border: none;
+  box-shadow: 1px 1px #888888;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -87,67 +42,28 @@ const Heading12 = styled.div`
     margin: 20px 0px 10px;
   }
   span {
-    margin: 20px 0px 0px;
+    margin: 15px 0px 0px;
     padding: 8px 0px 0px;
   }
 `;
-const Radios = styled.form`
-  display: flex;
-  padding: 0px 15px;
-  flex-direction: row;
-  justify-content: space-around;
-`;
-const Forming = styled.form`
-  display: flex;
-  flex-direction: row !important;
-  justify-content: space-between;
-`;
-const Rady = styled.form`
-  margin: 0px 9.75px 0px 0px;
-  display: flex;
-  flex-direction: row !important;
-  gap: 10px;
-`;
-const Naming = styled.div`
-  display: flex;
-  flex-direction: row;
+const ItemMaking = styled.div`
   label {
-    padding: 5.875px 15px;
-  }
-  input {
-    padding: 5px 8px;
-  }
-  select {
-    padding: 5px 30px 5px 8px;
-  }
-`;
-const Naming12 = styled.div`
-  label {
-    padding: 0px 15px 5.875px;
-  }
-`;
-const Bounce = styled.div`
-  padding: 0px 15px;
-  width: 100%;
-  select {
+    font-size: 13px;
     width: 100%;
+    height: 100%;
   }
 `;
-const Flexer = styled.div`
+const Toper = styled.div`
   display: grid;
-  .picker {
-    justify-items: center;
-    grid-area: b1;
+  grid-template-rows: repeat(3, 1fr);
+  grid-gap: 3rem;
+  padding-top: 3rem;
+  .hello1 {
+    border-bottom: 1px solid black;
   }
-  .fill {
-    padding: 0px 15px;
-    grid-area: b2;
+  .hello2 {
+    border-bottom: 1px solid black;
   }
-  form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-  }
-  grid-template-areas: "b2 . . b1";
 `;
+
 export default AddItems;
