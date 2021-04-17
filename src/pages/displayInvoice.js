@@ -25,7 +25,7 @@ const DisplayInvoice = () => {
         </div>
         <div className="btn1">
           <button>
-            <Link class="labels" to="/addInvoice">
+            <Link className="labels" to="/addInvoice">
               + New
             </Link>
           </button>

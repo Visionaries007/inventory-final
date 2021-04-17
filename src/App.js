@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./styles/app.scss";
 import CombStatCards from "./components/CombStatCards";
 import AddItems from "./pages/additems";
@@ -28,6 +28,9 @@ import Navbar from "./components/NavBar";
 import styled from "styled-components";
 import Options from "./components/Options";
 function App() {
+  //Collection of All the states
+  const [item, setitem] = useState([]);
+
   return (
     <Apple>
       <div className="naving">
@@ -43,7 +46,7 @@ function App() {
               <CombStatCards />
             </Route>
             <Route path="/additems">
-              <AddItems />
+              <AddItems item={item} setitem={setitem} />
             </Route>
             <Route path="/displayItems">
               <DisplayItems />

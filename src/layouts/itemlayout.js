@@ -5,9 +5,9 @@ function itemlayout() {
     <div>
       <Card>
         <div className="lim">
-          <img src={image} alt="" />
+          <img src="" alt="" />
           <strong>Abhinav</strong>
-          <label>SKU : kslkflsdfk</label>
+          <label>SKU : kslkflsdfk</label>W
         </div>
         <div className="stock">
           <label>
