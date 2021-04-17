@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import image from "../img/girl.jpg";
+import { Link } from "react-router-dom";
 const DisplayItems = () => {
   return (
     <div>
@@ -22,7 +23,11 @@ const DisplayItems = () => {
           </Selector>
         </div>
         <div className="btn1">
-          <button> + New </button>
+          <button>
+            <Link class="labels" to="/additems">
+              + New
+            </Link>
+          </button>
         </div>
       </Total>
       <Cards>
@@ -81,6 +86,10 @@ const Total = styled.div`
       color: white;
       background: #2fa3e6;
       border: none;
+    }
+    .labels {
+      text-decoration: none;
+      color: white;
     }
   }
   box-shadow: 10px 2px black;

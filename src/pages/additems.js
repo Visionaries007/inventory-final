@@ -4,13 +4,16 @@ import styled from "styled-components";
 import ItemsInfo from "../ItemsCollection/itemsinfo";
 import SalesPerInfo from "../ItemsCollection/salesperinfo";
 import NameItem from "../ItemsCollection/nameitem";
+import { Link } from "react-router-dom";
 const AddItems = () => {
   return (
     <ItemMaking>
       <Heading12>
         <h3>New Item</h3>
         <span>
-          <img src={close} alt="" />
+          <Link class="labels" to="/displayItems">
+            <img src={close} alt="" />
+          </Link>
         </span>
       </Heading12>
       <Toper>
