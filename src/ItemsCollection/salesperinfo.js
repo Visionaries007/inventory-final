@@ -1,10 +1,62 @@
 import React from "react";
 import styled from "styled-components";
-const ItemsInfo = () => {
+const ItemsInfo = ({
+  salesprice,
+  setsalesprice,
+  purchaseInfo,
+  setpurchaseinfo,
+  sellingprice,
+  setsellingprice,
+  spaccount,
+  setspaccount,
+  spdescription,
+  setspdescription,
+  costprice,
+  setcostprice,
+  cpaccount,
+  setcpaccount,
+  cpdescription,
+  setcpdescription,
+}) => {
+  const sellingpricehandler = (e) => {
+    setsellingprice(e.target.value);
+  };
+  const Costpricehandler = (e) => {
+    setcostprice(e.target.value);
+  };
+  const salespricehandler = () => {
+    if (document.getElementById("salesprice").checked === true)
+      setsalesprice(true);
+    else setsalesprice(false);
+  };
+  const purchaseInfohandler = () => {
+    if (document.getElementById("purchaseinformation").checked === true)
+      setpurchaseinfo(true);
+    else setpurchaseinfo(false);
+  };
+  const accountsphandler = () => {
+    var x = document.getElementById("accountsp").selectedIndex;
+    setspaccount(x);
+  };
+  const accountcphandler = () => {
+    var x = document.getElementById("accountcp").selectedIndex;
+    setcpaccount(x);
+  };
+  const cpdescriphandler = (e) => {
+    setcpdescription(e.target.value);
+  };
+  const spdescriphandler = (e) => {
+    setspdescription(e.target.value);
+  };
   return (
     <ItemMaking>
       <div className="d1">
-        <input type="checkbox" id="salesprice" name="salesprice"></input>
+        <input
+          type="checkbox"
+          id="salesprice"
+          name="salesprice"
+          onChange={salespricehandler}
+        ></input>
         <label htmlFor="salesprice">Sales Price</label>
       </div>
       <div className="d2">
@@ -13,14 +65,18 @@ const ItemsInfo = () => {
       <div className="d3">
         <div className="j12">
           <label>INR</label>
-          <input></input>
+          <input
+            onChange={sellingpricehandler}
+            value={sellingprice}
+            type="text"
+          ></input>
         </div>
       </div>
       <div className="d4">
         <label>Acount*</label>
       </div>
       <div className="d5">
-        <select>
+        <select id="accountsp" onChange={accountsphandler}>
           <option value="tel">Chanchal tel</option>
           <option value="Manage Manufacter">Manage Manufacter</option>
         </select>
@@ -29,13 +85,20 @@ const ItemsInfo = () => {
         <label>Description</label>
       </div>
       <div className="d7">
-        <textarea name="review" rows="5" cols="30"></textarea>
+        <textarea
+          value={spdescription}
+          onChange={spdescriphandler}
+          name="review"
+          rows="5"
+          cols="30"
+        ></textarea>
       </div>
       <div className="d8">
         <input
           type="checkbox"
           id="purchaseinformation"
           name="purchaseinformation"
+          onChange={purchaseInfohandler}
         ></input>
         <label htmlFor="purchaseinformation">Purchase Information</label>
       </div>
@@ -45,14 +108,18 @@ const ItemsInfo = () => {
       <div className="d10">
         <div className="j13">
           <label>INR</label>
-          <input></input>
+          <input
+            onChange={Costpricehandler}
+            value={costprice}
+            type="text"
+          ></input>
         </div>
       </div>
       <div className="d11">
         <label>Account*</label>
       </div>
       <div className="d12">
-        <select>
+        <select id="accountcp" onChange={accountcphandler}>
           <option value="tel">Chanchal tel</option>
           <option value="Manage Manufacter">Manage Manufacter</option>
         </select>
@@ -61,7 +128,13 @@ const ItemsInfo = () => {
         <label>Description</label>
       </div>
       <div className="d14">
-        <textarea name="review" rows="5" cols="30"></textarea>
+        <textarea
+          value={cpdescription}
+          onChange={cpdescriphandler}
+          name="review"
+          rows="5"
+          cols="30"
+        ></textarea>
       </div>
     </ItemMaking>
   );

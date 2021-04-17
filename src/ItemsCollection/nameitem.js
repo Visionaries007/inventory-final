@@ -15,7 +15,7 @@ const NameItems = ({
 }) => {
   let radio1 = document.querySelector(".radio1");
 
-  const typeHandler = (e) => {
+  const typeHandler = () => {
     if (radio1.checked) {
       settype("Goods");
     } else {
@@ -29,8 +29,7 @@ const NameItems = ({
     setsku(e.target.value);
   };
 
-  const unitHandler = (e) => {
-    console.log("hello");
+  const unitHandler = () => {
     var x = document.getElementById("mySelect").selectedIndex;
     setunit(x);
   };
