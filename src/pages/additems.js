@@ -6,11 +6,12 @@ import SalesPerInfo from "../ItemsCollection/salesperinfo";
 import NameItem from "../ItemsCollection/nameitem";
 import { Link } from "react-router-dom";
 const AddItems = ({ item, setitem }) => {
+  let unitval = 0;
   const [type, settype] = useState("");
   const [name, setname] = useState("");
   const [sku, setsku] = useState("");
-  const [unit, setunit] = useState("");
-  const [returnable, setreturnable] = useState("");
+  const [unit, setunit] = useState(unitval);
+  const [returnable, setreturnable] = useState(false);
   const [dimension, setdimension] = useState([]);
   const [manufacturer, setmanufacturer] = useState("");
   const [upc, setupc] = useState("");
