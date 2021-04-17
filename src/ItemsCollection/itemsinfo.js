@@ -3,7 +3,7 @@ import styled from "styled-components";
 const ItemsInfo = () => {
   return (
     <ItemMaking>
-      <div class="dimension1">
+      <div className="dimension1">
         <label className="dim">
           Dimensions <br></br>(cm)
         </label>

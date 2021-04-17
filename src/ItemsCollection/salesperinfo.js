@@ -5,9 +5,9 @@ const ItemsInfo = () => {
     <ItemMaking>
       <div className="d1">
         <input type="checkbox" id="salesprice" name="salesprice"></input>
-        <label for="salesprice">Sales Price</label>
+        <label htmlFor="salesprice">Sales Price</label>
       </div>
-      <div class="d2">
+      <div className="d2">
         <label className="dm">Selling Price*</label>
       </div>
       <div className="d3">
@@ -37,9 +37,9 @@ const ItemsInfo = () => {
           id="purchaseinformation"
           name="purchaseinformation"
         ></input>
-        <label for="purchaseinformation">Purchase Information</label>
+        <label htmlFor="purchaseinformation">Purchase Information</label>
       </div>
-      <div class="d9">
+      <div className="d9">
         <label className="dm">Cost Price*</label>
       </div>
       <div className="d10">

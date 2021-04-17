@@ -30,7 +30,7 @@ const DisplaySalesorder = () => {
         <div className="btn1">
           <button>
             {" "}
-            <Link class="labels" to="/addSalesorder">
+            <Link className="labels" to="/addSalesorder">
               + New
             </Link>
           </button>

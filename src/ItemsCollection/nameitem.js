@@ -1,7 +1,42 @@
 import React from "react";
 
 import styled from "styled-components";
-const NameItems = () => {
+const NameItems = ({
+  type,
+  settype,
+  name,
+  setname,
+  sku,
+  setsku,
+  unit,
+  setunit,
+  returnable,
+  setreturnable,
+}) => {
+  let radio1 = document.querySelector(".radio1");
+  let set = document.getElementById(".selecting");
+  const typeHandler = (e) => {
+    if (radio1.checked) {
+      settype("Goods");
+    } else {
+      settype("Service");
+    }
+  };
+  const nameHandler = (e) => {
+    setname(e.target.value);
+  };
+  const skuHandler = (e) => {
+    setsku(e.target.value);
+  };
+
+  const unitHandler = (e) => {
+    setunit(e.target.value);
+  };
+
+  const returnableHandler = (e) => {
+    setreturnable(e.target.value);
+  };
+
   return (
     <ItemMaking>
       <Grider>
@@ -10,43 +45,79 @@ const NameItems = () => {
         </div>
         <div className="d2">
           <div className="dim2">
-            <input type="radio" name="item" id="Goods"></input>
-            <label for="Goods">Goods</label>
+            <input
+              className="radio1"
+              onChange={typeHandler}
+              type="radio"
+              name="item"
+              id="Goods"
+            ></input>
+            <label htmlFor="Goods">Goods</label>
           </div>
           <div className="dim3">
-            <input type="radio" name="item" id="Service"></input>
-            <label for="Service">Service</label>
+            <input
+              className="radio2"
+              onChange={typeHandler}
+              type="radio"
+              name="item"
+              id="Service"
+            ></input>
+            <label htmlFor="Service">Service</label>
           </div>
         </div>
         <div className="d3">
           <label>Name*</label>
         </div>
         <div className="d4">
-          <input></input>
+          <input onChange={nameHandler} value={name} type="text"></input>
         </div>
         <div className="d5">
           <label>SKU</label>
         </div>
         <div className="d6">
-          <input></input>
+          <input onChange={skuHandler} value={sku} type="text"></input>
         </div>
         <div className="d7">
           <label>Unit*</label>
         </div>
         <div className="d8">
-          <select>
-            <option value="box">box</option>
-            <option value="cm">cm</option>
-            <option value="dz">dz</option>
-            <option value="ft">ft</option>
-            <option value="g">g</option>
-            <option value="in">in</option>
-            <option value="kg">kg</option>
-            <option value="km">km</option>
-            <option value="lb">lb</option>
-            <option value="mg">mg</option>
-            <option value="m">m</option>
-            <option value="pcs">pcs</option>
+          <select id="selecting">
+            <option onClick={typeHandler} value="box">
+              box
+            </option>
+            <option onClick={typeHandler} value="cm">
+              cm
+            </option>
+            <option onClick={typeHandler} value="dz">
+              dz
+            </option>
+            <option onClick={typeHandler} value="ft">
+              ft
+            </option>
+            <option onClick={typeHandler} value="g">
+              g
+            </option>
+            <option onClick={typeHandler} value="in">
+              in
+            </option>
+            <option onClick={typeHandler} value="kg">
+              kg
+            </option>
+            <option onClick={typeHandler} value="km">
+              km
+            </option>
+            <option onClick={typeHandler} value="lb">
+              lb
+            </option>
+            <option onClick={typeHandler} value="mg">
+              mg
+            </option>
+            <option onClick={typeHandler} value="m">
+              m
+            </option>
+            <option onClick={typeHandler} value="pcs">
+              pcs
+            </option>
           </select>
         </div>
         <div className="d9">
@@ -55,10 +126,10 @@ const NameItems = () => {
             id="returnableitem"
             name="returnableitem"
           ></input>
-          <label for="returnableitem">Returnable Item</label>
+          <label htmlFor="returnableitem">Returnable Item</label>
         </div>
         <div className="d10">
-          <label for="myfile">Select a file:</label>
+          <label htmlFor="myfile">Select a file:</label>
           <input type="file" id="myfile" name="myfile"></input>
         </div>
       </Grider>
