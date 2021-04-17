@@ -14,7 +14,7 @@ const NameItems = ({
   setreturnable,
 }) => {
   let radio1 = document.querySelector(".radio1");
-  let set = document.getElementById(".selecting");
+
   const typeHandler = (e) => {
     if (radio1.checked) {
       settype("Goods");
@@ -30,11 +30,15 @@ const NameItems = ({
   };
 
   const unitHandler = (e) => {
-    setunit(e.target.value);
+    console.log("hello");
+    var x = document.getElementById("mySelect").selectedIndex;
+    setunit(x);
   };
 
-  const returnableHandler = (e) => {
-    setreturnable(e.target.value);
+  const returnableHandler = () => {
+    if (document.getElementById("returnableitem").checked === true)
+      setreturnable(true);
+    else setreturnable(false);
   };
 
   return (
@@ -81,43 +85,19 @@ const NameItems = ({
           <label>Unit*</label>
         </div>
         <div className="d8">
-          <select id="selecting">
-            <option onClick={typeHandler} value="box">
-              box
-            </option>
-            <option onClick={typeHandler} value="cm">
-              cm
-            </option>
-            <option onClick={typeHandler} value="dz">
-              dz
-            </option>
-            <option onClick={typeHandler} value="ft">
-              ft
-            </option>
-            <option onClick={typeHandler} value="g">
-              g
-            </option>
-            <option onClick={typeHandler} value="in">
-              in
-            </option>
-            <option onClick={typeHandler} value="kg">
-              kg
-            </option>
-            <option onClick={typeHandler} value="km">
-              km
-            </option>
-            <option onClick={typeHandler} value="lb">
-              lb
-            </option>
-            <option onClick={typeHandler} value="mg">
-              mg
-            </option>
-            <option onClick={typeHandler} value="m">
-              m
-            </option>
-            <option onClick={typeHandler} value="pcs">
-              pcs
-            </option>
+          <select onChange={unitHandler} id="mySelect">
+            <option value="box">box</option>
+            <option value="cm">cm</option>
+            <option value="dz">dz</option>
+            <option value="ft">ft</option>
+            <option value="g">g</option>
+            <option value="in">in</option>
+            <option value="kg">kg</option>
+            <option value="km">km</option>
+            <option value="lb">lb</option>
+            <option value="mg">mg</option>
+            <option value="m">m</option>
+            <option value="pcs">pcs</option>
           </select>
         </div>
         <div className="d9">
@@ -125,6 +105,7 @@ const NameItems = ({
             type="checkbox"
             id="returnableitem"
             name="returnableitem"
+            onChange={returnableHandler}
           ></input>
           <label htmlFor="returnableitem">Returnable Item</label>
         </div>
