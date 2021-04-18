@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import image from "../img/girl.jpg";
 import { Link } from "react-router-dom";
 const DisplayItems = () => {
   return (
@@ -24,54 +23,13 @@ const DisplayItems = () => {
         </div>
         <div className="btn1">
           <button>
-            <Link class="labels" to="/additems">
+            <Link className="labels" to="/additems">
               + New
             </Link>
           </button>
         </div>
       </Total>
-      <Cards>
-        <Card>
-          <div className="lim">
-            <img src={image} alt="" />
-            <strong>Abhinav</strong>
-            <label>SKU : kslkflsdfk</label>
-          </div>
-          <div>
-            <label>
-              Stock On Hand : <span>0.0cm</span>
-            </label>
-          </div>
-          <div className="prices">
-            <div className="inner">
-              <label>Selling Price : Rs.0.00</label>
-            </div>
-            <div className="inner">
-              <label>Cost Price : Rs.0.00</label>
-            </div>
-          </div>
-        </Card>
-        <Card>
-          <div className="lim">
-            <img src={image} alt="" />
-            <strong>Abhinav</strong>
-            <label>SKU : kslkflsdfk</label>
-          </div>
-          <div>
-            <label>
-              Stock On Hand : <span>0.0cm</span>
-            </label>
-          </div>
-          <div className="prices">
-            <div className="inner">
-              <label>Selling Price : Rs.0.00</label>
-            </div>
-            <div className="inner">
-              <label>Cost Price : Rs.0.00</label>
-            </div>
-          </div>
-        </Card>
-      </Cards>
+      <Cards></Cards>
     </div>
   );
 };

@@ -12,13 +12,10 @@ const AddItems = ({ item, setitem }) => {
   const [sku, setsku] = useState("");
   const [unit, setunit] = useState(unitval);
   const [returnable, setreturnable] = useState(false);
-
   const [dimension1, setdimension1] = useState("");
   const [dimension2, setdimension2] = useState("");
   const [dimension3, setdimension3] = useState("");
   const [manufacturer, setmanufacturer] = useState(unitval);
-
-
   const [upc, setupc] = useState("");
   const [ean, setean] = useState("");
   const [weight, setweight] = useState("");
@@ -33,6 +30,63 @@ const AddItems = ({ item, setitem }) => {
   const [costprice, setcostprice] = useState("");
   const [cpaccount, setcpaccount] = useState(unitval);
   const [cpdescription, setcpdescription] = useState("");
+
+  const inputhandler = (e) => {
+    e.preventDefault();
+
+    console.log("hey form submited");
+    setitem([
+      ...item,
+      {
+        type,
+        name,
+        sku,
+        unit,
+        returnable,
+        dimension1,
+        dimension2,
+        dimension3,
+        manufacturer,
+        upc,
+        ean,
+        weight,
+        brand,
+        mpn,
+        isbn,
+        salesprice,
+        purchaseInfo,
+        sellingprice,
+        spaccount,
+        spdescription,
+        costprice,
+        cpaccount,
+        cpdescription,
+      },
+    ]);
+    settype("");
+    setname("");
+    setsku("");
+    setunit("");
+    setreturnable("");
+    setdimension1("");
+    setdimension2("");
+    setdimension3("");
+    setmanufacturer("");
+    setupc("");
+    setean("");
+    setweight("");
+    setbrand("");
+    setmpn("");
+    setisbn("");
+    setsalesprice("");
+    setpurchaseinfo("");
+    setsellingprice("");
+    setspaccount("");
+    setspdescription("");
+    setcostprice("");
+    setcpaccount("");
+    setcpdescription("");
+  };
   return (
     <ItemMaking>
       <Heading12>
@@ -43,66 +97,80 @@ const AddItems = ({ item, setitem }) => {
           </Link>
         </span>
       </Heading12>
-      <Toper>
-        <div className="hello1">
-          <NameItem
-            type={type}
-            settype={settype}
-            name={name}
-            setname={setname}
-            sku={sku}
-            setsku={setsku}
-            unit={unit}
-            setunit={setunit}
-            returnable={returnable}
-            setreturnable={setreturnable}
-          />
-        </div>
-        <div className="hello2">
-          <ItemsInfo
-            dimension1={dimension1}
-            dimension2={dimension2}
-            dimension3={dimension3}
-            setdimension1={setdimension1}
-            setdimension2={setdimension2}
-            setdimension3={setdimension3}
-            manufacturer={manufacturer}
-            setmanufacturer={setmanufacturer}
-            upc={upc}
-            setupc={setupc}
-            ean={ean}
-            setean={setean}
-            weight={weight}
-            setweight={setweight}
-            brand={brand}
-            setbrand={setbrand}
-            mpn={mpn}
-            setmpn={setmpn}
-            isbn={isbn}
-            setisbn={setisbn}
-          />
-        </div>
-        <div className="hello3">
-          <SalesPerInfo
-            salesprice={salesprice}
-            setsalesprice={setsalesprice}
-            purchaseInfo={purchaseInfo}
-            setpurchaseinfo={setpurchaseinfo}
-            sellingprice={sellingprice}
-            setsellingprice={setsellingprice}
-            spaccount={spaccount}
-            setspaccount={setspaccount}
-            spdescription={spdescription}
-            setspdescription={setspdescription}
-            costprice={costprice}
-            setcostprice={setcostprice}
-            cpaccount={cpaccount}
-            setcpaccount={setcpaccount}
-            cpdescription={cpdescription}
-            setcpdescription={setcpdescription}
-          />
-        </div>
-      </Toper>
+      <form onSubmit={inputhandler}>
+        <Toper>
+          <div className="hello1">
+            <NameItem
+              type={type}
+              settype={settype}
+              name={name}
+              setname={setname}
+              sku={sku}
+              setsku={setsku}
+              unit={unit}
+              setunit={setunit}
+              returnable={returnable}
+              setreturnable={setreturnable}
+            />
+          </div>
+          <div className="hello2">
+            <ItemsInfo
+              dimension1={dimension1}
+              dimension2={dimension2}
+              dimension3={dimension3}
+              setdimension1={setdimension1}
+              setdimension2={setdimension2}
+              setdimension3={setdimension3}
+              manufacturer={manufacturer}
+              setmanufacturer={setmanufacturer}
+              upc={upc}
+              setupc={setupc}
+              ean={ean}
+              setean={setean}
+              weight={weight}
+              setweight={setweight}
+              brand={brand}
+              setbrand={setbrand}
+              mpn={mpn}
+              setmpn={setmpn}
+              isbn={isbn}
+              setisbn={setisbn}
+            />
+          </div>
+          <div className="hello3">
+            <SalesPerInfo
+              salesprice={salesprice}
+              setsalesprice={setsalesprice}
+              purchaseInfo={purchaseInfo}
+              setpurchaseinfo={setpurchaseinfo}
+              sellingprice={sellingprice}
+              setsellingprice={setsellingprice}
+              spaccount={spaccount}
+              setspaccount={setspaccount}
+              spdescription={spdescription}
+              setspdescription={setspdescription}
+              costprice={costprice}
+              setcostprice={setcostprice}
+              cpaccount={cpaccount}
+              setcpaccount={setcpaccount}
+              cpdescription={cpdescription}
+              setcpdescription={setcpdescription}
+            />
+          </div>
+        </Toper>
+        <Down>
+          <div className="both">
+            <div>
+              <button type="submit" className="btn1">
+                Save
+              </button>
+            </div>
+            <div>
+              <button className="btn2">Cancel</button>
+            </div>
+          </div>
+        </Down>
+      </form>
     </ItemMaking>
   );
 };
@@ -142,6 +210,38 @@ const Toper = styled.div`
   }
   .hello2 {
     border-bottom: 1px solid black;
+  }
+`;
+const Down = styled.div`
+  position: webkit-sticky;
+  position: sticky;
+  bottom: 0;
+  margin-top: 6.5rem;
+  background: white;
+  border: none;
+  box-shadow: 0px -5px 20px 1px #adadad;
+  .both {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 5rem;
+    padding: 0.5rem;
+    button {
+      padding: 1rem;
+      border: none;
+      cursor: pointer;
+      border-radius: 1rem;
+    }
+  }
+
+  .btn1 {
+    background: #2fa3e6;
+    color: #ffffff;
+  }
+  .btn2 {
+    background: #f5f5f5;
+    color: #212529;
   }
 `;
 
