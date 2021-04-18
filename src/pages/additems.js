@@ -12,21 +12,26 @@ const AddItems = ({ item, setitem }) => {
   const [sku, setsku] = useState("");
   const [unit, setunit] = useState(unitval);
   const [returnable, setreturnable] = useState(false);
-  const [dimension, setdimension] = useState([]);
-  const [manufacturer, setmanufacturer] = useState("");
+
+  const [dimension1, setdimension1] = useState("");
+  const [dimension2, setdimension2] = useState("");
+  const [dimension3, setdimension3] = useState("");
+  const [manufacturer, setmanufacturer] = useState(unitval);
+
+
   const [upc, setupc] = useState("");
   const [ean, setean] = useState("");
   const [weight, setweight] = useState("");
-  const [brand, setbrand] = useState("");
+  const [brand, setbrand] = useState(unitval);
   const [mpn, setmpn] = useState("");
   const [isbn, setisbn] = useState("");
-  const [salesprice, setsalesprice] = useState("");
-  const [purchaseInfo, setpurchaseinfo] = useState("");
+  const [salesprice, setsalesprice] = useState(false);
+  const [purchaseInfo, setpurchaseinfo] = useState(false);
   const [sellingprice, setsellingprice] = useState("");
-  const [spaccount, setspaccount] = useState("");
+  const [spaccount, setspaccount] = useState(unitval);
   const [spdescription, setspdescription] = useState("");
   const [costprice, setcostprice] = useState("");
-  const [cpaccount, setcpaccount] = useState("");
+  const [cpaccount, setcpaccount] = useState(unitval);
   const [cpdescription, setcpdescription] = useState("");
   return (
     <ItemMaking>
@@ -55,8 +60,12 @@ const AddItems = ({ item, setitem }) => {
         </div>
         <div className="hello2">
           <ItemsInfo
-            dimension={dimension}
-            setdimension={setdimension}
+            dimension1={dimension1}
+            dimension2={dimension2}
+            dimension3={dimension3}
+            setdimension1={setdimension1}
+            setdimension2={setdimension2}
+            setdimension3={setdimension3}
             manufacturer={manufacturer}
             setmanufacturer={setmanufacturer}
             upc={upc}

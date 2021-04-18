@@ -1,6 +1,60 @@
 import React from "react";
 import styled from "styled-components";
-const ItemsInfo = () => {
+const ItemsInfo = ({
+  dimension1,
+  dimension2,
+  dimension3,
+  setdimension1,
+  setdimension2,
+  setdimension3,
+  manufacturer,
+  setmanufacturer,
+  upc,
+  setupc,
+  ean,
+  setean,
+  weight,
+  setweight,
+  brand,
+  setbrand,
+  mpn,
+  setmpn,
+  isbn,
+  setisbn,
+}) => {
+  const updatedim1 = (e) => {
+    setdimension1(e.target.value);
+  };
+  const updatedim2 = (e) => {
+    setdimension2(e.target.value);
+  };
+  const updatedim3 = (e) => {
+    setdimension3(e.target.value);
+  };
+
+  const ManufacterHandler = () => {
+    var x = document.getElementById("myManufacter").selectedIndex;
+    setmanufacturer(x);
+  };
+  const upchandler = (e) => {
+    setupc(e.target.value);
+  };
+  const eanhandler = (e) => {
+    setean(e.target.value);
+  };
+  const weighthandler = (e) => {
+    setweight(e.target.value);
+  };
+  const BrandHandler = () => {
+    var x = document.getElementById("myBrand").selectedIndex;
+    setbrand(x);
+  };
+  const mpnhandler = (e) => {
+    setmpn(e.target.value);
+  };
+  const isbnhandler = (e) => {
+    setisbn(e.target.value);
+  };
   return (
     <ItemMaking>
       <div className="dimension1">
@@ -13,18 +67,33 @@ const ItemsInfo = () => {
       </div>
       <div className="dimension2">
         <div className="d33">
-          <input className="f1"></input>
+          <input
+            value={dimension1}
+            onChange={updatedim1}
+            className="f1"
+            type="text"
+          ></input>
           <span>x</span>
-          <input className="f2"></input>
+          <input
+            value={dimension2}
+            onChange={updatedim2}
+            className="f2"
+            type="text"
+          ></input>
           <span>x</span>
-          <input className="f3"></input>
+          <input
+            value={dimension3}
+            onChange={updatedim3}
+            className="f3"
+            type="text"
+          ></input>
         </div>
       </div>
       <div className="dimension3">
         <label>Manufacturer</label>
       </div>
       <div className="dimension4">
-        <select>
+        <select id="myManufacter" onChange={ManufacterHandler}>
           <option value="tel">Chanchal tel</option>
           <option value="Manage Manufacter">Manage Manufacter</option>
         </select>
@@ -33,20 +102,20 @@ const ItemsInfo = () => {
         <label>UPC</label>
       </div>
       <div className="dimension6">
-        <input></input>
+        <input value={upc} type="text" onChange={upchandler}></input>
       </div>
       <div className="dimension7">
         <label>EAN</label>
       </div>
       <div className="dimension8">
-        <input></input>
+        <input value={ean} type="text" onChange={eanhandler}></input>
       </div>
       <div className="dimension9">
         <label>Weight</label>
       </div>
       <div className="dimension10">
         <div className="k12">
-          <input></input>
+          <input value={weight} type="text" onChange={weighthandler}></input>
           <label>Kg</label>
         </div>
       </div>
@@ -54,7 +123,7 @@ const ItemsInfo = () => {
         <label>Brand</label>
       </div>
       <div className="dimension12">
-        <select>
+        <select id="myBrand" onChange={BrandHandler}>
           <option value="tel">Chanchal tel</option>
           <option value="Manage Manufacter">Manage Manufacter</option>
         </select>
@@ -63,13 +132,13 @@ const ItemsInfo = () => {
         <label>MPN</label>
       </div>
       <div className="dimension14">
-        <input></input>
+        <input value={mpn} type="text" onChange={mpnhandler}></input>
       </div>
       <div className="dimension15">
         <label>ISBN</label>
       </div>
       <div className="dimension16">
-        <input></input>
+        <input value={isbn} type="text" onChange={isbnhandler}></input>
       </div>
     </ItemMaking>
   );

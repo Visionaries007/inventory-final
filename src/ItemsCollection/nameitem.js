@@ -30,7 +30,7 @@ const NameItems = ({
   };
 
   const unitHandler = () => {
-    console.log("hello");
+
     var x = document.getElementById("mySelect").selectedIndex;
     setunit(x);
   };
