@@ -12,10 +12,13 @@ const AddItems = ({ item, setitem }) => {
   const [sku, setsku] = useState("");
   const [unit, setunit] = useState(unitval);
   const [returnable, setreturnable] = useState(false);
+
   const [dimension1, setdimension1] = useState("");
   const [dimension2, setdimension2] = useState("");
   const [dimension3, setdimension3] = useState("");
   const [manufacturer, setmanufacturer] = useState(unitval);
+
+
   const [upc, setupc] = useState("");
   const [ean, setean] = useState("");
   const [weight, setweight] = useState("");
