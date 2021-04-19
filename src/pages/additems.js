@@ -8,7 +8,7 @@ import NameItem from "../ItemsCollection/nameitem";
 import { Link } from "react-router-dom";
 const AddItems = ({ item, setitem }) => {
   let unitval = 0;
-  const [type, settype] = useState("");
+  const [type, settype] = useState("Goods");
   const [name, setname] = useState("");
   const [sku, setsku] = useState("");
   const [unit, setunit] = useState(unitval);
@@ -122,9 +122,9 @@ const AddItems = ({ item, setitem }) => {
       <Heading12>
         <h3>New Item</h3>
         <span>
-          <Link className="labels" to="/displayItems">
+          <a className="labels" href="/displayItems">
             <img src={close} alt="" />
-          </Link>
+          </a>
         </span>
       </Heading12>
       <form onSubmit={inputhandler}>

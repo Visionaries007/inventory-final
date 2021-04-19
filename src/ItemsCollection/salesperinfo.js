@@ -60,12 +60,15 @@ const ItemsInfo = ({
         <label htmlFor="salesprice">Sales Price</label>
       </div>
       <div className="d2">
-        <label className="dm">Selling Price*</label>
+        <label htmlFor="sellingprice" className="dm">
+          Selling Price*
+        </label>
       </div>
       <div className="d3">
         <div className="j12">
-          <label>INR</label>
+          <label htmlFor="inr">INR</label>
           <input
+            id="sellingprice"
             onChange={sellingpricehandler}
             value={sellingprice}
             type="text"
@@ -73,7 +76,7 @@ const ItemsInfo = ({
         </div>
       </div>
       <div className="d4">
-        <label>Acount*</label>
+        <label htmlFor="accountsp">Acount*</label>
       </div>
       <div className="d5">
         <select id="accountsp" onChange={accountsphandler}>
@@ -82,10 +85,11 @@ const ItemsInfo = ({
         </select>
       </div>
       <div className="d6">
-        <label>Description</label>
+        <label htmlFor="description">Description</label>
       </div>
       <div className="d7">
         <textarea
+          id="description"
           value={spdescription}
           onChange={spdescriphandler}
           name="review"
@@ -103,12 +107,15 @@ const ItemsInfo = ({
         <label htmlFor="purchaseinformation">Purchase Information</label>
       </div>
       <div className="d9">
-        <label className="dm">Cost Price*</label>
+        <label htmlFor="costprice" className="dm">
+          Cost Price*
+        </label>
       </div>
       <div className="d10">
         <div className="j13">
           <label>INR</label>
           <input
+            id="costprice"
             onChange={Costpricehandler}
             value={costprice}
             type="text"
@@ -116,7 +123,7 @@ const ItemsInfo = ({
         </div>
       </div>
       <div className="d11">
-        <label>Account*</label>
+        <label htmlFor="accountcp">Account*</label>
       </div>
       <div className="d12">
         <select id="accountcp" onChange={accountcphandler}>
@@ -125,10 +132,11 @@ const ItemsInfo = ({
         </select>
       </div>
       <div className="d13">
-        <label>Description</label>
+        <label htmlFor="description1">Description</label>
       </div>
       <div className="d14">
         <textarea
+          id="description1"
           value={cpdescription}
           onChange={cpdescriphandler}
           name="review"

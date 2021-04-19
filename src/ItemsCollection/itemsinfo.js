@@ -58,10 +58,10 @@ const ItemsInfo = ({
   return (
     <ItemMaking>
       <div className="dimension1">
-        <label className="dim">
+        <label htmlFor="dimi" className="dim">
           Dimensions <br></br>(cm)
         </label>
-        <label className="dim2">
+        <label htmlFor="dimi" className="dim2">
           Length X Width<br></br>X Height
         </label>
       </div>
@@ -72,6 +72,7 @@ const ItemsInfo = ({
             onChange={updatedim1}
             className="f1"
             type="text"
+            id="dimi"
           ></input>
           <span>x</span>
           <input
@@ -90,7 +91,7 @@ const ItemsInfo = ({
         </div>
       </div>
       <div className="dimension3">
-        <label>Manufacturer</label>
+        <label htmlFor="myManufacter">Manufacturer</label>
       </div>
       <div className="dimension4">
         <select id="myManufacter" onChange={ManufacterHandler}>
@@ -99,28 +100,33 @@ const ItemsInfo = ({
         </select>
       </div>
       <div className="dimension5">
-        <label>UPC</label>
+        <label htmlFor="upc">UPC</label>
       </div>
       <div className="dimension6">
-        <input value={upc} type="text" onChange={upchandler}></input>
+        <input id="upc" value={upc} type="text" onChange={upchandler}></input>
       </div>
       <div className="dimension7">
-        <label>EAN</label>
+        <label htmlFor="ean">EAN</label>
       </div>
       <div className="dimension8">
-        <input value={ean} type="text" onChange={eanhandler}></input>
+        <input id="ean" value={ean} type="text" onChange={eanhandler}></input>
       </div>
       <div className="dimension9">
-        <label>Weight</label>
+        <label htmlFor="weight">Weight</label>
       </div>
       <div className="dimension10">
         <div className="k12">
-          <input value={weight} type="text" onChange={weighthandler}></input>
+          <input
+            id="weight"
+            value={weight}
+            type="text"
+            onChange={weighthandler}
+          ></input>
           <label>Kg</label>
         </div>
       </div>
       <div className="dimension11">
-        <label>Brand</label>
+        <label htmlFor="myBrand">Brand</label>
       </div>
       <div className="dimension12">
         <select id="myBrand" onChange={BrandHandler}>
@@ -129,16 +135,21 @@ const ItemsInfo = ({
         </select>
       </div>
       <div className="dimension13">
-        <label>MPN</label>
+        <label htmlFor="mpn">MPN</label>
       </div>
       <div className="dimension14">
-        <input value={mpn} type="text" onChange={mpnhandler}></input>
+        <input id="mpn" value={mpn} type="text" onChange={mpnhandler}></input>
       </div>
       <div className="dimension15">
-        <label>ISBN</label>
+        <label htmlFor="isbn">ISBN</label>
       </div>
       <div className="dimension16">
-        <input value={isbn} type="text" onChange={isbnhandler}></input>
+        <input
+          id="isbn"
+          value={isbn}
+          type="text"
+          onChange={isbnhandler}
+        ></input>
       </div>
     </ItemMaking>
   );
