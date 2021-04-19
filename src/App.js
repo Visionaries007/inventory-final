@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import "./styles/app.scss";
 import CombStatCards from "./components/CombStatCards";
 import AddItems from "./pages/additems";
@@ -30,6 +31,16 @@ import Options from "./components/Options";
 function App() {
   //Collection of All the states
   const [item, setitem] = useState([]);
+  useEffect(() => {
+    axios
+      .get("http://localhost:5000/items/")
+      .then((response) => {
+        setitem({ item: response.data });
+      })
+      .catch((error) => {
+        console.log({ error });
+      });
+  }, []);
 
   return (
     <Apple>
@@ -49,7 +60,7 @@ function App() {
               <AddItems item={item} setitem={setitem} />
             </Route>
             <Route path="/displayItems">
-              <DisplayItems />
+              <DisplayItems item={item} setitem={setitem} />
             </Route>
             <Route path="/addcustomer">
               <AddCustomer />

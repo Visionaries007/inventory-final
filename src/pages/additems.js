@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from "axios";
 import close from "../img/close.svg";
 import styled from "styled-components";
 import ItemsInfo from "../ItemsCollection/itemsinfo";
@@ -33,10 +34,34 @@ const AddItems = ({ item, setitem }) => {
 
   const inputhandler = (e) => {
     e.preventDefault();
-
+    const itemstruct = {
+      type,
+      name,
+      sku,
+      unit,
+      returnable,
+      dimension1,
+      dimension2,
+      dimension3,
+      manufacturer,
+      upc,
+      ean,
+      weight,
+      brand,
+      mpn,
+      isbn,
+      salesprice,
+      purchaseInfo,
+      sellingprice,
+      spaccount,
+      spdescription,
+      costprice,
+      cpaccount,
+      cpdescription,
+    };
     console.log("hey form submited");
     setitem([
-      ...item,
+      ...item.item,
       {
         type,
         name,
@@ -63,6 +88,11 @@ const AddItems = ({ item, setitem }) => {
         cpdescription,
       },
     ]);
+
+    axios
+      .post("http://localhost:5000/items/add", itemstruct)
+      .then((res) => console.log(res.data));
+
     settype("");
     setname("");
     setsku("");

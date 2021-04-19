@@ -1,13 +1,13 @@
 import React from "react";
 import styled from "styled-components";
 import image from "../img/girl.jpg";
-const itemcard = () => {
+const itemcard = ({ n }) => {
   return (
     <Card>
       <div className="lim">
         <img src={image} alt="" />
-        <strong>Abhinav</strong>
-        <label>SKU : kslkflsdfk</label>
+        <strong>{n.name}</strong>
+        <label>SKU : {n.sku}</label>
       </div>
       <div>
         <label>
@@ -16,10 +16,10 @@ const itemcard = () => {
       </div>
       <div className="prices">
         <div className="inner">
-          <label>Selling Price : Rs.0.00</label>
+          <label>Selling Price : Rs.{n.sellingprice}.00</label>
         </div>
         <div className="inner">
-          <label>Cost Price : Rs.0.00</label>
+          <label>Cost Price : Rs.{n.costprice}.00</label>
         </div>
       </div>
     </Card>
