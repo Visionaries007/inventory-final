@@ -10,7 +10,7 @@ const Options = () => {
             <Link to="/">Dashboard</Link>
           </li>
           <li>
-            <Link to="/displayItems">Items</Link>
+            <a href="/displayItems">Items</a>
           </li>
         </ul>
         <ul>

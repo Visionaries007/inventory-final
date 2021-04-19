@@ -17,7 +17,6 @@ const NameItems = ({
   let radio2 = document.querySelector(".radio2");
 
   const typeHandler = () => {
-    console.log(radio1.checked);
     if (radio1 !== null && radio1.checked) {
       settype("Goods");
     } else if (radio2 !== null) {
@@ -46,7 +45,7 @@ const NameItems = ({
     <ItemMaking>
       <Grider>
         <div className="d1">
-          <label>Type</label>
+          <label htmlFor="type">Type</label>
         </div>
         <div className="d2">
           <div className="dim2">
@@ -55,7 +54,7 @@ const NameItems = ({
               onChange={typeHandler}
               type="radio"
               name="item"
-              id="Goods"
+              id="type"
             ></input>
             <label htmlFor="Goods">Goods</label>
           </div>
@@ -65,25 +64,30 @@ const NameItems = ({
               onChange={typeHandler}
               type="radio"
               name="item"
-              id="Service"
+              id="type"
             ></input>
             <label htmlFor="Service">Service</label>
           </div>
         </div>
         <div className="d3">
-          <label>Name*</label>
+          <label htmlFor="name">Name*</label>
         </div>
         <div className="d4">
-          <input onChange={nameHandler} value={name} type="text"></input>
+          <input
+            onChange={nameHandler}
+            id="name"
+            value={name}
+            type="text"
+          ></input>
         </div>
         <div className="d5">
-          <label>SKU</label>
+          <label htmlFor="sku">SKU</label>
         </div>
         <div className="d6">
-          <input onChange={skuHandler} value={sku} type="text"></input>
+          <input onChange={skuHandler} id="sku" value={sku} type="text"></input>
         </div>
         <div className="d7">
-          <label>Unit*</label>
+          <label htmlFor="mySelect">Unit*</label>
         </div>
         <div className="d8">
           <select onChange={unitHandler} id="mySelect">

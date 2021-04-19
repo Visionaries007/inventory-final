@@ -16,10 +16,10 @@ const itemcard = ({ n }) => {
       </div>
       <div className="prices">
         <div className="inner">
-          <label>Selling Price : Rs.{n.sellingprice}.00</label>
+          <label>Selling Price : Rs. {n.sellingprice}.00</label>
         </div>
         <div className="inner">
-          <label>Cost Price : Rs.{n.costprice}.00</label>
+          <label>Cost Price : Rs. {n.costprice}.00</label>
         </div>
       </div>
     </Card>
@@ -46,13 +46,14 @@ const Card = styled.div`
     align-items: center;
   }
   .inner {
-    font-size: 14px;
+    font-size: 13px;
   }
   .prices {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    gap: 10px;
   }
 `;
 export default itemcard;
