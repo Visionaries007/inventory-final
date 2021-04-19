@@ -1,7 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-const DisplayItems = () => {
+import CardItem from "../Cards/itemcard";
+import image from "../img/girl.jpg";
+const DisplayItems = ({ item, setitem }) => {
   return (
     <div>
       <Total>
@@ -29,7 +31,30 @@ const DisplayItems = () => {
           </button>
         </div>
       </Total>
-      <Cards></Cards>
+      <Cards>
+        <Card>
+          <div className="lim">
+            <img src={image} alt="" />
+            <strong>Abhinav</strong>
+            <label>SKU : kslkflsdfk</label>
+          </div>
+          <div>
+            <label>
+              Stock On Hand : <span>0.0cm</span>
+            </label>
+          </div>
+          <div className="prices">
+            <div className="inner">
+              <label>Selling Price : Rs.0.00</label>
+            </div>
+            <div className="inner">
+              <label>Cost Price : Rs.0.00</label>
+            </div>
+          </div>
+        </Card>
+        {item.item !== undefined &&
+          item.item.map((n) => <CardItem n={n} key={n._id} />)}
+      </Cards>
     </div>
   );
 };

@@ -14,12 +14,13 @@ const NameItems = ({
   setreturnable,
 }) => {
   let radio1 = document.querySelector(".radio1");
+  let radio2 = document.querySelector(".radio2");
 
   const typeHandler = () => {
     console.log(radio1.checked);
-    if (radio1.checked) {
+    if (radio1 !== null && radio1.checked) {
       settype("Goods");
-    } else {
+    } else if (radio2 !== null) {
       settype("Service");
     }
   };
