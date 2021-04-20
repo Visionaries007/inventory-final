@@ -1,7 +1,5 @@
 import React from "react";
-import close from "../img/close.svg";
 import styled from "styled-components";
-import CustomerAddress from "../customerCollection/customeraddress";
 const AddCustomer = ({
   biladdattension,
   bilcountry,
@@ -29,6 +27,7 @@ const AddCustomer = ({
   const biladcityHandler = () => {};
   const bilstateHandler = () => {};
   const bilzipcodeHandler = () => {};
+  const bilphoneHandler = () => {};
   const bilfaxHandler = () => {};
   const shipaddattensionHandler = () => {};
   const shipcountryHandler = () => {};
@@ -44,6 +43,12 @@ const AddCustomer = ({
     <ItemMaking1>
       <form>
         <Grider>
+          <div className="d35">
+            <label>BILLING ADDRESS</label>
+          </div>
+          <div className="d36">
+            <label>SHIPPING ADDRESS</label>
+          </div>
           <div className="d1">
             <label htmlFor="attention">Attention</label>
           </div>
@@ -104,7 +109,7 @@ const AddCustomer = ({
             <label htmlFor="state">State</label>
           </div>
           <div className="d11">
-            <select onChange={bilstateHandler} id="state">
+            <select value={bilstate} onChange={bilstateHandler} id="state">
               <option value="1">Andaman and Nicobar Islands</option>
               <option value="2">Andhra Pradesh</option>
               <option value="3">Arunachal Pradesh</option>
@@ -159,9 +164,21 @@ const AddCustomer = ({
           </div>
 
           <div className="d14">
-            <label htmlFor="fax">Fax</label>
+            <label htmlFor="phone">Phone</label>
           </div>
           <div className="d15">
+            <input
+              onChange={bilphoneHandler}
+              id="phone"
+              value={bilphone}
+              type="text"
+            ></input>
+          </div>
+
+          <div className="d16">
+            <label htmlFor="fax">Fax</label>
+          </div>
+          <div className="d17">
             <input
               onChange={bilfaxHandler}
               id="fax"
@@ -170,10 +187,10 @@ const AddCustomer = ({
             ></input>
           </div>
 
-          <div className="d16">
+          <div className="d18">
             <label htmlFor="attention1">Attention</label>
           </div>
-          <div className="d17">
+          <div className="d19">
             <input
               onChange={shipaddattensionHandler}
               id="attention1"
@@ -182,10 +199,10 @@ const AddCustomer = ({
             ></input>
           </div>
 
-          <div className="d18">
+          <div className="d20">
             <label htmlFor="country1">Country</label>
           </div>
-          <div className="d19">
+          <div className="d21">
             <input
               onChange={shipcountryHandler}
               id="country1"
@@ -194,10 +211,10 @@ const AddCustomer = ({
             ></input>
           </div>
 
-          <div className="d20">
+          <div className="d22">
             <label htmlFor="address1">Address</label>
           </div>
-          <div className="d21">
+          <div className="d23">
             <input
               onChange={shipaddrestreet1Handler}
               id="adress1"
@@ -205,7 +222,7 @@ const AddCustomer = ({
               type="text"
             ></input>
           </div>
-          <div className="d22">
+          <div className="d24">
             <input
               onChange={shipaddrestreet2Handler}
               id="adress1"
@@ -214,10 +231,10 @@ const AddCustomer = ({
             ></input>
           </div>
 
-          <div className="d23">
+          <div className="d25">
             <label htmlFor="city1">City</label>
           </div>
-          <div className="d24">
+          <div className="d26">
             <input
               onChange={shipadcityHandler}
               id="city1"
@@ -226,11 +243,11 @@ const AddCustomer = ({
             ></input>
           </div>
 
-          <div className="d25">
+          <div className="d27">
             <label htmlFor="state1">State</label>
           </div>
-          <div className="d26">
-            <select onChange={shipstateHandler} id="state1">
+          <div className="d28">
+            <select value={shipstate} onChange={shipstateHandler} id="state1">
               <option value="1">Andaman and Nicobar Islands</option>
               <option value="2">Andhra Pradesh</option>
               <option value="3">Arunachal Pradesh</option>
@@ -272,32 +289,41 @@ const AddCustomer = ({
             </select>
           </div>
 
-          <div className="d27">
-            <label htmlFor="zipcode">Zip Code</label>
-          </div>
-          <div className="d28">
-            <input
-              onChange={shipzipcodeHandler}
-              id="zipcode"
-              value={bilzipcode}
-              type="text"
-            ></input>
-          </div>
-
           <div className="d29">
-            <label htmlFor="fax">Fax</label>
+            <label htmlFor="zipcode1">Zip Code</label>
           </div>
           <div className="d30">
             <input
-              onChange={bilfaxHandler}
-              id="fax"
-              value={bilfax}
+              onChange={shipzipcodeHandler}
+              id="zipcode1"
+              value={shipzipcode}
+              type="text"
+            ></input>
+          </div>
+          <div className="d31">
+            <label htmlFor="phone1">Phone</label>
+          </div>
+          <div className="d32">
+            <input
+              onChange={shipphoneHandler}
+              id="phone1"
+              value={shipphone}
+              type="text"
+            ></input>
+          </div>
+          <div className="d33">
+            <label htmlFor="fax1">Fax</label>
+          </div>
+          <div className="d34">
+            <input
+              onChange={shipfaxHandler}
+              id="fax1"
+              value={shipfax}
               type="text"
             ></input>
           </div>
         </Grider>
       </form>
-      <CustomerAddress />
     </ItemMaking1>
   );
 };
@@ -314,25 +340,9 @@ const Grider = styled.div`
   grid-gap: 2rem;
   .d1 {
     grid-area: d1;
-    padding: 0px 15px 5.875px;
   }
   .d2 {
     grid-area: d2;
-    padding: 0px 15px;
-    display: flex;
-    flex-direction: row;
-    .dim2 {
-      input {
-        margin: 0px 4.0625px 0px 0px;
-      }
-      margin: 0px 9.75px 0px 0px;
-    }
-    .dim3 {
-      input {
-        margin: 0px 4.0625px 0px 0px;
-      }
-      margin: 0px 9.75px 0px 0px;
-    }
   }
   .d3 {
     grid-area: d3;
@@ -379,13 +389,74 @@ const Grider = styled.div`
   .d17 {
     grid-area: d17;
   }
+  .d18 {
+    grid-area: d18;
+  }
+  .d19 {
+    grid-area: d19;
+  }
+  .d20 {
+    grid-area: d20;
+  }
+  .d21 {
+    grid-area: d21;
+  }
+  .d22 {
+    grid-area: d22;
+  }
+  .d23 {
+    grid-area: d23;
+  }
+  .d24 {
+    grid-area: d24;
+  }
+  .d25 {
+    grid-area: d25;
+  }
+  .d26 {
+    grid-area: d26;
+  }
+  .d27 {
+    grid-area: d27;
+  }
+  .d28 {
+    grid-area: d28;
+  }
+  .d29 {
+    grid-area: d29;
+  }
+  .d30 {
+    grid-area: d30;
+  }
+  .d31 {
+    grid-area: d31;
+  }
+  .d32 {
+    grid-area: d32;
+  }
+  .d33 {
+    grid-area: d33;
+  }
+  .d34 {
+    grid-area: d34;
+  }
+  .d35 {
+    grid-area: d35;
+  }
+  .d36 {
+    grid-area: d36;
+  }
   grid-template-areas:
-    ".  d1   d2    .  .  "
-    ".  d3   d4   d5 d6  "
-    ".  d7   d8    .  .  "
-    ".  d9  d10    .  .  "
-    ". d11  d12    .  .  "
-    ". d13  d14  d15  .  "
-    ". d16  d17    .  .  ";
+    ". d35   .    d36    .  "
+    ".  .    .     .     .  "
+    ". d1   d2    d18  d19  "
+    ". d3   d4    d20  d21  "
+    ". d5   d6    d22  d23  "
+    ". .    d7    .    d24  "
+    ". d8   d9    d25  d26  "
+    ". d10 d11    d27  d28  "
+    ". d12 d13    d29  d30  "
+    ". d14 d15    d31  d32  "
+    ". d16 d17    d33  d34  ";
 `;
 export default AddCustomer;
