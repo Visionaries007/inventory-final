@@ -26,75 +26,77 @@ const DisplayCustomer = () => {
       </Total>
       <Data>
         <table>
-          <tr id="header">
-            <th>Name</th>
-            <th>Company</th>
-            <th>Email</th>
-            <th>Work Phone</th>
-            <th>Reciveable</th>
-            <th>Unused Credit</th>
-          </tr>
-          <tr>
-            <td>Jeet </td>
-            <td>Vision </td>
-            <td>dlajalsd@gmai.com </td>
-            <td>9376123713 </td>
-            <td>Rs 0.00</td>
-            <td>Rs 0.00</td>
-          </tr>
-          <tr>
-            <td>Jeet </td>
-            <td>Vision </td>
-            <td>dlajalsd@gmai.com </td>
-            <td>9376123713 </td>
-            <td>Rs 0.00</td>
-            <td>Rs 0.00</td>
-          </tr>
+          <tbody>
+            <tr id="header">
+              <th>Name</th>
+              <th>Company</th>
+              <th>Email</th>
+              <th>Work Phone</th>
+              <th>Reciveable</th>
+              <th>Unused Credit</th>
+            </tr>
+            <tr>
+              <td>Jeet </td>
+              <td>Vision </td>
+              <td>dlajalsd@gmai.com </td>
+              <td>9376123713 </td>
+              <td>Rs 0.00</td>
+              <td>Rs 0.00</td>
+            </tr>
+            <tr>
+              <td>Jeet </td>
+              <td>Vision </td>
+              <td>dlajalsd@gmai.com </td>
+              <td>9376123713 </td>
+              <td>Rs 0.00</td>
+              <td>Rs 0.00</td>
+            </tr>
 
-          <tr>
-            <td>Jeet </td>
-            <td>Vision </td>
-            <td>dlajaldaasddadasd@gmai.com </td>
-            <td>9376123713 </td>
-            <td>Rs 0.00</td>
-            <td>Rs 0.00</td>
-          </tr>
+            <tr>
+              <td>Jeet </td>
+              <td>Vision </td>
+              <td>dlajaldaasddadasd@gmai.com </td>
+              <td>9376123713 </td>
+              <td>Rs 0.00</td>
+              <td>Rs 0.00</td>
+            </tr>
 
-          <tr>
-            <td>Jeet </td>
-            <td>Vision </td>
-            <td>dlajalsd@gmai.com </td>
-            <td>9376123713 </td>
-            <td>Rs 0.00</td>
-            <td>Rs 0.00</td>
-          </tr>
+            <tr>
+              <td>Jeet </td>
+              <td>Vision </td>
+              <td>dlajalsd@gmai.com </td>
+              <td>9376123713 </td>
+              <td>Rs 0.00</td>
+              <td>Rs 0.00</td>
+            </tr>
 
-          <tr>
-            <td>Jeet </td>
-            <td>Vision </td>
-            <td>dlajalsd@gmai.com </td>
-            <td>9376123713 </td>
-            <td>Rs 0.00</td>
-            <td>Rs 0.00</td>
-          </tr>
+            <tr>
+              <td>Jeet </td>
+              <td>Vision </td>
+              <td>dlajalsd@gmai.com </td>
+              <td>9376123713 </td>
+              <td>Rs 0.00</td>
+              <td>Rs 0.00</td>
+            </tr>
 
-          <tr>
-            <td>Jeet </td>
-            <td>Vision </td>
-            <td>dlajalsd@gmai.com </td>
-            <td>9376123713 </td>
-            <td>Rs 0.00</td>
-            <td>Rs 0.00</td>
-          </tr>
+            <tr>
+              <td>Jeet </td>
+              <td>Vision </td>
+              <td>dlajalsd@gmai.com </td>
+              <td>9376123713 </td>
+              <td>Rs 0.00</td>
+              <td>Rs 0.00</td>
+            </tr>
 
-          <tr>
-            <td>Jeet </td>
-            <td>Vision </td>
-            <td>dlajalsd@gmai.com </td>
-            <td>9376123713 </td>
-            <td>Rs 0.00</td>
-            <td>Rs 0.00</td>
-          </tr>
+            <tr>
+              <td>Jeet </td>
+              <td>Vision </td>
+              <td>dlajalsd@gmai.com </td>
+              <td>9376123713 </td>
+              <td>Rs 0.00</td>
+              <td>Rs 0.00</td>
+            </tr>
+          </tbody>
         </table>
       </Data>
       <Disp></Disp>

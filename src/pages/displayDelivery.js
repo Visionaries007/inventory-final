@@ -25,60 +25,62 @@ const DisplayDelivery = () => {
       </Total>
       <Data>
         <table>
-          <tr id="header">
-            <th>Date</th>
-            <th>Delivery Challan#</th>
-            <th>Reference#</th>
-            <th>Customer Name</th>
-            <th>Status</th>
-            <th>Invoice Status</th>
-            <th>Amount</th>
-          </tr>
-          <tr>
-            <td>21/04/2021 </td>
-            <td>31 </td>
-            <td>22242</td>
-            <td>Jeet Sharma</td>
-            <td>Out For Delivery</td>
-            <td>Invoiced</td>
-            <td>Rs 203000</td>
-          </tr>
-          <tr>
-            <td>21/04/2021 </td>
-            <td>31 </td>
-            <td>22242</td>
-            <td>Jeet Sharma</td>
-            <td>Out For Delivery</td>
-            <td>Invoiced</td>
-            <td>Rs 203000</td>
-          </tr>
-          <tr>
-            <td>21/04/2021 </td>
-            <td>31 </td>
-            <td>22242</td>
-            <td>Jeet Sharma</td>
-            <td>Out For Delivery</td>
-            <td>Invoiced</td>
-            <td>Rs 203000</td>
-          </tr>
-          <tr>
-            <td>21/04/2021 </td>
-            <td>31 </td>
-            <td>22242</td>
-            <td>Jeet Sharma</td>
-            <td>Out For Delivery</td>
-            <td>Invoiced</td>
-            <td>Rs 203000</td>
-          </tr>
-          <tr>
-            <td>21/04/2021 </td>
-            <td>31 </td>
-            <td>22242</td>
-            <td>Jeet Sharma</td>
-            <td>Out For Delivery</td>
-            <td>Invoiced</td>
-            <td>Rs 203000</td>
-          </tr>
+          <tbody>
+            <tr id="header">
+              <th>Date</th>
+              <th>Delivery Challan#</th>
+              <th>Reference#</th>
+              <th>Customer Name</th>
+              <th>Status</th>
+              <th>Invoice Status</th>
+              <th>Amount</th>
+            </tr>
+            <tr>
+              <td>21/04/2021 </td>
+              <td>31 </td>
+              <td>22242</td>
+              <td>Jeet Sharma</td>
+              <td>Out For Delivery</td>
+              <td>Invoiced</td>
+              <td>Rs 203000</td>
+            </tr>
+            <tr>
+              <td>21/04/2021 </td>
+              <td>31 </td>
+              <td>22242</td>
+              <td>Jeet Sharma</td>
+              <td>Out For Delivery</td>
+              <td>Invoiced</td>
+              <td>Rs 203000</td>
+            </tr>
+            <tr>
+              <td>21/04/2021 </td>
+              <td>31 </td>
+              <td>22242</td>
+              <td>Jeet Sharma</td>
+              <td>Out For Delivery</td>
+              <td>Invoiced</td>
+              <td>Rs 203000</td>
+            </tr>
+            <tr>
+              <td>21/04/2021 </td>
+              <td>31 </td>
+              <td>22242</td>
+              <td>Jeet Sharma</td>
+              <td>Out For Delivery</td>
+              <td>Invoiced</td>
+              <td>Rs 203000</td>
+            </tr>
+            <tr>
+              <td>21/04/2021 </td>
+              <td>31 </td>
+              <td>22242</td>
+              <td>Jeet Sharma</td>
+              <td>Out For Delivery</td>
+              <td>Invoiced</td>
+              <td>Rs 203000</td>
+            </tr>
+          </tbody>
         </table>
       </Data>
       <Disp></Disp>

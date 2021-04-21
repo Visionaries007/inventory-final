@@ -34,26 +34,28 @@ const DisplayInvoice = () => {
 
       <Data>
         <table>
-          <tr id="header">
-            <th>Date</th>
-            <th>Invoice #</th>
-            <th>Order #</th>
-            <th>Customer Name</th>
-            <th>Status</th>
-            <th>Due Date</th>
-            <th>Amount</th>
-            <th>Balance Due</th>
-          </tr>
-          <tr>
-            <td>21/04/2021</td>
-            <td>SO-24452 </td>
-            <td>1128822</td>
-            <td>Jeet Sharma</td>
-            <td>Confirmed</td>
-            <td>25/04/2021</td>
-            <td>Rs 32300</td>
-            <td>Rs 2300</td>
-          </tr>
+          <tbody>
+            <tr id="header">
+              <th>Date</th>
+              <th>Invoice #</th>
+              <th>Order #</th>
+              <th>Customer Name</th>
+              <th>Status</th>
+              <th>Due Date</th>
+              <th>Amount</th>
+              <th>Balance Due</th>
+            </tr>
+            <tr>
+              <td>21/04/2021</td>
+              <td>SO-24452 </td>
+              <td>1128822</td>
+              <td>Jeet Sharma</td>
+              <td>Confirmed</td>
+              <td>25/04/2021</td>
+              <td>Rs 32300</td>
+              <td>Rs 2300</td>
+            </tr>
+          </tbody>
         </table>
       </Data>
     </div>
