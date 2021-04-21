@@ -157,25 +157,30 @@ const Total = styled.div`
   display: flex;
   justify-content: space-between;
   width: 100%;
-  .cust{
-    padding: 1rem 0rem 0rem 1rem;
+  .cust {
+    padding: 1rem 0rem 0rem 2rem;
   }
   .btn1 {
-    padding: 1rem;
+    padding: 1rem 2rem;
     button {
       padding: 0.5rem;
-      border-radius:3px;
+      border-radius: 3px;
       a {
         text-decoration: none;
         color: white !important;
       }
-      background: linear-gradient(45deg, rgba(2,0,36,1) 0%, rgba(0,255,252,1) 0%, rgba(0,155,255,1) 100%); !important;
+      background: linear-gradient(
+        45deg,
+        rgba(2, 0, 36, 1) 0%,
+        rgba(0, 255, 252, 1) 0%,
+        rgba(0, 155, 255, 1) 100%
+      );
       border: none;
     }
-    &:hover{
-      transform:scale(1.1);
-      transition: .5s ease;
-    } 
+    &:hover {
+      transform: scale(1.1);
+      transition: 0.5s ease;
+    }
   }
 `;
 const Selector = styled.select`
