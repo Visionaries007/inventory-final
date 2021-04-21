@@ -6,7 +6,7 @@ const DisplayInvoice = () => {
     <div>
       <Total>
         <div>
-          <Selector>
+          <Selector className="inv">
             <option className="d1">All</option>
             <option className="d1">Unpaid Invoices</option>
             <option className="d1">Draft</option>
@@ -31,74 +31,116 @@ const DisplayInvoice = () => {
           </button>
         </div>
       </Total>
-      <Stats>
-        <div>
-          <p>Date</p>
-        </div>
-        <div>
-          <p>Invoice</p>
-        </div>
-        <div>
-          <p>Order Number</p>
-        </div>
-        <div>
-          <p>Customer Name</p>
-        </div>
-        <div>
-          <p>Status</p>
-        </div>
-        <div>
-          <p>Due Date</p>
-        </div>
-        <div>
-          <p>Amount</p>
-        </div>
-        <div>
-          <p>Balance Due</p>
-        </div>
-      </Stats>
-      <Disp>
-        <p>There are no approved Invoices</p>
-      </Disp>
+
+      <Data>
+        <table>
+          <tr id="header">
+            <th>Date</th>
+            <th>Invoice #</th>
+            <th>Order #</th>
+            <th>Customer Name</th>
+            <th>Status</th>
+            <th>Due Date</th>
+            <th>Amount</th>
+            <th>Balance Due</th>
+          </tr>
+          <tr>
+            <td>21/04/2021</td>
+            <td>SO-24452 </td>
+            <td>1128822</td>
+            <td>Jeet Sharma</td>
+            <td>Confirmed</td>
+            <td>25/04/2021</td>
+            <td>Rs 32300</td>
+            <td>Rs 2300</td>
+          </tr>
+        </table>
+      </Data>
     </div>
   );
 };
-const Disp = styled.div`
-  display: flex;
-  justify-content: space-evenly;
-  padding: 50px;
-  cursor: pointer;
-`;
-const Stats = styled.div`
-  padding: 10px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  cursor: pointer;
-  box-shadow: 10px 2px black;
+
+const Data = styled.div`
+  padding: 2rem;
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #bdc3c7;
+    box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2),
+      -1px -1px 8px rgba(0, 0, 0, 0.2);
+  }
+  tr {
+    transition: all 0.2s ease-in;
+    cursor: pointer;
+  }
+
+  th,
+  td {
+    padding: 12px;
+    text-align: left;
+    font-size: 14px;
+    border-bottom: 1px solid #ddd;
+    word-wrap: break-word;
+  }
+  #header {
+    background: rgb(2, 0, 36);
+    background: linear-gradient(
+      45deg,
+      rgba(2, 0, 36, 1) 0%,
+      rgba(0, 255, 252, 1) 0%,
+      rgba(0, 155, 255, 1) 100%
+    );
+    color: #fff;
+  }
+  tr:hover {
+    background-color: #f5f5f5;
+    transform: scale(1.02);
+    box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2),
+      -1px -1px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  @media only screen and (max-width: 768px) {
+    table {
+      width: 90%;
+    }
+  }
 `;
 const Total = styled.div`
   display: flex;
   justify-content: space-between;
   width: 100%;
+  .inv {
+    padding: 1rem 0rem 0rem 2rem;
+  }
   .btn1 {
-    padding: 1rem;
+    padding: 1rem 2rem;
     button {
       padding: 0.5rem;
-      color: white;
-      background: #2fa3e6;
+      border-radius: 3px;
+      a {
+        text-decoration: none;
+        color: white !important;
+      }
+      background: linear-gradient(
+        45deg,
+        rgba(2, 0, 36, 1) 0%,
+        rgba(0, 255, 252, 1) 0%,
+        rgba(0, 155, 255, 1) 100%
+      );
       border: none;
     }
+    &:hover {
+      transform: scale(1.1);
+      transition: 0.5s ease;
+    }
   }
-  box-shadow: 10px 2px black;
 `;
 const Selector = styled.select`
   border: none;
-  padding: 1rem;
+  width: auto;
   &:focus {
     outline: none;
   }
-  -webkit-appearance: none;
   .d1 {
     font-size: 12px !important;
   }
