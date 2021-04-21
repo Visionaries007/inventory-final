@@ -8,7 +8,7 @@ import cart from "../img/shopping-cart-solid 1.svg";
 import database from "../img/shopping_baske.svg";
 import truck from "../img/truck-solid 1.svg";
 import paid from "../img/paid.svg";
-import shopping from "../img/dolly-solid 1.svg";
+import shopping from "../img/watch.svg";
 import folder from "../img/folder-open-solid.svg";
 import hand from "../img/thumbs-up-solid 1.svg";
 import graph from "../img/graph.svg";
@@ -126,7 +126,7 @@ const Options = () => {
             <div className="h">
               <div className="h2">
                 <img src={shopping} alt="" />
-                <Link to="/displaypurchaseorder">Purchase Orders</Link>
+                <Link to="/displaypurchaseorder">Reminder</Link>
               </div>
               <div className="h3">
                 <Link to="/addpurchaseorder" className="h22">
