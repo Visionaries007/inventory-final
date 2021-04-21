@@ -5,6 +5,7 @@ import styled from "styled-components";
 import ItemsInfo from "../ItemsCollection/itemsinfo";
 import SalesPerInfo from "../ItemsCollection/salesperinfo";
 import NameItem from "../ItemsCollection/nameitem";
+
 const AddItems = ({ item, setitem }) => {
   let unitval = 0;
   const [type, settype] = useState("Goods");
