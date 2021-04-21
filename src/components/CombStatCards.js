@@ -27,7 +27,7 @@ const FullPage = styled.div`
 const Dashing = styled.div`
   position: webkit-sticky;
   position: sticky;
-  top: 0;
+  top: 1;
   background: white;
   border: none;
   box-shadow: 1px 1px #888888;
