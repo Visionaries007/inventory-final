@@ -13,24 +13,24 @@ const AddCustomer = ({ customer, setcustomer, item }) => {
   const [cusworkphone, setcusworkphone] = useState("");
   const [cusmobilephone, setcusmobilephone] = useState("");
   const [website, setwebsite] = useState("");
-  const[biladdattension,setbiladdattension]=useState("");
-  const[bilcountry,setbilcountry]=useState("");
-  const[biladdrestreet1,setbiladdrestreet1]=useState("");
-  const[biladdrestreet2,setbiladdrestreet2]=useState("");
-  const[biladcity,setbiladcity]=useState("");
-  const[bilstate,setbilstate]=useState("");
-  const[bilzipcode,setbilzipcode]=useState("");
-  const[bilphone,setbilphone]=useState("");
-  const[bilfax,setbilfax]=useState("");
-  const[shipaddattension, setshipaddattension]=useState("");
-  const[shipcountry, setshipcountry]=useState("");
-  const[shipaddrestreet1,setshipaddrestreet1]=useState("");
-  const[shipaddrestreet2,setshipaddrestreet2]=useState("");
-  const[shipadcity,setshipadcity]=useState("");
-  const[shipstate,setshipstate]=useState("");
-  const[shipzipcode,setshipzipcode]=useState("");
-  const[shipphone,setshipphone]=useState("");
-  const[shipfax,setshipfax]=useState("");
+  const [biladdattension, setbiladdattension] = useState("");
+  const [bilcountry, setbilcountry] = useState("");
+  const [biladdrestreet1, setbiladdrestreet1] = useState("");
+  const [biladdrestreet2, setbiladdrestreet2] = useState("");
+  const [biladcity, setbiladcity] = useState("");
+  const [bilstate, setbilstate] = useState("");
+  const [bilzipcode, setbilzipcode] = useState("");
+  const [bilphone, setbilphone] = useState("");
+  const [bilfax, setbilfax] = useState("");
+  const [shipaddattension, setshipaddattension] = useState("");
+  const [shipcountry, setshipcountry] = useState("");
+  const [shipaddrestreet1, setshipaddrestreet1] = useState("");
+  const [shipaddrestreet2, setshipaddrestreet2] = useState("");
+  const [shipadcity, setshipadcity] = useState("");
+  const [shipstate, setshipstate] = useState("");
+  const [shipzipcode, setshipzipcode] = useState("");
+  const [shipphone, setshipphone] = useState("");
+  const [shipfax, setshipfax] = useState("");
   let radio1 = document.querySelector(".radio1");
   let radio2 = document.querySelector(".radio2");
   const typeHandler = () => {
@@ -254,16 +254,16 @@ const AddCustomer = ({ customer, setcustomer, item }) => {
                 bilzipcode={bilzipcode}
                 bilphone={bilphone}
                 bilfax={bilfax}
-                shipaddattension,
-                shipcountry,
-                shipaddrestreet1,
-                shipaddrestreet2,
-                shipadcity,
-                shipstate,
-                shipzipcode,
-                shipphone,
-                shipfax
-                 />
+                shipaddattension={shipaddattension}
+                shipcountry={shipcountry}
+                shipaddrestreet1={shipaddrestreet1}
+                shipaddrestreet2={shipaddrestreet2}
+                shipadcity={shipadcity}
+                shipstate={shipstate}
+                shipzipcode={shipzipcode}
+                shipphone={shipphone}
+                shipfax={shipfax}
+              />
             </div>
           </Top>
           <Down>
