@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import close from "../img/close.svg";
 import styled from "styled-components";
 import CustomerAddress from "../customerCollection/customeraddress";
-const AddCustomer = ({ customer, setcustomer, item }) => {
+const AddCustomer = ({ customer, setcustomer, item, country }) => {
   const [type, settype] = useState("Business");
   const [salu, setsalu] = useState(0);
   const [firstname, setfirstname] = useState("");
@@ -69,25 +69,6 @@ const AddCustomer = ({ customer, setcustomer, item }) => {
   const websitehandler = (e) => {
     setwebsite(e.target.value);
   };
-  useEffect(() => {
-    var x = 0;
-    var st = " ";
-    if (item.item !== undefined)
-      for (x = -1; x < item.item.length; x++) {
-        if (x === -1) {
-          var option1 = "<option disabled selected hidden >" + st + "</option>";
-          document.getElementById("customerdisplayname").innerHTML += option1;
-          continue;
-        }
-        var option =
-          "<option value='" +
-          item.item[x].name +
-          "'>" +
-          item.item[x].name +
-          "</option>";
-        document.getElementById("customerdisplayname").innerHTML += option;
-      }
-  }, [item]);
 
   return (
     <ItemMaking1>
@@ -113,7 +94,7 @@ const AddCustomer = ({ customer, setcustomer, item }) => {
                     onChange={typeHandler}
                     type="radio"
                     name="item"
-                    id="type"
+                    id="type1"
                   ></input>
                   <label htmlFor="Business">Business</label>
                 </div>
@@ -123,7 +104,7 @@ const AddCustomer = ({ customer, setcustomer, item }) => {
                     onChange={typeHandler}
                     type="radio"
                     name="item"
-                    id="type"
+                    id="type2"
                   ></input>
                   <label htmlFor="Individual">Individual</label>
                 </div>
@@ -138,10 +119,10 @@ const AddCustomer = ({ customer, setcustomer, item }) => {
                     id="namesalu"
                     placeholder="Salutation"
                     onChange={salutationHandler}
-                    required
+                    defaultValue={"DEFAULT"}
                   >
-                    <option value="" disabled selected hidden>
-                      Salutation
+                    <option value="DEFAULT" disabled>
+                      Choose a salutation ...
                     </option>
                     <option>Mr.</option>
                     <option>Mrs.</option>
@@ -154,7 +135,7 @@ const AddCustomer = ({ customer, setcustomer, item }) => {
                   <input
                     className="first"
                     onChange={nameHandler}
-                    id="name"
+                    id="name1"
                     value={firstname}
                     type="text"
                     placeholder="First Name"
@@ -164,7 +145,7 @@ const AddCustomer = ({ customer, setcustomer, item }) => {
                   <input
                     className="Last"
                     onChange={lastnameHandler}
-                    id="name"
+                    id="name2"
                     value={lastname}
                     type="text"
                     placeholder="Last Name"
@@ -224,7 +205,7 @@ const AddCustomer = ({ customer, setcustomer, item }) => {
                   <input
                     className="mobile"
                     onChange={cusmobilephoneHandler}
-                    id="customerphone"
+                    id="customermobile"
                     value={cusmobilephone}
                     type="text"
                     placeholder="Mobile"
@@ -245,6 +226,7 @@ const AddCustomer = ({ customer, setcustomer, item }) => {
             </Grider>
             <div>
               <CustomerAddress
+                country={country}
                 biladdattension={biladdattension}
                 bilcountry={bilcountry}
                 biladdrestreet1={biladdrestreet1}
@@ -263,6 +245,24 @@ const AddCustomer = ({ customer, setcustomer, item }) => {
                 shipzipcode={shipzipcode}
                 shipphone={shipphone}
                 shipfax={shipfax}
+                setbiladdattension={setbiladdattension}
+                setbilcountry={setbilcountry}
+                setbiladdrestreet1={setbiladdrestreet1}
+                setbiladdrestreet2={setbiladdrestreet2}
+                setbiladcity={setbiladcity}
+                setbilstate={setbilstate}
+                setbilzipcode={setbilzipcode}
+                setbilphone={setbilphone}
+                setbilfax={setbilfax}
+                setshipaddattension={setshipaddattension}
+                setshipcountry={setshipcountry}
+                setshipaddrestreet1={setshipaddrestreet1}
+                setshipaddrestreet2={setshipaddrestreet2}
+                setshipadcity={setshipadcity}
+                setshipstate={setshipstate}
+                setshipzipcode={setshipzipcode}
+                setshipphone={setshipphone}
+                setshipfax={setshipfax}
               />
             </div>
           </Top>
