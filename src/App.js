@@ -128,8 +128,14 @@ function App() {
 const Apple = styled.div`
   .naving {
     border: 1px solid #b0efff;
-    background: #b0efff;
     width: 100%;
+    padding: 0.5rem 0rem;
+    background: linear-gradient(
+      45deg,
+      rgba(2, 0, 36, 1) 0%,
+      rgba(0, 255, 252, 1) 0%,
+      rgba(0, 155, 255, 1) 100%
+    );
   }
 `;
 const BottomPage = styled.div`

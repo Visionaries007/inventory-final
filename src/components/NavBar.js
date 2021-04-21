@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import add from "../img/plus-circle.svg";
+import add from "../img/add_circle.svg";
 import history from "../img/history-solid.svg";
 import search from "../img/search-solid.svg";
 import arrow from "../img/caret-down-solid.svg";
@@ -72,6 +72,9 @@ const StyledNav = styled.nav`
   .box1 {
     grid-area: b1;
     padding: 0.5rem 0rem 0rem 1.5rem;
+    h1 {
+      font-size: 2rem;
+    }
   }
   .searchplusadd {
     display: flex;
