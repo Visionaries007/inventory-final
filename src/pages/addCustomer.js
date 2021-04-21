@@ -1,27 +1,74 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import close from "../img/close.svg";
 import styled from "styled-components";
 import CustomerAddress from "../customerCollection/customeraddress";
-const AddCustomer = ({
-  type,
-  firstname,
-  lastname,
-  companyname,
-  customerdisplayname,
-  customeremail,
-  cusworkphone,
-  cusmobilephone,
-  item,
-}) => {
-  const typeHandler = () => {};
-  const nameHandler = () => {};
-  const lastnameHandler = () => {};
-  const companyHandler = () => {};
-  const customerdisplaynameHandler = () => {};
-  const customeremailHandler = () => {};
-  const cusworkphoneHandler = () => {};
-  const cusmobilephoneHandler = () => {};
-
+const AddCustomer = ({ customer, setcustomer, item }) => {
+  const [type, settype] = useState("Business");
+  const [salu, setsalu] = useState(0);
+  const [firstname, setfirstname] = useState("");
+  const [lastname, setlastname] = useState("");
+  const [companyname, setcompanyname] = useState("");
+  const [customerdisplayname, setcustomerdisplayname] = useState("");
+  const [customeremail, setcustomeremail] = useState("");
+  const [cusworkphone, setcusworkphone] = useState("");
+  const [cusmobilephone, setcusmobilephone] = useState("");
+  const [website, setwebsite] = useState("");
+  const[biladdattension,setbiladdattension]=useState("");
+  const[bilcountry,setbilcountry]=useState("");
+  const[biladdrestreet1,setbiladdrestreet1]=useState("");
+  const[biladdrestreet2,setbiladdrestreet2]=useState("");
+  const[biladcity,setbiladcity]=useState("");
+  const[bilstate,setbilstate]=useState("");
+  const[bilzipcode,setbilzipcode]=useState("");
+  const[bilphone,setbilphone]=useState("");
+  const[bilfax,setbilfax]=useState("");
+  const[shipaddattension, setshipaddattension]=useState("");
+  const[shipcountry, setshipcountry]=useState("");
+  const[shipaddrestreet1,setshipaddrestreet1]=useState("");
+  const[shipaddrestreet2,setshipaddrestreet2]=useState("");
+  const[shipadcity,setshipadcity]=useState("");
+  const[shipstate,setshipstate]=useState("");
+  const[shipzipcode,setshipzipcode]=useState("");
+  const[shipphone,setshipphone]=useState("");
+  const[shipfax,setshipfax]=useState("");
+  let radio1 = document.querySelector(".radio1");
+  let radio2 = document.querySelector(".radio2");
+  const typeHandler = () => {
+    if (radio1 !== null && radio1.checked) {
+      settype("Business");
+    } else if (radio2 !== null) {
+      settype("Individual");
+    }
+  };
+  const salutationHandler = () => {
+    var x = document.getElementByClass("salu").selectedIndex;
+    setsalu(x);
+  };
+  const nameHandler = (e) => {
+    setfirstname(e.target.value);
+  };
+  const lastnameHandler = (e) => {
+    setlastname(e.target.value);
+  };
+  const companyHandler = (e) => {
+    setcompanyname(e.target.value);
+  };
+  const customerdisplaynameHandler = () => {
+    var x = document.getElementById("customerdisplayname").selectedIndex;
+    setcustomerdisplayname(x);
+  };
+  const customeremailHandler = (e) => {
+    setcustomeremail(e.target.value);
+  };
+  const cusworkphoneHandler = (e) => {
+    setcusworkphone(e.target.value);
+  };
+  const cusmobilephoneHandler = (e) => {
+    setcusmobilephone(e.target.value);
+  };
+  const websitehandler = (e) => {
+    setwebsite(e.target.value);
+  };
   useEffect(() => {
     var x = 0;
     var st = " ";
@@ -88,8 +135,9 @@ const AddCustomer = ({
                 <div>
                   <select
                     className="salu"
-                    id="name"
+                    id="namesalu"
                     placeholder="Salutation"
+                    onChange={salutationHandler}
                     required
                   >
                     <option value="" disabled selected hidden>
@@ -188,15 +236,34 @@ const AddCustomer = ({
               </div>
               <div className="d17">
                 <input
-                  onChange={customeremailHandler}
+                  onChange={websitehandler}
                   id="website"
-                  value={customeremail}
+                  value={website}
                   type="text"
                 ></input>
               </div>
             </Grider>
             <div>
-              <CustomerAddress />
+              <CustomerAddress
+                biladdattension={biladdattension}
+                bilcountry={bilcountry}
+                biladdrestreet1={biladdrestreet1}
+                biladdrestreet2={biladdrestreet2}
+                biladcity={biladcity}
+                bilstate={bilstate}
+                bilzipcode={bilzipcode}
+                bilphone={bilphone}
+                bilfax={bilfax}
+                shipaddattension,
+                shipcountry,
+                shipaddrestreet1,
+                shipaddrestreet2,
+                shipadcity,
+                shipstate,
+                shipzipcode,
+                shipphone,
+                shipfax
+                 />
             </div>
           </Top>
           <Down>
