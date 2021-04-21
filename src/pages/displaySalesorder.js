@@ -35,90 +35,92 @@ const DisplaySalesorder = () => {
       </Total>
       <Data>
         <table>
-          <tr id="header">
-            <th>Date</th>
-            <th>Sales Order</th>
-            <th>Refrence #</th>
-            <th>Customer Name</th>
-            <th>Order Status</th>
-            <th>Invoiced</th>
-            <th>PAYMENT</th>
-            <th>PACKED</th>
-            <th>SHIPPED</th>
-            <th>AMOUNT</th>
-          </tr>
-          <tr>
-            <td>21/04/2021</td>
-            <td>SO-24452 </td>
-            <td>1128822</td>
-            <td>Jeet Sharma</td>
-            <td>Confirmed</td>
-            <td>2</td>
-            <td>Paid</td>
-            <td>yes</td>
-            <td>Not Yet</td>
-            <td>Rs 2300000</td>
-          </tr>
-          <tr>
-            <td>21/04/2021</td>
-            <td>SO-24452 </td>
-            <td>1128822</td>
-            <td>Jeet Sharma</td>
-            <td>Confirmed</td>
-            <td>2</td>
-            <td>Paid</td>
-            <td>yes</td>
-            <td>Not Yet</td>
-            <td>Rs 2300000</td>
-          </tr>
-          <tr>
-            <td>21/04/2021</td>
-            <td>SO-24452 </td>
-            <td>1128822</td>
-            <td>Jeet Sharma</td>
-            <td>Confirmed</td>
-            <td>2</td>
-            <td>Paid</td>
-            <td>yes</td>
-            <td>Not Yet</td>
-            <td>Rs 2300000</td>
-          </tr>
-          <tr>
-            <td>21/04/2021</td>
-            <td>SO-24452 </td>
-            <td>1128822</td>
-            <td>Jeet Sharma</td>
-            <td>Confirmed</td>
-            <td>2</td>
-            <td>Paid</td>
-            <td>yes</td>
-            <td>Not Yet</td>
-            <td>Rs 2300000</td>
-          </tr>
-          <tr>
-            <td>21/04/2021</td>
-            <td>SO-24452 </td>
-            <td>1128822</td>
-            <td>Jeet Sharma</td>
-            <td>Confirmed</td>
-            <td>2</td>
-            <td>Paid</td>
-            <td>yes</td>
-            <td>Not Yet</td>
-            <td>Rs 2300000</td>
-          </tr>
-          <tr>
-            <td>21/04/2021</td>
-            <td>SO-24452 </td>
-            <td>1128822</td>
-            <td>Jeet Sharma</td>
-            <td>Confirmed</td>
-            <td>2</td>
-            <td>Paid</td>
-            <td>yes</td>
-            <td>Not Yet</td>
-            <td>Rs 2300000</td>
-          </tr>
+          <tbody>
+            <tr id="header">
+              <th>Date</th>
+              <th>Sales Order</th>
+              <th>Refrence #</th>
+              <th>Customer Name</th>
+              <th>Order Status</th>
+              <th>Invoiced</th>
+              <th>PAYMENT</th>
+              <th>PACKED</th>
+              <th>SHIPPED</th>
+              <th>AMOUNT</th>
+            </tr>
+            <tr>
+              <td>21/04/2021</td>
+              <td>SO-24452 </td>
+              <td>1128822</td>
+              <td>Jeet Sharma</td>
+              <td>Confirmed</td>
+              <td>2</td>
+              <td>Paid</td>
+              <td>yes</td>
+              <td>Not Yet</td>
+              <td>Rs 2300000</td>
+            </tr>
+            <tr>
+              <td>21/04/2021</td>
+              <td>SO-24452 </td>
+              <td>1128822</td>
+              <td>Jeet Sharma</td>
+              <td>Confirmed</td>
+              <td>2</td>
+              <td>Paid</td>
+              <td>yes</td>
+              <td>Not Yet</td>
+              <td>Rs 2300000</td>
+            </tr>
+            <tr>
+              <td>21/04/2021</td>
+              <td>SO-24452 </td>
+              <td>1128822</td>
+              <td>Jeet Sharma</td>
+              <td>Confirmed</td>
+              <td>2</td>
+              <td>Paid</td>
+              <td>yes</td>
+              <td>Not Yet</td>
+              <td>Rs 2300000</td>
+            </tr>
+            <tr>
+              <td>21/04/2021</td>
+              <td>SO-24452 </td>
+              <td>1128822</td>
+              <td>Jeet Sharma</td>
+              <td>Confirmed</td>
+              <td>2</td>
+              <td>Paid</td>
+              <td>yes</td>
+              <td>Not Yet</td>
+              <td>Rs 2300000</td>
+            </tr>
+            <tr>
+              <td>21/04/2021</td>
+              <td>SO-24452 </td>
+              <td>1128822</td>
+              <td>Jeet Sharma</td>
+              <td>Confirmed</td>
+              <td>2</td>
+              <td>Paid</td>
+              <td>yes</td>
+              <td>Not Yet</td>
+              <td>Rs 2300000</td>
+            </tr>
+            <tr>
+              <td>21/04/2021</td>
+              <td>SO-24452 </td>
+              <td>1128822</td>
+              <td>Jeet Sharma</td>
+              <td>Confirmed</td>
+              <td>2</td>
+              <td>Paid</td>
+              <td>yes</td>
+              <td>Not Yet</td>
+              <td>Rs 2300000</td>
+            </tr>
+          </tbody>
         </table>
       </Data>
     </div>
