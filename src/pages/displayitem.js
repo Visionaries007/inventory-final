@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import CardItem from "../Cards/itemcard";
 const DisplayItems = ({ item, setitem }) => {
   return (
-    <div>
+    <ItemMaking>
       <Total>
         <div>
           <Selector>
@@ -34,9 +34,16 @@ const DisplayItems = ({ item, setitem }) => {
         {item.item !== undefined &&
           item.item.map((n) => <CardItem n={n} key={n._id} />)}
       </Cards>
-    </div>
+    </ItemMaking>
   );
 };
+const ItemMaking = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 100%;
+  height: 100%;
+`;
 const Total = styled.div`
   display: flex;
   justify-content: space-between;
@@ -48,6 +55,11 @@ const Total = styled.div`
       color: white;
       background: #2fa3e6;
       border: none;
+      &:hover {
+        transform: scale(1.1);
+        transition: 0.5s ease;
+      }
+      border-radius: 3px;
     }
     .labels {
       text-decoration: none;

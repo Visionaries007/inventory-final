@@ -63,7 +63,7 @@ function App() {
               <DisplayItems item={item} setitem={setitem} />
             </Route>
             <Route path="/addcustomer">
-              <AddCustomer />
+              <AddCustomer item={item} />
             </Route>
             <Route path="/displaycustomer">
               <DisplayCustomer />
@@ -137,7 +137,7 @@ const BottomPage = styled.div`
   flex-direction: row;
 `;
 const Dashy = styled.div`
-  height: 120vh;
+  min-height: 120vh;
 `;
 const Hashy = styled.div`
   width: 100%;

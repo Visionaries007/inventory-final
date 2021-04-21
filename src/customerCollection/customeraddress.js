@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 const AddCustomer = ({
   biladdattension,
@@ -39,6 +39,15 @@ const AddCustomer = ({
   const shipphoneHandler = () => {};
   const shipfaxHandler = () => {};
 
+  useEffect(() => {
+    var st = "Select";
+    var option1 = "<option disabled selected hidden >" + st + "</option>";
+    document.getElementById("country").innerHTML += option1;
+    document.getElementById("country1").innerHTML += option1;
+    document.getElementById("state").innerHTML += option1;
+    document.getElementById("state1").innerHTML += option1;
+  }, []);
+
   return (
     <ItemMaking1>
       <form>
@@ -65,32 +74,38 @@ const AddCustomer = ({
             <label htmlFor="country">Country</label>
           </div>
           <div className="d4">
-            <input
+            <select
               onChange={bilcountryHandler}
               id="country"
               value={bilcountry}
               type="text"
-            ></input>
+            ></select>
           </div>
 
           <div className="d5">
             <label htmlFor="address">Address</label>
           </div>
           <div className="d6">
-            <input
+            <textarea
               onChange={biladdrestreet1Handler}
-              id="adress"
+              id="address"
               value={biladdrestreet1}
               type="text"
-            ></input>
+              placeholder="Street 1"
+              rows="3"
+              cols="23"
+            ></textarea>
           </div>
           <div className="d7">
-            <input
+            <textarea
               onChange={biladdrestreet2Handler}
-              id="adress"
+              id="address"
               value={biladdrestreet2}
               type="text"
-            ></input>
+              placeholder="Street 2"
+              rows="3"
+              cols="23"
+            ></textarea>
           </div>
 
           <div className="d8">
@@ -203,32 +218,38 @@ const AddCustomer = ({
             <label htmlFor="country1">Country</label>
           </div>
           <div className="d21">
-            <input
+            <select
               onChange={shipcountryHandler}
               id="country1"
               value={shipcountry}
               type="text"
-            ></input>
+            ></select>
           </div>
 
           <div className="d22">
             <label htmlFor="address1">Address</label>
           </div>
           <div className="d23">
-            <input
+            <textarea
               onChange={shipaddrestreet1Handler}
-              id="adress1"
+              id="address1"
               value={shipaddrestreet1}
               type="text"
-            ></input>
+              placeholder="Street 1"
+              rows="3"
+              cols="23"
+            ></textarea>
           </div>
           <div className="d24">
-            <input
+            <textarea
               onChange={shipaddrestreet2Handler}
-              id="adress1"
+              id="address1"
               value={shipaddrestreet2}
               type="text"
-            ></input>
+              placeholder="Street 2"
+              rows="3"
+              cols="23"
+            ></textarea>
           </div>
 
           <div className="d25">
@@ -334,6 +355,7 @@ const ItemMaking1 = styled.div`
     width: 100%;
     height: 100%;
   }
+  font-size: 13px;
 `;
 const Grider = styled.div`
   display: grid !important;
@@ -343,102 +365,158 @@ const Grider = styled.div`
   }
   .d2 {
     grid-area: d2;
+    input {
+      padding: 5px 8px;
+    }
   }
   .d3 {
     grid-area: d3;
   }
   .d4 {
     grid-area: d4;
+    select {
+      padding: 5px 30px 5px 8px;
+    }
   }
   .d5 {
     grid-area: d5;
   }
   .d6 {
     grid-area: d6;
+    textarea {
+      padding: 5px 8px;
+    }
   }
   .d7 {
     grid-area: d7;
+    textarea {
+      padding: 5px 8px;
+    }
   }
   .d8 {
     grid-area: d8;
   }
   .d9 {
     grid-area: d9;
+    input {
+      padding: 5px 8px;
+    }
   }
   .d10 {
     grid-area: d10;
   }
   .d11 {
     grid-area: d11;
+    select {
+      padding: 5px 30px 5px 8px;
+      width: 53%;
+    }
   }
   .d12 {
     grid-area: d12;
   }
   .d13 {
     grid-area: d13;
+    input {
+      padding: 5px 8px;
+    }
   }
   .d14 {
     grid-area: d14;
   }
   .d15 {
     grid-area: d15;
+    input {
+      padding: 5px 8px;
+    }
   }
   .d16 {
     grid-area: d16;
   }
   .d17 {
     grid-area: d17;
+    input {
+      padding: 5px 8px;
+    }
   }
   .d18 {
     grid-area: d18;
   }
   .d19 {
     grid-area: d19;
+    input {
+      padding: 5px 8px;
+    }
   }
   .d20 {
     grid-area: d20;
   }
   .d21 {
     grid-area: d21;
+    select {
+      padding: 5px 30px 5px 8px;
+    }
   }
   .d22 {
     grid-area: d22;
   }
   .d23 {
     grid-area: d23;
+    textarea {
+      padding: 5px 8px;
+    }
   }
   .d24 {
     grid-area: d24;
+    textarea {
+      padding: 5px 8px;
+    }
   }
   .d25 {
     grid-area: d25;
   }
   .d26 {
     grid-area: d26;
+    input {
+      padding: 5px 8px;
+    }
   }
   .d27 {
     grid-area: d27;
   }
   .d28 {
     grid-area: d28;
+    select {
+      padding: 5px 30px 5px 8px;
+      width: 53%;
+    }
   }
   .d29 {
     grid-area: d29;
   }
   .d30 {
     grid-area: d30;
+    input {
+      padding: 5px 8px;
+    }
   }
   .d31 {
     grid-area: d31;
   }
   .d32 {
     grid-area: d32;
+    input {
+      padding: 5px 8px;
+    }
   }
   .d33 {
     grid-area: d33;
   }
   .d34 {
     grid-area: d34;
+    input {
+      padding: 5px 8px;
+    }
   }
   .d35 {
     grid-area: d35;
@@ -447,16 +525,16 @@ const Grider = styled.div`
     grid-area: d36;
   }
   grid-template-areas:
-    ". d35   .    d36    .  "
-    ".  .    .     .     .  "
-    ". d1   d2    d18  d19  "
-    ". d3   d4    d20  d21  "
-    ". d5   d6    d22  d23  "
-    ". .    d7    .    d24  "
-    ". d8   d9    d25  d26  "
-    ". d10 d11    d27  d28  "
-    ". d12 d13    d29  d30  "
-    ". d14 d15    d31  d32  "
-    ". d16 d17    d33  d34  ";
+    ". d35   .  d36    . . . "
+    ".  .    .   .     . . . "
+    ". d1   d2  d18  d19 . . "
+    ". d3   d4  d20  d21 . . "
+    ". d5   d6  d22  d23 . . "
+    ". .    d7  .    d24 . . "
+    ". d8   d9  d25  d26 . . "
+    ". d10 d11  d27  d28 . . "
+    ". d12 d13  d29  d30 . . "
+    ". d14 d15  d31  d32 . . "
+    ". d16 d17  d33  d34 . . ";
 `;
 export default AddCustomer;

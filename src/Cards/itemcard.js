@@ -35,7 +35,10 @@ const Card = styled.div`
   box-shadow: 5px 5px 20px 1px #888888;
   gap: 12px;
   align-items: center;
-
+  &:hover {
+    transform: scale(1.1);
+    transition: 0.1s ease;
+  }
   .lim {
     img {
       width: 20rem;
