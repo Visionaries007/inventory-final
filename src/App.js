@@ -32,6 +32,7 @@ import Options from "./components/Options";
 function App() {
   //Collection of All the states
   const [item, setitem] = useState([]);
+  const [customer, setcustomer] = useState([]);
   useEffect(() => {
     axios
       .get("http://localhost:5000/items/")
@@ -41,7 +42,19 @@ function App() {
       .catch((error) => {
         console.log({ error });
       });
+
+    axios
+      .get("http://localhost:5000/customers/")
+      .then((response) => {
+        setcustomer({ customer: response.data });
+      })
+      .catch((error) => {
+        console.log({ error });
+      });
   }, []);
+  useEffect(() => {
+    console.log(customer.customer);
+  });
 
   return (
     <Apple>
@@ -64,10 +77,14 @@ function App() {
               <DisplayItems item={item} setitem={setitem} />
             </Route>
             <Route path="/addcustomer">
-              <AddCustomer item={item} />
+              <AddCustomer
+                item={item}
+                customer={customer}
+                setcustomer={setcustomer}
+              />
             </Route>
             <Route path="/displaycustomer">
-              <DisplayCustomer />
+              <DisplayCustomer customer={customer} setcustomer={setcustomer} />
             </Route>
             <Route path="/addsalesorder">
               <AddSalesOrder />

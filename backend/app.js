@@ -20,4 +20,7 @@ mongoose.connect(
 const itemsRouter = require("./routes/items");
 app.use("/items", itemsRouter);
 
+const CustomerRouter = require("./routes/customer");
+app.use("/customers", CustomerRouter);
+
 app.listen(5000);

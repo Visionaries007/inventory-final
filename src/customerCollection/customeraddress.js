@@ -37,34 +37,304 @@ const AddCustomer = ({
   setshipzipcode,
   setshipphone,
   setshipfax,
-  country,
 }) => {
+  const country = [
+    "Greenland",
+    "Niger",
+    "Sierra-Leone",
+    "Montserrat",
+    "Burundi",
+    "Grenada",
+    "Channel-Islands",
+    "Micronesia",
+    "Macao",
+    "Anguilla",
+    "Vatican-City",
+    "Iceland",
+    "New-Caledonia",
+    "Antigua-and-Barbuda",
+    "San-Marino",
+    "Seychelles",
+    "Timor-Leste",
+    "St-Barth",
+    "Bhutan",
+    "Benin",
+    "Gambia",
+    "Monaco",
+    "Turks-and-Caicos",
+    "Saint-Martin",
+    "Caribbean-Netherlands",
+    "Faeroe-Islands",
+    "Cayman-Islands",
+    "Comoros",
+    "Bermuda",
+    "Samoa",
+    "Marshall-Islands",
+    "CAR",
+    "Saint-Lucia",
+    "Sint-Maarten",
+    "Nicaragua",
+    "Tanzania",
+    "Liberia",
+    "Chad",
+    "Guinea-Bissau",
+    "Eritrea",
+    "Liechtenstein",
+    "Vanuatu",
+    "Sao-Tome-and-Principe",
+    "St-Vincent-Grenadines",
+    "Isle-of-Man",
+    "Brunei",
+    "New-Zealand",
+    "China",
+    "Diamond-Princess",
+    "MS-Zaandam",
+    "Saint-Kitts-and-Nevis",
+    "Yemen",
+    "Equatorial-Guinea",
+    "Barbados",
+    "Solomon-Islands",
+    "Western-Sahara",
+    "British-Virgin-Islands",
+    "Taiwan",
+    "Gibraltar",
+    "Mauritius",
+    "Fiji",
+    "Falkland-Islands",
+    "Saint-Pierre-Miquelon",
+    "Laos",
+    "Wallis-and-Futuna",
+    "Dominica",
+    "Vietnam",
+    "R&eacute;union",
+    "Myanmar",
+    "Slovenia",
+    "Guadeloupe",
+    "Hong-Kong",
+    "Togo",
+    "Oman",
+    "Afghanistan",
+    "Congo",
+    "Latvia",
+    "Tajikistan",
+    "Ghana",
+    "Cuba",
+    "Senegal",
+    "Madagascar",
+    "Somalia",
+    "Malta",
+    "Kenya",
+    "North-Macedonia",
+    "Libya",
+    "Sri-Lanka",
+    "Montenegro",
+    "Finland",
+    "Lesotho",
+    "Guatemala",
+    "Jamaica",
+    "Bahrain",
+    "Algeria",
+    "Luxembourg",
+    "Cyprus",
+    "DRC",
+    "Botswana",
+    "Uganda",
+    "Bosnia-and-Herzegovina",
+    "Maldives",
+    "Andorra",
+    "Gabon",
+    "Guinea",
+    "Syria",
+    "Cabo-Verde",
+    "Mayotte",
+    "French-Polynesia",
+    "French-Guiana",
+    "Mali",
+    "Burkina-Faso",
+    "Belize",
+    "Martinique",
+    "Zambia",
+    "Aruba",
+    "Bahamas",
+    "Albania",
+    "Namibia",
+    "Suriname",
+    "Norway",
+    "Eswatini",
+    "Trinidad-and-Tobago",
+    "Costa-Rica",
+    "Haiti",
+    "Mozambique",
+    "Rwanda",
+    "Malawi",
+    "Ireland",
+    "Venezuela",
+    "Uruguay",
+    "S-Korea",
+    "Australia",
+    "Zimbabwe",
+    "Mongolia",
+    "Honduras",
+    "Djibouti",
+    "Thailand",
+    "Cameroon",
+    "Guyana",
+    "Cura&ccedil;ao",
+    "Uzbekistan",
+    "Kyrgyzstan",
+    "El-Salvador",
+    "Qatar",
+    "Angola",
+    "Nigeria",
+    "Armenia",
+    "Cambodia",
+    "Egypt",
+    "Lithuania",
+    "Ivory-Coast",
+    "Papua-New-Guinea",
+    "Sudan",
+    "Estonia",
+    "Mauritania",
+    "Singapore",
+    "South-Sudan",
+    "Poland",
+    "Croatia",
+    "Brazil",
+    "Turkey",
+    "Austria",
+    "Argentina",
+    "Colombia",
+    "Iran",
+    "Malaysia",
+    "South-Africa",
+    "Chile",
+    "UK",
+    "Jordan",
+    "Romania",
+    "Lebanon",
+    "Bulgaria",
+    "Indonesia",
+    "Ecuador",
+    "Bangladesh",
+    "Greece",
+    "Japan",
+    "Italy",
+    "UAE",
+    "Tunisia",
+    "Switzerland",
+    "Dominican-Republic",
+    "Kuwait",
+    "Paraguay",
+    "Belarus",
+    "Nepal",
+    "Sweden",
+    "Palestine",
+    "Moldova",
+    "Denmark",
+    "Azerbaijan",
+    "Morocco",
+    "Philippines",
+    "Serbia",
+    "Spain",
+    "Netherlands",
+    "Iraq",
+    "Saudi-Arabia",
+    "Portugal",
+    "Africa",
+    "North-America",
+    "Asia",
+    "Europe",
+    "All",
+    "USA",
+    "India",
+    "Peru",
+    "Ethiopia",
+    "Panama",
+    "Canada",
+    "South-America",
+    "France",
+    "Mexico",
+    "Israel",
+    "Bolivia",
+    "Germany",
+    "Pakistan",
+    "Kazakhstan",
+    "Belgium",
+    "Ukraine",
+    "Czechia",
+    "Hungary",
+    "Georgia",
+    "Oceania",
+    "Slovakia",
+    "Russia",
+    "MS-Zaandam-",
+    "Diamond-Princess-",
+    "US-Virgin-Islands",
+    "Puerto-Rico",
+    "Guam",
+  ];
+  const states = [
+    "Andaman and Nicobar Islands",
+    "Andhra Pradesh",
+    "Arunachal Pradesh",
+    "Assam",
+    "Bihar",
+    "Chandigarh",
+    "Chhattisgarh",
+    "Dadra and Nagar Haveli and Daman and Diu",
+    "Daman and Diu",
+    "Delhi",
+    "Goa",
+    "Gujarat",
+    "Haryana",
+    "Himachal Pradesh",
+    "Jammu and Kashmir",
+    "Jharkhand",
+    "Karnataka",
+    "Kerala",
+    "Ladakh",
+    "Lakshadweep",
+    "Madhya Pradesh",
+    "Maharashtra",
+    "Manipur",
+    "Meghalaya",
+    "Mizoram",
+    "Nagaland",
+    "Odisha",
+    "Puducherry",
+    "Punjab",
+    "Rajasthan",
+    "Sikkim",
+    "Tamil Nadu",
+    "Telangana",
+    "Tripura",
+    "Uttar Pradesh",
+    "West Bengal",
+  ];
   useEffect(() => {
+    console.log(country);
     var x = 0;
-    var st = " ";
-    if (country !== undefined)
-      for (x = -1; x < country.length; x++) {
-        if (x === -1) {
-          var option1 = "<option disabled selected hidden >" + st + "</option>";
-          document.getElementById("country").innerHTML += option1;
-          continue;
-        }
-        var option =
-          "<option value='" +
-          country[x].name +
-          "'>" +
-          country[x].name +
-          "</option>";
+    if (country !== undefined) {
+      for (x = 0; x < country.length; x++) {
+        var option = "<option >" + country[x] + "</option>";
         document.getElementById("country").innerHTML += option;
+        document.getElementById("country1").innerHTML += option;
       }
+    }
+    if (states !== undefined) {
+      for (x = 0; x < states.length; x++) {
+        var option12 = "<option >" + states[x] + "</option>";
+        document.getElementById("state").innerHTML += option12;
+        document.getElementById("state1").innerHTML += option12;
+      }
+    }
   }, []);
 
   const biladdattensionHandler = (e) => {
     setbiladdattension(e.target.value);
   };
-  const bilcountryHandler = () => {
-    var x = document.getElementById("country").selectedIndex;
-    setbilcountry(x);
+  const bilcountryHandler = (e) => {
+    setbilcountry(e.target.value);
   };
   const biladdrestreet1Handler = (e) => {
     setbiladdrestreet1(e.target.value);
@@ -73,37 +343,47 @@ const AddCustomer = ({
     setbiladdrestreet2(e.target.value);
   };
   const biladcityHandler = (e) => {
-    setshipadcity(e.target.value);
+    setbiladcity(e.target.value);
   };
-  const bilstateHandler = () => {
-    var x = document.getElementById("country").selectedIndex;
-    setbilcountry(x);
+  const bilstateHandler = (e) => {
+    setbilstate(e.target.value);
   };
   const bilzipcodeHandler = (e) => {
-    e.target.value();
+    setbilzipcode(e.target.value);
   };
   const bilphoneHandler = (e) => {
-    e.target.value();
+    setbilphone(e.target.value);
   };
   const bilfaxHandler = (e) => {
-    e.target.value();
+    setbilfax(e.target.value);
   };
   const shipaddattensionHandler = (e) => {
     setshipaddattension(e.target.value);
   };
-  const shipcountryHandler = () => {
-    var x = document.getElementById("country1").selectedIndex;
-    setshipcountry(x);
+  const shipcountryHandler = (e) => {
+    setshipcountry(e.target.value);
   };
   const shipaddrestreet1Handler = (e) => {
     setshipaddrestreet1(e.target.value);
   };
-  const shipaddrestreet2Handler = () => {};
-  const shipadcityHandler = () => {};
-  const shipstateHandler = () => {};
-  const shipzipcodeHandler = () => {};
-  const shipphoneHandler = () => {};
-  const shipfaxHandler = () => {};
+  const shipaddrestreet2Handler = (e) => {
+    setshipaddrestreet2(e.target.value);
+  };
+  const shipadcityHandler = (e) => {
+    setshipadcity(e.target.value);
+  };
+  const shipstateHandler = (e) => {
+    setshipstate(e.target.value);
+  };
+  const shipzipcodeHandler = (e) => {
+    setshipzipcode(e.target.value);
+  };
+  const shipphoneHandler = (e) => {
+    setshipphone(e.target.value);
+  };
+  const shipfaxHandler = (e) => {
+    setshipfax(e.target.value);
+  };
 
   useEffect(() => {
     var st = "Select";
@@ -189,44 +469,12 @@ const AddCustomer = ({
           <label htmlFor="state">State</label>
         </div>
         <div className="d11">
-          <select value={bilstate} onChange={bilstateHandler} id="state">
-            <option value="1">Andaman and Nicobar Islands</option>
-            <option value="2">Andhra Pradesh</option>
-            <option value="3">Arunachal Pradesh</option>
-            <option value="4">Assam</option>
-            <option value="5">Bihar</option>
-            <option value="6">Chandigarh</option>
-            <option value="7">Chhattisgarh</option>
-            <option value="8">Dadra and Nagar Haveli and Daman and Diu</option>
-            <option value="9">Daman and Diu</option>
-            <option value="10">Delhi</option>
-            <option value="11">Goa</option>
-            <option value="12">Gujarat</option>
-            <option value="13">Haryana</option>
-            <option value="14">Himachal Pradesh</option>
-            <option value="15">Jammu and Kashmir</option>
-            <option value="16">Jharkhand</option>
-            <option value="17">Karnataka</option>
-            <option value="18">Kerala</option>
-            <option value="19">Ladakh</option>
-            <option value="20">Lakshadweep</option>
-            <option value="21">Madhya Pradesh</option>
-            <option value="22">Maharashtra</option>
-            <option value="23">Manipur</option>
-            <option value="24">Meghalaya</option>
-            <option value="25">Mizoram</option>
-            <option value="26">Nagaland</option>
-            <option value="27">Odisha</option>
-            <option value="28">Puducherry</option>
-            <option value="29">Punjab</option>
-            <option value="30">Rajasthan</option>
-            <option value="31">Sikkim</option>
-            <option value="32">Tamil Nadu</option>
-            <option value="33">Telangana</option>
-            <option value="34">Tripura</option>
-            <option value="35">Uttar Pradesh</option>
-            <option value="36">West Bengal</option>
-          </select>
+          <select
+            onChange={bilstateHandler}
+            id="state"
+            value={bilstate}
+            type="text"
+          ></select>
         </div>
 
         <div className="d12">
@@ -331,44 +579,12 @@ const AddCustomer = ({
           <label htmlFor="state1">State</label>
         </div>
         <div className="d28">
-          <select value={shipstate} onChange={shipstateHandler} id="state1">
-            <option value="1">Andaman and Nicobar Islands</option>
-            <option value="2">Andhra Pradesh</option>
-            <option value="3">Arunachal Pradesh</option>
-            <option value="4">Assam</option>
-            <option value="5">Bihar</option>
-            <option value="6">Chandigarh</option>
-            <option value="7">Chhattisgarh</option>
-            <option value="8">Dadra and Nagar Haveli and Daman and Diu</option>
-            <option value="9">Daman and Diu</option>
-            <option value="10">Delhi</option>
-            <option value="11">Goa</option>
-            <option value="12">Gujarat</option>
-            <option value="13">Haryana</option>
-            <option value="14">Himachal Pradesh</option>
-            <option value="15">Jammu and Kashmir</option>
-            <option value="16">Jharkhand</option>
-            <option value="17">Karnataka</option>
-            <option value="18">Kerala</option>
-            <option value="19">Ladakh</option>
-            <option value="20">Lakshadweep</option>
-            <option value="21">Madhya Pradesh</option>
-            <option value="22">Maharashtra</option>
-            <option value="23">Manipur</option>
-            <option value="24">Meghalaya</option>
-            <option value="25">Mizoram</option>
-            <option value="26">Nagaland</option>
-            <option value="27">Odisha</option>
-            <option value="28">Puducherry</option>
-            <option value="29">Punjab</option>
-            <option value="30">Rajasthan</option>
-            <option value="31">Sikkim</option>
-            <option value="32">Tamil Nadu</option>
-            <option value="33">Telangana</option>
-            <option value="34">Tripura</option>
-            <option value="35">Uttar Pradesh</option>
-            <option value="36">West Bengal</option>
-          </select>
+          <select
+            onChange={shipstateHandler}
+            id="state1"
+            value={shipstate}
+            type="text"
+          ></select>
         </div>
 
         <div className="d29">
