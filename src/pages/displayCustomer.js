@@ -51,12 +51,8 @@ const DisplayCustomer = ({ customer, setcustomer }) => {
               <td>Rs 0.00</td>
               <td>Rs 0.00</td>
             </tr>
-            <tr>
-              {customer.customer !== undefined &&
-                customer.customer.map((n) => (
-                  <Customertable n={n} key={n._id} />
-                ))}
-            </tr>
+            {customer.customer !== undefined &&
+              customer.customer.map((n) => <Customertable n={n} key={n._id} />)}
           </tbody>
         </table>
       </Data>
