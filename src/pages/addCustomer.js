@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import close from "../img/close.svg";
 import styled from "styled-components";
 import CustomerAddress from "../customerCollection/customeraddress";
+import axios from "axios";
 const AddCustomer = ({ customer, setcustomer, item, country }) => {
   const [type, settype] = useState("Business");
   const [salu, setsalu] = useState(0);
@@ -31,6 +32,20 @@ const AddCustomer = ({ customer, setcustomer, item, country }) => {
   const [shipzipcode, setshipzipcode] = useState("");
   const [shipphone, setshipphone] = useState("");
   const [shipfax, setshipfax] = useState("");
+  const [reciveable, setreciveable] = useState("0");
+  const [unusedcredit, setunusedcredit] = useState("0");
+  const salution = ["Mr.", "Mrs.", "Ms.", "Miss.", "Dr."];
+  useEffect(() => {
+    var x = 0;
+
+    if (salution !== undefined) {
+      for (x = 0; x < salution.length; x++) {
+        var option12 = "<option >" + salution[x] + "</option>";
+        document.getElementById("namesalu").innerHTML += option12;
+      }
+    }
+  }, []);
+
   let radio1 = document.querySelector(".radio1");
   let radio2 = document.querySelector(".radio2");
   const typeHandler = () => {
@@ -40,9 +55,8 @@ const AddCustomer = ({ customer, setcustomer, item, country }) => {
       settype("Individual");
     }
   };
-  const salutationHandler = () => {
-    var x = document.getElementByClass("salu").selectedIndex;
-    setsalu(x);
+  const salutationHandler = (e) => {
+    setsalu(e.target.value);
   };
   const nameHandler = (e) => {
     setfirstname(e.target.value);
@@ -53,9 +67,8 @@ const AddCustomer = ({ customer, setcustomer, item, country }) => {
   const companyHandler = (e) => {
     setcompanyname(e.target.value);
   };
-  const customerdisplaynameHandler = () => {
-    var x = document.getElementById("customerdisplayname").selectedIndex;
-    setcustomerdisplayname(x);
+  const customerdisplaynameHandler = (e) => {
+    setcustomerdisplayname(e.target.value);
   };
   const customeremailHandler = (e) => {
     setcustomeremail(e.target.value);
@@ -69,7 +82,120 @@ const AddCustomer = ({ customer, setcustomer, item, country }) => {
   const websitehandler = (e) => {
     setwebsite(e.target.value);
   };
+  useEffect(() => {
+    var x = 0;
+    var st = "Select";
+    var option1 = "<option disabled selected hidden >" + st + "</option>";
+    document.getElementById("customerdisplayname").innerHTML += option1;
+    if (item.item !== undefined) {
+      for (x = 0; x < item.item.length; x++) {
+        var option = "<option >" + item.item[x].name + "</option>";
+        document.getElementById("customerdisplayname").innerHTML += option;
+      }
+    }
+  }, [item]);
 
+  const inputhandler = (e) => {
+    e.preventDefault();
+    const custostruct = {
+      type,
+      salu,
+      firstname,
+      lastname,
+      companyname,
+      customerdisplayname,
+      customeremail,
+      cusworkphone,
+      cusmobilephone,
+      website,
+      biladdattension,
+      bilcountry,
+      biladdrestreet1,
+      biladdrestreet2,
+      biladcity,
+      bilstate,
+      bilzipcode,
+      bilphone,
+      bilfax,
+      shipaddattension,
+      shipcountry,
+      shipaddrestreet1,
+      shipaddrestreet2,
+      shipadcity,
+      shipstate,
+      shipzipcode,
+      shipphone,
+      shipfax,
+      reciveable,
+      unusedcredit,
+    };
+    setcustomer([
+      ...customer.customer,
+      {
+        type,
+        salu,
+        firstname,
+        lastname,
+        companyname,
+        customerdisplayname,
+        customeremail,
+        cusworkphone,
+        cusmobilephone,
+        website,
+        biladdattension,
+        bilcountry,
+        biladdrestreet1,
+        biladdrestreet2,
+        biladcity,
+        bilstate,
+        bilzipcode,
+        bilphone,
+        bilfax,
+        shipaddattension,
+        shipcountry,
+        shipaddrestreet1,
+        shipaddrestreet2,
+        shipadcity,
+        shipstate,
+        shipzipcode,
+        shipphone,
+        shipfax,
+        reciveable,
+        unusedcredit,
+      },
+    ]);
+    axios
+      .post("http://localhost:5000/customers/add", custostruct)
+      .then((res) => console.log(res.data));
+    settype("");
+    setsalu("");
+    setfirstname("");
+    setlastname("");
+    setcompanyname("");
+    setcustomerdisplayname("");
+    setcustomeremail("");
+    setcusworkphone("");
+    setcusmobilephone("");
+    setbiladdattension("");
+    setbilcountry("");
+    setwebsite("");
+    setbiladdrestreet1("");
+    setbiladdrestreet2("");
+    setbiladcity("");
+    setbilstate("");
+    setbilzipcode("");
+    setbilphone("");
+    setbilfax("");
+    setshipaddattension("");
+    setshipcountry("");
+    setshipaddrestreet1("");
+    setshipaddrestreet2("");
+    setshipadcity("");
+    setshipstate("");
+    setshipzipcode("");
+    setshipphone("");
+    setshipfax("");
+  };
   return (
     <ItemMaking1>
       <Heading12>
@@ -81,7 +207,7 @@ const AddCustomer = ({ customer, setcustomer, item, country }) => {
         </span>
       </Heading12>
       <div>
-        <form>
+        <form onSubmit={inputhandler}>
           <Top>
             <Grider>
               <div className="d1">
@@ -119,17 +245,7 @@ const AddCustomer = ({ customer, setcustomer, item, country }) => {
                     id="namesalu"
                     placeholder="Salutation"
                     onChange={salutationHandler}
-                    defaultValue={"DEFAULT"}
-                  >
-                    <option value="DEFAULT" disabled>
-                      Choose a salutation ...
-                    </option>
-                    <option>Mr.</option>
-                    <option>Mrs.</option>
-                    <option>Ms.</option>
-                    <option>Miss.</option>
-                    <option>Dr.</option>
-                  </select>
+                  ></select>
                 </div>
                 <div>
                   <input
@@ -173,7 +289,7 @@ const AddCustomer = ({ customer, setcustomer, item, country }) => {
                 <select
                   id="customerdisplayname"
                   onChange={customerdisplaynameHandler}
-                  required
+                  value={customerdisplayname}
                 ></select>
               </div>
               <div className="d11">

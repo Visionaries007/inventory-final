@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-
-const DisplayCustomer = () => {
+import Customertable from "../Cards/customertable";
+const DisplayCustomer = ({ customer, setcustomer }) => {
   return (
     <div>
       <Total>
@@ -51,55 +51,15 @@ const DisplayCustomer = () => {
               <td>Rs 0.00</td>
               <td>Rs 0.00</td>
             </tr>
-
             <tr>
-              <td>Jeet </td>
-              <td>Vision </td>
-              <td>dlajaldaasddadasd@gmai.com </td>
-              <td>9376123713 </td>
-              <td>Rs 0.00</td>
-              <td>Rs 0.00</td>
-            </tr>
-
-            <tr>
-              <td>Jeet </td>
-              <td>Vision </td>
-              <td>dlajalsd@gmai.com </td>
-              <td>9376123713 </td>
-              <td>Rs 0.00</td>
-              <td>Rs 0.00</td>
-            </tr>
-
-            <tr>
-              <td>Jeet </td>
-              <td>Vision </td>
-              <td>dlajalsd@gmai.com </td>
-              <td>9376123713 </td>
-              <td>Rs 0.00</td>
-              <td>Rs 0.00</td>
-            </tr>
-
-            <tr>
-              <td>Jeet </td>
-              <td>Vision </td>
-              <td>dlajalsd@gmai.com </td>
-              <td>9376123713 </td>
-              <td>Rs 0.00</td>
-              <td>Rs 0.00</td>
-            </tr>
-
-            <tr>
-              <td>Jeet </td>
-              <td>Vision </td>
-              <td>dlajalsd@gmai.com </td>
-              <td>9376123713 </td>
-              <td>Rs 0.00</td>
-              <td>Rs 0.00</td>
+              {customer.customer !== undefined &&
+                customer.customer.map((n) => (
+                  <Customertable n={n} key={n._id} />
+                ))}
             </tr>
           </tbody>
         </table>
       </Data>
-      <Disp></Disp>
     </div>
   );
 };
@@ -147,12 +107,6 @@ const Data = styled.div`
       width: 90%;
     }
   }
-`;
-const Disp = styled.div`
-  display: flex;
-  justify-content: space-evenly;
-  padding: 50px;
-  cursor: pointer;
 `;
 
 const Total = styled.div`
