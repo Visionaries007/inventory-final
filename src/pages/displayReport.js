@@ -1,8 +1,14 @@
 import React from "react";
+import { Bar, Line, Pie } from "react-chartjs-2";
 const DisplayReport = () => {
   return (
     <div>
-      <h1>Display Report</h1>
+      <Bar
+        data={data}
+        width={100}
+        height={50}
+        options={{ maintainAspectRatio: false }}
+      />
     </div>
   );
 };
