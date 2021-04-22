@@ -35,22 +35,7 @@ const DisplayCustomer = ({ customer, setcustomer }) => {
               <th>Reciveable</th>
               <th>Unused Credit</th>
             </tr>
-            <tr>
-              <td>Jeet </td>
-              <td>Vision </td>
-              <td>dlajalsd@gmai.com </td>
-              <td>9376123713 </td>
-              <td>Rs 0.00</td>
-              <td>Rs 0.00</td>
-            </tr>
-            <tr>
-              <td>Jeet </td>
-              <td>Vision </td>
-              <td>dlajalsd@gmai.com </td>
-              <td>9376123713 </td>
-              <td>Rs 0.00</td>
-              <td>Rs 0.00</td>
-            </tr>
+
             {customer.customer !== undefined &&
               customer.customer.map((n) => <Customertable n={n} key={n._id} />)}
           </tbody>

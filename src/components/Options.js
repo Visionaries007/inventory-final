@@ -46,7 +46,7 @@ const Options = () => {
             <div className="h">
               <div className="h2">
                 <img src={user} alt="" />
-                <Link to="/displaycustomer">Customers</Link>
+                <a href="/displaycustomer">Customers</a>
               </div>
               <div className="h3">
                 <Link to="/addcustomer" className="h22">
