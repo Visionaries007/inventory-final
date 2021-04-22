@@ -20,7 +20,66 @@ const DisplayPurchaseOrder = () => {
       </Total>
 
       <Data>
-        <table>
+        <table className="t1">
+          <tbody>
+            <tr id="header">
+              <th>Date</th>
+              <th>Vendor Name</th>
+              <th>Bill#</th>
+              <th>Mode</th>
+              <th>Amount</th>
+              <th>Amount</th>
+            </tr>
+            <tr>
+              <td>21/04/2021</td>
+              <td>Jeet Sharma</td>
+              <td>31121</td>
+              <td>Bitcoin</td>
+              <td>Rs 32300</td>
+              <td>Rs 2300</td>
+            </tr>
+
+            <tr>
+              <td>21/04/2021</td>
+              <td>Jeet Sharma</td>
+              <td>31121</td>
+              <td>Bitcoin</td>
+              <td>Rs 32300</td>
+              <td>Rs 2300</td>
+            </tr>
+
+            <tr>
+              <td>21/04/2021</td>
+              <td>Jeet Sharma</td>
+              <td>31121</td>
+              <td>Bitcoin</td>
+              <td>Rs 32300</td>
+              <td>Rs 2300</td>
+            </tr>
+          </tbody>
+        </table>
+        <table className="t2">
+          <tbody>
+            <tr id="header">
+              <th>Date</th>
+              <th>Payment #</th>
+              <th>Reference #</th>
+              <th>Mode</th>
+              <th>Amount</th>
+              <th>Amount</th>
+            </tr>
+            <tr>
+              <td>21/04/2021</td>
+              <td>SO-24452 </td>
+              <td>1128822</td>
+
+              <td>Bitcoin</td>
+              <td>Rs 32300</td>
+              <td>Rs 2300</td>
+            </tr>
+          </tbody>
+        </table>
+        <table className="t3">
           <tbody>
             <tr id="header">
               <th>Date</th>
@@ -42,20 +101,6 @@ const DisplayPurchaseOrder = () => {
               <td>Rs 32300</td>
               <td>Rs 2300</td>
             </tr>
-          </tbody>
-        </table>
-        <table>
-          <tbody>
-            <tr id="header">
-              <th>Date</th>
-              <th>Payment #</th>
-              <th>Reference #</th>
-              <th>Vendor Name</th>
-              <th>Bill#</th>
-              <th>Mode</th>
-              <th>Amount</th>
-              <th>Amount</th>
-            </tr>
             <tr>
               <td>21/04/2021</td>
               <td>SO-24452 </td>
@@ -68,36 +113,12 @@ const DisplayPurchaseOrder = () => {
             </tr>
           </tbody>
         </table>
-        <table>
+        <table className="t4">
           <tbody>
             <tr id="header">
               <th>Date</th>
-              <th>Payment #</th>
-              <th>Reference #</th>
-              <th>Vendor Name</th>
-              <th>Bill#</th>
-              <th>Mode</th>
-              <th>Amount</th>
-              <th>Amount</th>
-            </tr>
-            <tr>
-              <td>21/04/2021</td>
-              <td>SO-24452 </td>
-              <td>1128822</td>
-              <td>Jeet Sharma</td>
-              <td>31121</td>
-              <td>Bitcoin</td>
-              <td>Rs 32300</td>
-              <td>Rs 2300</td>
-            </tr>
-          </tbody>
-        </table>
-        <table>
-          <tbody>
-            <tr id="header">
-              <th>Date</th>
-              <th>Payment #</th>
-              <th>Reference #</th>
+              <th>Payment </th>
+              <th>Reference </th>
               <th>Vendor Name</th>
               <th>Bill#</th>
               <th>Mode</th>
@@ -121,9 +142,11 @@ const DisplayPurchaseOrder = () => {
   );
 };
 const Data = styled.div`
-  padding: 2rem;
+  padding: 10rem 0rem 0rem 1rem;
+  margin-right: 1rem;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  overflow: hidden;
   grid-gap: 1rem;
   table {
     width: 100%;
