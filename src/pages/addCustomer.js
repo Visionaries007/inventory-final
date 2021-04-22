@@ -35,16 +35,25 @@ const AddCustomer = ({ customer, setcustomer, item, country }) => {
   const [reciveable, setreciveable] = useState("0");
   const [unusedcredit, setunusedcredit] = useState("0");
   const salution = ["Mr.", "Mrs.", "Ms.", "Miss.", "Dr."];
-  useEffect(() => {
+   var flag=0;
+ useEffect(() => {
+    console.log(item.item);
     var x = 0;
-
     if (salution !== undefined) {
       for (x = 0; x < salution.length; x++) {
         var option12 = "<option >" + salution[x] + "</option>";
         document.getElementById("namesalu").innerHTML += option12;
       }
+      
     }
-  }, []);
+      if (item.item !== undefined && flag==0) {
+      for (x = 0; x < item.item.length; x++) {
+        var option1 = "<option >" + item.item[x].name + "</option>";
+        document.getElementById("customerdisplayname").innerHTML += option1;
+      }
+      flag=1;
+    } 
+  },[item]); 
 
   let radio1 = document.querySelector(".radio1");
   let radio2 = document.querySelector(".radio2");
@@ -82,18 +91,7 @@ const AddCustomer = ({ customer, setcustomer, item, country }) => {
   const websitehandler = (e) => {
     setwebsite(e.target.value);
   };
-  useEffect(() => {
-    var x = 0;
-    var st = "Select";
-    var option1 = "<option disabled selected hidden >" + st + "</option>";
-    document.getElementById("customerdisplayname").innerHTML += option1;
-    if (item.item !== undefined) {
-      for (x = 0; x < item.item.length; x++) {
-        var option = "<option >" + item.item[x].name + "</option>";
-        document.getElementById("customerdisplayname").innerHTML += option;
-      }
-    }
-  }, [item]);
+ 
 
   const inputhandler = (e) => {
     e.preventDefault();
@@ -290,7 +288,10 @@ const AddCustomer = ({ customer, setcustomer, item, country }) => {
                   id="customerdisplayname"
                   onChange={customerdisplaynameHandler}
                   value={customerdisplayname}
-                ></select>
+                >
+               
+
+                </select>
               </div>
               <div className="d11">
                 <label htmlFor="customeremail">Customer Email </label>

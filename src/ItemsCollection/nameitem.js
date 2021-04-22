@@ -54,7 +54,7 @@ const NameItems = ({
               onChange={typeHandler}
               type="radio"
               name="item"
-              id="type"
+              id="type1"
             ></input>
             <label htmlFor="Goods">Goods</label>
           </div>
@@ -64,7 +64,7 @@ const NameItems = ({
               onChange={typeHandler}
               type="radio"
               name="item"
-              id="type"
+              id="type2"
             ></input>
             <label htmlFor="Service">Service</label>
           </div>
