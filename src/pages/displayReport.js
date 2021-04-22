@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { Bar, Line, Pie } from "react-chartjs-2";
 const DisplayReport = () => {
+  const [data, setdata] = useState([]);
   return (
     <div>
       <Bar

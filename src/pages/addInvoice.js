@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import close from "../img/close.svg";
 import styled from "styled-components";
+import Invoicetable from "../Cards/invoiceitemtable";
 const Invoice = ({ customer }) => {
   const termsarr = [
     "Net 15",
@@ -153,6 +154,9 @@ const Invoice = ({ customer }) => {
                 ></input>
               </div>
             </Grider>
+            <div>
+              <Invoicetable />
+            </div>
           </Top>
           <Down>
             <div className="both">
