@@ -52,9 +52,6 @@ function App() {
         console.log({ error });
       });
   }, []);
-  useEffect(() => {
-    console.log(customer.customer);
-  });
 
   return (
     <Apple>
@@ -105,10 +102,10 @@ function App() {
               <DisplayDeliveryChallans />
             </Route>
             <Route path="/addinvoice">
-              <AddInvoice />
+              <AddInvoice customer={customer} />
             </Route>
             <Route path="/displayinvoice">
-              <DisplayInvoice />
+              <DisplayInvoice customer={customer} />
             </Route>
             <Route path="/addpaymentrecieved">
               <AddPaymentRecieved />
