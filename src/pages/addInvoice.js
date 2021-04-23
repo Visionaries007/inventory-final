@@ -14,23 +14,18 @@ const Invoice = ({ customer, item }) => {
     "Due on Receipt",
     "Custom",
   ];
-
-  useEffect(() => {
-    console.log(item.item);
-    var x = 0;
-    if (termsarr !== undefined)
-      for (x = 0; x < termsarr.length; x++) {
-        var option12 = "<option >" + termsarr[x] + "</option>";
-        document.getElementById("terms").innerHTML += option12;
-      }
-    if (customer.customer !== undefined)
-      for (x = 0; x < customer.customer.length; x++) {
-        var option13 =
-          "<option >" + customer.customer[x].firstname + "</option>";
-        document.getElementById("customename").innerHTML += option13;
-      }
-  }, [customer]);
-
+  const cust = customer.customer;
+  const listCust = [
+    <option selected disabled>
+      Select
+    </option>,
+  ];
+  const customers = [
+    ...listCust,
+    cust !== undefined &&
+      cust.map((n) => <option key={n._id}>{n.firstname}</option>),
+  ];
+  const term = [...listCust, termsarr.map((n) => <option key={n}>{n}</option>)];
   const inputhandler = () => {};
   const [price, setprice] = useState(100);
   const [customename, setcustomername] = useState("");
@@ -93,7 +88,9 @@ const Invoice = ({ customer, item }) => {
                   id="customename"
                   placeholder="Select Customer"
                   onChange={custnamehandler}
-                ></select>
+                >
+                  {customers}
+                </select>
               </div>
 
               <div className="d3">
@@ -136,7 +133,9 @@ const Invoice = ({ customer, item }) => {
                   id="terms"
                   placeholder="Terms"
                   onChange={termshandler}
-                ></select>
+                >
+                  {term}
+                </select>
               </div>
               <div className="d11">
                 <label htmlFor="duedate">Due Date</label>

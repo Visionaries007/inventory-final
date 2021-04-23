@@ -13,17 +13,17 @@ const Invoiceitemtable = ({
   setamount,
   price,
 }) => {
-  useEffect(() => {
-    console.log(item.item);
-    var x = 0;
-    console.log(item.item);
-    if (item.item !== undefined) {
-      for (x = 0; x < item.item.length; x++) {
-        var option1 = "<option >" + item.item[x].name + "</option>";
-        document.getElementById("detail").innerHTML += option1;
-      }
-    }
-  }, [item]);
+  const items = item.item;
+  const listItem = [
+    <option selected disabled>
+      Select
+    </option>,
+  ];
+  const listItems = [
+    ...listItem,
+    items !== undefined &&
+      items.map((n) => <option key={n._id}>{n.name}</option>),
+  ];
 
   const itemdetailhandler = (e) => {
     setitemdetail(e.target.value);
@@ -51,7 +51,14 @@ const Invoiceitemtable = ({
         <tbody>
           <tr>
             <td className="det">
-              <select className="detail" id="detail"></select>
+              <select
+                className="detail"
+                required
+                id="detail"
+                onChange={itemdetailhandler}
+              >
+                {listItems}
+              </select>
             </td>
             <td>
               <input type="number" min="0" placeholder="Quantity"></input>
