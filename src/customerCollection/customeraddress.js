@@ -311,19 +311,9 @@ const AddCustomer = ({
     "Uttar Pradesh",
     "West Bengal",
   ];
-  const listCust = [
-    <option selected disabled>
-      Select
-    </option>,
-  ];
-  const countrylist = [
-    ...listCust,
-    country.map((n) => <option key={n}>{n}</option>),
-  ];
-  const statelist = [
-    ...listCust,
-    states.map((n) => <option key={n}>{n}</option>),
-  ];
+
+  const countrylist = country.map((n) => <option key={n}>{n}</option>);
+  const statelist = states.map((n) => <option key={n}>{n}</option>);
   const biladdattensionHandler = (e) => {
     setbiladdattension(e.target.value);
   };
@@ -407,7 +397,11 @@ const AddCustomer = ({
             onChange={bilcountryHandler}
             id="country"
             placeholder="Country"
+            value={bilcountry}
           >
+            <option key={1} value="1" disabled>
+              Select
+            </option>
             {countrylist}
           </select>
         </div>
@@ -454,7 +448,10 @@ const AddCustomer = ({
           <label htmlFor="state">State</label>
         </div>
         <div className="d11">
-          <select onChange={bilstateHandler} id="state">
+          <select onChange={bilstateHandler} id="state" value={bilstate}>
+            <option key={1} value="1" disabled>
+              Select
+            </option>
             {statelist}
           </select>
         </div>
@@ -511,7 +508,14 @@ const AddCustomer = ({
           <label htmlFor="country1">Country</label>
         </div>
         <div className="d21">
-          <select onChange={shipcountryHandler} id="country1">
+          <select
+            onChange={shipcountryHandler}
+            id="country1"
+            value={shipcountry}
+          >
+            <option key={1} value="1" disabled>
+              Select
+            </option>
             {countrylist}
           </select>
         </div>
@@ -558,7 +562,10 @@ const AddCustomer = ({
           <label htmlFor="state1">State</label>
         </div>
         <div className="d28">
-          <select onChange={shipstateHandler} id="state1">
+          <select onChange={shipstateHandler} id="state1" value={shipstate}>
+            <option key={1} value="1" disabled>
+              Select
+            </option>
             {statelist}
           </select>
         </div>

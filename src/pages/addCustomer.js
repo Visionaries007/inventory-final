@@ -5,53 +5,42 @@ import CustomerAddress from "../customerCollection/customeraddress";
 import axios from "axios";
 const AddCustomer = ({ customer, setcustomer, item, country }) => {
   const [type, settype] = useState("Business");
-  const [salu, setsalu] = useState(0);
+  const [salu, setsalu] = useState("1");
   const [firstname, setfirstname] = useState("");
   const [lastname, setlastname] = useState("");
   const [companyname, setcompanyname] = useState("");
-  const [customerdisplayname, setcustomerdisplayname] = useState("");
+  const [customerdisplayname, setcustomerdisplayname] = useState("1");
   const [customeremail, setcustomeremail] = useState("");
   const [cusworkphone, setcusworkphone] = useState("");
   const [cusmobilephone, setcusmobilephone] = useState("");
   const [website, setwebsite] = useState("");
   const [biladdattension, setbiladdattension] = useState("");
-  const [bilcountry, setbilcountry] = useState("");
+  const [bilcountry, setbilcountry] = useState("1");
   const [biladdrestreet1, setbiladdrestreet1] = useState("");
   const [biladdrestreet2, setbiladdrestreet2] = useState("");
   const [biladcity, setbiladcity] = useState("");
-  const [bilstate, setbilstate] = useState("");
+  const [bilstate, setbilstate] = useState("1");
   const [bilzipcode, setbilzipcode] = useState("");
   const [bilphone, setbilphone] = useState("");
   const [bilfax, setbilfax] = useState("");
   const [shipaddattension, setshipaddattension] = useState("");
-  const [shipcountry, setshipcountry] = useState("");
+  const [shipcountry, setshipcountry] = useState("1");
   const [shipaddrestreet1, setshipaddrestreet1] = useState("");
   const [shipaddrestreet2, setshipaddrestreet2] = useState("");
   const [shipadcity, setshipadcity] = useState("");
-  const [shipstate, setshipstate] = useState("");
+  const [shipstate, setshipstate] = useState("1");
   const [shipzipcode, setshipzipcode] = useState("");
   const [shipphone, setshipphone] = useState("");
   const [shipfax, setshipfax] = useState("");
   const [reciveable, setreciveable] = useState("0");
   const [unusedcredit, setunusedcredit] = useState("0");
   const salutation = ["Mr.", "Mrs.", "Ms.", "Miss.", "Dr."];
-  const list1 = [
-    <option value="DEFAULT" selected disabled key={-1}>
-      Select
-    </option>,
-  ];
-  const list2 = [
-    <option value="DEFAULT" selected disabled key={-2}>
-      Select
-    </option>,
-  ];
-  const sal = [...list1, salutation.map((n) => <option key={n}>{n}</option>)];
+
+  const sal = salutation.map((n) => <option key={n}>{n}</option>);
   const items = item.item;
-  const listItems = [
-    ...list2,
+  const listItems =
     items !== undefined &&
-      items.map((n) => <option key={n._id}>{n.name}</option>),
-  ];
+    items.map((n) => <option key={n._id}>{n.name}</option>);
 
   let radio1 = document.querySelector(".radio1");
   let radio2 = document.querySelector(".radio2");
@@ -240,8 +229,11 @@ const AddCustomer = ({ customer, setcustomer, item, country }) => {
                     id="namesalu"
                     placeholder="Salutation"
                     onChange={salutationHandler}
-                    defaultValue={"DEFAULT"}
+                    value={salu}
                   >
+                    <option key={1} value="1" disabled>
+                      Select
+                    </option>
                     {sal}
                   </select>
                 </div>
@@ -287,7 +279,11 @@ const AddCustomer = ({ customer, setcustomer, item, country }) => {
                 <select
                   id="customerdisplayname"
                   onChange={customerdisplaynameHandler}
+                  value={customerdisplayname}
                 >
+                  <option key={1} value="1" disabled>
+                    Select
+                  </option>
                   {listItems}
                 </select>
               </div>

@@ -126,7 +126,7 @@ function App() {
               <DisplayPaymentMade />
             </Route>
             <Route path="/displayreport">
-              <DisplayReport />
+              <DisplayReport item={item} />
             </Route>
             <Route path="/adddocuments">
               <AddDocuments />

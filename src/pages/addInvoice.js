@@ -15,20 +15,14 @@ const Invoice = ({ customer, item }) => {
     "Custom",
   ];
   const cust = customer.customer;
-  const listCust = [
-    <option selected disabled>
-      Select
-    </option>,
-  ];
-  const customers = [
-    ...listCust,
+
+  const customers =
     cust !== undefined &&
-      cust.map((n) => <option key={n._id}>{n.firstname}</option>),
-  ];
-  const term = [...listCust, termsarr.map((n) => <option key={n}>{n}</option>)];
+    cust.map((n) => <option key={n._id}>{n.firstname}</option>);
+  const term = termsarr.map((n) => <option key={n}>{n}</option>);
   const inputhandler = () => {};
   const [price, setprice] = useState(100);
-  const [customename, setcustomername] = useState("");
+  const [customename, setcustomername] = useState("1");
   const custnamehandler = (e) => {
     setcustomername(e.target.value);
   };
@@ -44,7 +38,7 @@ const Invoice = ({ customer, item }) => {
   const invoicedatehandler = (e) => {
     setinvoicedate(e.target.value);
   };
-  const [terms, setterms] = useState("");
+  const [terms, setterms] = useState("1");
   const termshandler = (e) => {
     setterms(e.target.value);
   };
@@ -56,7 +50,7 @@ const Invoice = ({ customer, item }) => {
   const salespersonhanlder = (e) => {
     setsalesperson(e.target.value);
   };
-  const [itemdetail, setitemdetail] = useState("");
+  const [itemdetail, setitemdetail] = useState("1");
   const [quantity, setquantity] = useState("");
   const [rate, setrate] = useState("");
   const [amount, setamount] = useState(0);
@@ -88,7 +82,11 @@ const Invoice = ({ customer, item }) => {
                   id="customename"
                   placeholder="Select Customer"
                   onChange={custnamehandler}
+                  value={customename}
                 >
+                  <option key={1} value="1" disabled>
+                    Select
+                  </option>
                   {customers}
                 </select>
               </div>
@@ -133,7 +131,11 @@ const Invoice = ({ customer, item }) => {
                   id="terms"
                   placeholder="Terms"
                   onChange={termshandler}
+                  value={terms}
                 >
+                  <option key={1} value="1" disabled>
+                    Select
+                  </option>
                   {term}
                 </select>
               </div>
