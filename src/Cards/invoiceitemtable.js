@@ -1,7 +1,42 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 
-const invoiceitemtable = () => {
+const Invoiceitemtable = ({
+  item,
+  itemdetail,
+  setitemdetail,
+  quantity,
+  setquantity,
+  rate,
+  setrate,
+  amount,
+  setamount,
+  price,
+}) => {
+  useEffect(() => {
+    console.log(item.item);
+    var x = 0;
+    console.log(item.item);
+    if (item.item !== undefined) {
+      for (x = 0; x < item.item.length; x++) {
+        var option1 = "<option >" + item.item[x].name + "</option>";
+        document.getElementById("detail").innerHTML += option1;
+      }
+    }
+  }, [item]);
+
+  const itemdetailhandler = (e) => {
+    setitemdetail(e.target.value);
+  };
+  const quantityhandler = (e) => {
+    setquantity(e.target.value);
+  };
+  const ratehandler = (e) => {
+    setrate(e.target.value);
+  };
+  const amounthandler = (e) => {
+    setamount(e.target.value);
+  };
   return (
     <Table>
       <table>
@@ -15,20 +50,17 @@ const invoiceitemtable = () => {
         </thead>
         <tbody>
           <tr>
-            <td>
-              <textarea
-                type="text"
-                placeholder="Type or Click to Select an Item Type"
-              ></textarea>
+            <td className="det">
+              <select className="detail" id="detail"></select>
             </td>
             <td>
-              <textarea type="text" placeholder="Quantity"></textarea>
+              <input type="number" min="0" placeholder="Quantity"></input>
             </td>
             <td>
-              <textarea type="text" placeholder="Rate"></textarea>
+              <input type="number" placeholder="Rate" min="0"></input>
             </td>
             <td>
-              <textarea type="text" placeholder="Rs 0.00"></textarea>
+              <label className="he">Rs. {amount}</label>
             </td>
           </tr>
         </tbody>
@@ -37,6 +69,7 @@ const invoiceitemtable = () => {
   );
 };
 const Table = styled.div`
+  font-size: 13px;
   padding: 2rem 22rem 0rem 8rem;
   table,
   th {
@@ -44,6 +77,11 @@ const Table = styled.div`
     padding: 8px 10px;
     border-collapse: collapse;
     border: 1px solid #bdc3c7;
+  }
+  .detail {
+    width: 100%;
+    border: none;
+    padding: 1rem 0rem;
   }
   .th2 {
     padding: 0rem 10rem 0rem 10rem;
@@ -53,6 +91,9 @@ const Table = styled.div`
   }
   .th4 {
     padding: 0rem 3rem 0rem 3rem;
+  }
+  .he {
+    padding-left: 0.5rem;
   }
   th,
   td {
@@ -64,8 +105,8 @@ const Table = styled.div`
     border-collapse: collapse;
     border: 1px solid #bdc3c7;
   }
-  textarea {
-    padding: 5px 8px;
+  input {
+    padding: 10px 8px;
     width: 100%;
     height: 100%;
     border-style: none;
@@ -76,4 +117,4 @@ const Table = styled.div`
     }
   }
 `;
-export default invoiceitemtable;
+export default Invoiceitemtable;

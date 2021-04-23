@@ -35,7 +35,7 @@ const AddCustomer = ({ customer, setcustomer, item, country }) => {
   const [reciveable, setreciveable] = useState("0");
   const [unusedcredit, setunusedcredit] = useState("0");
   const salution = ["Mr.", "Mrs.", "Ms.", "Miss.", "Dr."];
-   var flag=0;
+  
  useEffect(() => {
     console.log(item.item);
     var x = 0;
@@ -46,12 +46,11 @@ const AddCustomer = ({ customer, setcustomer, item, country }) => {
       }
       
     }
-      if (item.item !== undefined && flag==0) {
+      if (item.item !== undefined ) {
       for (x = 0; x < item.item.length; x++) {
         var option1 = "<option >" + item.item[x].name + "</option>";
         document.getElementById("customerdisplayname").innerHTML += option1;
       }
-      flag=1;
     } 
   },[item]); 
 
@@ -199,7 +198,7 @@ const AddCustomer = ({ customer, setcustomer, item, country }) => {
       <Heading12>
         <h3>New Customer</h3>
         <span>
-          <a className="labels" href="/displayItems">
+          <a className="labels" href="/displaycustomer">
             <img src={close} alt="" />
           </a>
         </span>

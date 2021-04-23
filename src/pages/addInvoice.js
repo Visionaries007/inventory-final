@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import close from "../img/close.svg";
 import styled from "styled-components";
 import Invoicetable from "../Cards/invoiceitemtable";
-const Invoice = ({ customer }) => {
+import InvoiceTotal from "../Cards/invoicetotal";
+const Invoice = ({ customer, item }) => {
   const termsarr = [
     "Net 15",
     "Net 30",
@@ -15,23 +16,23 @@ const Invoice = ({ customer }) => {
   ];
 
   useEffect(() => {
+    console.log(item.item);
     var x = 0;
-    console.log(customer.customer);
-    if (termsarr !== undefined) {
+    if (termsarr !== undefined)
       for (x = 0; x < termsarr.length; x++) {
         var option12 = "<option >" + termsarr[x] + "</option>";
         document.getElementById("terms").innerHTML += option12;
       }
-    }
-    if (customer.customer !== undefined) {
+    if (customer.customer !== undefined)
       for (x = 0; x < customer.customer.length; x++) {
-        var option = "<option >" + customer.customer[x].firstname + "</option>";
-        document.getElementById("customename").innerHTML += option;
+        var option13 =
+          "<option >" + customer.customer[x].firstname + "</option>";
+        document.getElementById("customename").innerHTML += option13;
       }
-    }
-  }, []);
+  }, [customer]);
 
   const inputhandler = () => {};
+  const [price, setprice] = useState(100);
   const [customename, setcustomername] = useState("");
   const custnamehandler = (e) => {
     setcustomername(e.target.value);
@@ -60,12 +61,21 @@ const Invoice = ({ customer }) => {
   const salespersonhanlder = (e) => {
     setsalesperson(e.target.value);
   };
+  const [itemdetail, setitemdetail] = useState("");
+  const [quantity, setquantity] = useState("");
+  const [rate, setrate] = useState("");
+  const [amount, setamount] = useState(0);
+  const [subtotal, setsubtotal] = useState(0);
+  const [discount, setdiscount] = useState(0);
+  const [tax, settax] = useState(0);
+  const [total, settotal] = useState(0);
+
   return (
     <ItemMaking1>
       <Heading12>
         <h3>New Invoice</h3>
         <span>
-          <a className="labels" href="/displayItems">
+          <a className="labels" href="/displayinvoice">
             <img src={close} alt="" />
           </a>
         </span>
@@ -75,7 +85,7 @@ const Invoice = ({ customer }) => {
           <Top>
             <Grider>
               <div className="d1">
-                <label htmlFor="name">Customer Name</label>
+                <label htmlFor="name">Customer Name*</label>
               </div>
               <div className="d2">
                 <select
@@ -87,7 +97,7 @@ const Invoice = ({ customer }) => {
               </div>
 
               <div className="d3">
-                <label htmlFor="invoicenumber">Invoice Number</label>
+                <label htmlFor="invoicenumber">Invoice Number*</label>
               </div>
               <div className="d4">
                 <input
@@ -97,7 +107,6 @@ const Invoice = ({ customer }) => {
                   type="text"
                 ></input>
               </div>
-
               <div className="d5">
                 <label htmlFor="ordernumber">Order Number</label>
               </div>
@@ -109,9 +118,8 @@ const Invoice = ({ customer }) => {
                   type="text"
                 ></input>
               </div>
-
               <div className="d7">
-                <label htmlFor="invoicedater">Invoice Date</label>
+                <label htmlFor="invoicedater">Invoice Date*</label>
               </div>
               <div className="d8">
                 <input
@@ -121,7 +129,6 @@ const Invoice = ({ customer }) => {
                   type="text"
                 ></input>
               </div>
-
               <div className="d9">
                 <label htmlFor="terms">Terms</label>
                 <select
@@ -131,7 +138,6 @@ const Invoice = ({ customer }) => {
                   onChange={termshandler}
                 ></select>
               </div>
-
               <div className="d11">
                 <label htmlFor="duedate">Due Date</label>
                 <input
@@ -141,7 +147,6 @@ const Invoice = ({ customer }) => {
                   type="text"
                 ></input>
               </div>
-
               <div className="d13">
                 <label htmlFor="salesperson">SalesPerson</label>
               </div>
@@ -155,7 +160,32 @@ const Invoice = ({ customer }) => {
               </div>
             </Grider>
             <div>
-              <Invoicetable />
+              <Invoicetable
+                item={item}
+                amount={amount}
+                setamount={setamount}
+                itemdetail={itemdetail}
+                setitemdetail={setitemdetail}
+                quantity={quantity}
+                setquantity={setquantity}
+                rate={rate}
+                setrate={setrate}
+                price={price}
+                setprice={setprice}
+              />
+            </div>
+            <div>
+              <InvoiceTotal
+                subtotal={subtotal}
+                setsubtotal={setsubtotal}
+                discount={discount}
+                setdiscount={setdiscount}
+                tax={tax}
+                settax={settax}
+                total={total}
+                settotal={settotal}
+                price={price}
+              />
             </div>
           </Top>
           <Down>
@@ -212,14 +242,26 @@ const ItemMaking1 = styled.div`
 const Grider = styled.div`
   display: grid !important;
   grid-gap: 2rem;
+
+  select,
+  label,
+  input {
+    padding: 5px 8px;
+  }
+
   .d1 {
     grid-area: d1;
+    color: #e54643;
   }
   .d2 {
     grid-area: d2;
+    select {
+      width: 100%;
+    }
   }
   .d3 {
     grid-area: d3;
+    color: #e54643;
   }
   .d4 {
     grid-area: d4;
@@ -232,6 +274,7 @@ const Grider = styled.div`
   }
   .d7 {
     grid-area: d7;
+    color: #e54643;
   }
   .d8 {
     grid-area: d8;
