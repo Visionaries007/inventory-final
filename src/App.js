@@ -102,7 +102,7 @@ function App() {
               <DisplayDeliveryChallans />
             </Route>
             <Route path="/addinvoice">
-              <AddInvoice customer={customer} />
+              <AddInvoice customer={customer} item={item} />
             </Route>
             <Route path="/displayinvoice">
               <DisplayInvoice customer={customer} />
