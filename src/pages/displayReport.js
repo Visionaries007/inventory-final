@@ -9,7 +9,8 @@ const DisplayReport = ({ item }) => {
   const numbers = item.item;
   const listItems =
     numbers !== undefined &&
-    numbers.map((numbers) => <option>{numbers.name}</option>);
+    numbers.map((numbers) => <option key={numbers._id}>{numbers.name}</option>);
+
   useEffect(() => {
     setdata(["617594", "181045", "153060", "106519", "105162", " 95072"]);
     setlabel("Population");
@@ -32,9 +33,11 @@ const DisplayReport = ({ item }) => {
     ]);
     setdataset([label, data, labels, backgroundColor]);
   }, []);
-  const InputHanndler = () => {
+  const [it, setit] = useState("3");
+  const InputHanndler = (e) => {
     /*  data = data.map((n) => n * 2);
     console.log(data); */
+    setit(e.target.value);
   };
 
   return (
@@ -67,7 +70,12 @@ const DisplayReport = ({ item }) => {
         />
       </div>
       <button onClick={InputHanndler}>Make Lowell Zero</button>
-      <select>{listItems}</select>,
+      <select onChange={InputHanndler} value={it}>
+        <option key={1} value="1" disabled>
+          Select
+        </option>
+        {listItems}
+      </select>
     </div>
   );
 };

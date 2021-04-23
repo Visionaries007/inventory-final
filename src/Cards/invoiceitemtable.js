@@ -14,16 +14,10 @@ const Invoiceitemtable = ({
   price,
 }) => {
   const items = item.item;
-  const listItem = [
-    <option selected disabled>
-      Select
-    </option>,
-  ];
-  const listItems = [
-    ...listItem,
+
+  const listItems =
     items !== undefined &&
-      items.map((n) => <option key={n._id}>{n.name}</option>),
-  ];
+    items.map((n) => <option key={n._id}>{n.name}</option>);
 
   const itemdetailhandler = (e) => {
     setitemdetail(e.target.value);
@@ -56,7 +50,11 @@ const Invoiceitemtable = ({
                 required
                 id="detail"
                 onChange={itemdetailhandler}
+                value={itemdetail}
               >
+                <option key={1} value="1" disabled>
+                  Select
+                </option>
                 {listItems}
               </select>
             </td>
