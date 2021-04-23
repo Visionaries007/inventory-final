@@ -34,25 +34,24 @@ const AddCustomer = ({ customer, setcustomer, item, country }) => {
   const [shipfax, setshipfax] = useState("");
   const [reciveable, setreciveable] = useState("0");
   const [unusedcredit, setunusedcredit] = useState("0");
-  const salution = ["Mr.", "Mrs.", "Ms.", "Miss.", "Dr."];
-  
- useEffect(() => {
-    console.log(item.item);
-    var x = 0;
-    if (salution !== undefined) {
-      for (x = 0; x < salution.length; x++) {
-        var option12 = "<option >" + salution[x] + "</option>";
-        document.getElementById("namesalu").innerHTML += option12;
-      }
-      
-    }
-      if (item.item !== undefined ) {
-      for (x = 0; x < item.item.length; x++) {
-        var option1 = "<option >" + item.item[x].name + "</option>";
-        document.getElementById("customerdisplayname").innerHTML += option1;
-      }
-    } 
-  },[item]); 
+  const salutation = ["Mr.", "Mrs.", "Ms.", "Miss.", "Dr."];
+  const list1 = [
+    <option value="DEFAULT" selected disabled key={-1}>
+      Select
+    </option>,
+  ];
+  const list2 = [
+    <option value="DEFAULT" selected disabled key={-2}>
+      Select
+    </option>,
+  ];
+  const sal = [...list1, salutation.map((n) => <option key={n}>{n}</option>)];
+  const items = item.item;
+  const listItems = [
+    ...list2,
+    items !== undefined &&
+      items.map((n) => <option key={n._id}>{n.name}</option>),
+  ];
 
   let radio1 = document.querySelector(".radio1");
   let radio2 = document.querySelector(".radio2");
@@ -90,7 +89,6 @@ const AddCustomer = ({ customer, setcustomer, item, country }) => {
   const websitehandler = (e) => {
     setwebsite(e.target.value);
   };
- 
 
   const inputhandler = (e) => {
     e.preventDefault();
@@ -242,7 +240,10 @@ const AddCustomer = ({ customer, setcustomer, item, country }) => {
                     id="namesalu"
                     placeholder="Salutation"
                     onChange={salutationHandler}
-                  ></select>
+                    defaultValue={"DEFAULT"}
+                  >
+                    {sal}
+                  </select>
                 </div>
                 <div>
                   <input
@@ -286,10 +287,8 @@ const AddCustomer = ({ customer, setcustomer, item, country }) => {
                 <select
                   id="customerdisplayname"
                   onChange={customerdisplaynameHandler}
-                  value={customerdisplayname}
                 >
-               
-
+                  {listItems}
                 </select>
               </div>
               <div className="d11">

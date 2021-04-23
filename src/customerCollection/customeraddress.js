@@ -311,25 +311,19 @@ const AddCustomer = ({
     "Uttar Pradesh",
     "West Bengal",
   ];
-  useEffect(() => {
-    console.log(country);
-    var x = 0;
-    if (country !== undefined) {
-      for (x = 0; x < country.length; x++) {
-        var option = "<option >" + country[x] + "</option>";
-        document.getElementById("country").innerHTML += option;
-        document.getElementById("country1").innerHTML += option;
-      }
-    }
-    if (states !== undefined) {
-      for (x = 0; x < states.length; x++) {
-        var option12 = "<option >" + states[x] + "</option>";
-        document.getElementById("state").innerHTML += option12;
-        document.getElementById("state1").innerHTML += option12;
-      }
-    }
-  }, []);
-
+  const listCust = [
+    <option selected disabled>
+      Select
+    </option>,
+  ];
+  const countrylist = [
+    ...listCust,
+    country.map((n) => <option key={n}>{n}</option>),
+  ];
+  const statelist = [
+    ...listCust,
+    states.map((n) => <option key={n}>{n}</option>),
+  ];
   const biladdattensionHandler = (e) => {
     setbiladdattension(e.target.value);
   };
@@ -384,16 +378,6 @@ const AddCustomer = ({
   const shipfaxHandler = (e) => {
     setshipfax(e.target.value);
   };
-
-  useEffect(() => {
-    var st = "Select";
-    var option1 = "<option disabled selected hidden >" + st + "</option>";
-    document.getElementById("country").innerHTML += option1;
-    document.getElementById("country1").innerHTML += option1;
-    document.getElementById("state").innerHTML += option1;
-    document.getElementById("state1").innerHTML += option1;
-  }, []);
-
   return (
     <ItemMaking1>
       <Grider>
@@ -422,9 +406,10 @@ const AddCustomer = ({
           <select
             onChange={bilcountryHandler}
             id="country"
-            value={bilcountry}
-            type="text"
-          ></select>
+            placeholder="Country"
+          >
+            {countrylist}
+          </select>
         </div>
 
         <div className="d5">
@@ -469,12 +454,9 @@ const AddCustomer = ({
           <label htmlFor="state">State</label>
         </div>
         <div className="d11">
-          <select
-            onChange={bilstateHandler}
-            id="state"
-            value={bilstate}
-            type="text"
-          ></select>
+          <select onChange={bilstateHandler} id="state">
+            {statelist}
+          </select>
         </div>
 
         <div className="d12">
@@ -529,12 +511,9 @@ const AddCustomer = ({
           <label htmlFor="country1">Country</label>
         </div>
         <div className="d21">
-          <select
-            onChange={shipcountryHandler}
-            id="country1"
-            value={shipcountry}
-            type="text"
-          ></select>
+          <select onChange={shipcountryHandler} id="country1">
+            {countrylist}
+          </select>
         </div>
 
         <div className="d22">
@@ -579,12 +558,9 @@ const AddCustomer = ({
           <label htmlFor="state1">State</label>
         </div>
         <div className="d28">
-          <select
-            onChange={shipstateHandler}
-            id="state1"
-            value={shipstate}
-            type="text"
-          ></select>
+          <select onChange={shipstateHandler} id="state1">
+            {statelist}
+          </select>
         </div>
 
         <div className="d29">
