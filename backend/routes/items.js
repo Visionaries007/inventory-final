@@ -16,6 +16,7 @@ router.post("/add", async (req, res) => {
     type: req.body.type,
     name: req.body.name,
     sku: req.body.sku,
+    quantity: req.body.quantity,
     unit: req.body.unit,
     returnable: req.body.returnable,
     dimension1: req.body.dimension1,

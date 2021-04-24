@@ -31,9 +31,10 @@ const AddItems = ({ item, setitem }) => {
   const [costprice, setcostprice] = useState("");
   const [cpaccount, setcpaccount] = useState(unitval);
   const [cpdescription, setcpdescription] = useState("");
-
+  const [quantity, setquantity] = useState("");
   const inputhandler = (e) => {
     e.preventDefault();
+
     const itemstruct = {
       type,
       name,
@@ -58,36 +59,9 @@ const AddItems = ({ item, setitem }) => {
       costprice,
       cpaccount,
       cpdescription,
+      quantity,
     };
     console.log("hey form submited");
-    setitem([
-      ...item.item,
-      {
-        type,
-        name,
-        sku,
-        unit,
-        returnable,
-        dimension1,
-        dimension2,
-        dimension3,
-        manufacturer,
-        upc,
-        ean,
-        weight,
-        brand,
-        mpn,
-        isbn,
-        salesprice,
-        purchaseInfo,
-        sellingprice,
-        spaccount,
-        spdescription,
-        costprice,
-        cpaccount,
-        cpdescription,
-      },
-    ]);
 
     axios
       .post("http://localhost:5000/items/add", itemstruct)
@@ -116,6 +90,7 @@ const AddItems = ({ item, setitem }) => {
     setcostprice("");
     setcpaccount("");
     setcpdescription("");
+    setquantity("");
   };
   return (
     <ItemMaking>
@@ -141,6 +116,8 @@ const AddItems = ({ item, setitem }) => {
               setunit={setunit}
               returnable={returnable}
               setreturnable={setreturnable}
+              quantity={quantity}
+              setquantity={setquantity}
             />
           </div>
           <div className="hello2">

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import close from "../img/close.svg";
 import styled from "styled-components";
 import CustomerAddress from "../customerCollection/customeraddress";
@@ -113,41 +113,7 @@ const AddCustomer = ({ customer, setcustomer, item, country }) => {
       reciveable,
       unusedcredit,
     };
-    setcustomer([
-      ...customer.customer,
-      {
-        type,
-        salu,
-        firstname,
-        lastname,
-        companyname,
-        customerdisplayname,
-        customeremail,
-        cusworkphone,
-        cusmobilephone,
-        website,
-        biladdattension,
-        bilcountry,
-        biladdrestreet1,
-        biladdrestreet2,
-        biladcity,
-        bilstate,
-        bilzipcode,
-        bilphone,
-        bilfax,
-        shipaddattension,
-        shipcountry,
-        shipaddrestreet1,
-        shipaddrestreet2,
-        shipadcity,
-        shipstate,
-        shipzipcode,
-        shipphone,
-        shipfax,
-        reciveable,
-        unusedcredit,
-      },
-    ]);
+
     axios
       .post("http://localhost:5000/customers/add", custostruct)
       .then((res) => console.log(res.data));

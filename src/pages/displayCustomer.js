@@ -35,7 +35,6 @@ const DisplayCustomer = ({ customer, setcustomer }) => {
               <th>Reciveable</th>
               <th>Unused Credit</th>
             </tr>
-
             {customer.customer !== undefined &&
               customer.customer.map((n) => <Customertable n={n} key={n._id} />)}
           </tbody>

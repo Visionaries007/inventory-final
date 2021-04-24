@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import close from "../img/close.svg";
 import styled from "styled-components";
 import Invoicetable from "../Cards/invoiceitemtable";
 import InvoiceTotal from "../Cards/invoicetotal";
+import ReadyItem from "../Cards/readyitems";
 const Invoice = ({ customer, item }) => {
   const termsarr = [
     "Net 15",
@@ -15,13 +16,22 @@ const Invoice = ({ customer, item }) => {
     "Custom",
   ];
   const cust = customer.customer;
-
+  const [itemdetail, setitemdetail] = useState("1");
+  const [quantity, setquantity] = useState(0);
+  const [rate, setrate] = useState(0);
+  const [amount, setamount] = useState(0);
+  const [subtotal, setsubtotal] = useState(0);
+  const [discount, setdiscount] = useState(0);
+  const [tax, settax] = useState(0);
+  const [total, settotal] = useState(0);
+  const [decidequantity, setdecidequantity] = useState(0);
+  const [itemcoll, setitemcoll] = useState([]);
   const customers =
     cust !== undefined &&
     cust.map((n) => <option key={n._id}>{n.firstname}</option>);
   const term = termsarr.map((n) => <option key={n}>{n}</option>);
   const inputhandler = () => {};
-  const [price, setprice] = useState(100);
+  const [price, setprice] = useState(0);
   const [customename, setcustomername] = useState("1");
   const custnamehandler = (e) => {
     setcustomername(e.target.value);
@@ -50,15 +60,32 @@ const Invoice = ({ customer, item }) => {
   const salespersonhanlder = (e) => {
     setsalesperson(e.target.value);
   };
-  const [itemdetail, setitemdetail] = useState("1");
-  const [quantity, setquantity] = useState("");
-  const [rate, setrate] = useState("");
-  const [amount, setamount] = useState(0);
-  const [subtotal, setsubtotal] = useState(0);
-  const [discount, setdiscount] = useState(0);
-  const [tax, settax] = useState(0);
-  const [total, settotal] = useState(0);
+  const newitembuthandler = (e) => {
+    e.preventDefault();
+    if (decidequantity <= quantity && decidequantity > 0) {
+      setitemcoll([
+        ...itemcoll,
+        {
+          itemdetail,
+          quantity,
+          rate,
+          amount,
+          decidequantity,
+        },
+      ]);
+      setprice(parseInt(price) + parseInt(amount));
+    } else {
+      if (parseInt(decidequantity) < 0) alert("Quantity Cannot Be Negative");
+      else if (parseInt(decidequantity) === 0) alert("Quantity Cannot Be Zero");
+      else alert("Quantity is More Than Available");
+    }
 
+    setitemdetail("1");
+    setquantity(0);
+    setdecidequantity(0);
+    setrate(0);
+    setamount(0);
+  };
   return (
     <ItemMaking1>
       <Heading12>
@@ -160,21 +187,52 @@ const Invoice = ({ customer, item }) => {
                 ></input>
               </div>
             </Grider>
-            <div>
-              <Invoicetable
-                item={item}
-                amount={amount}
-                setamount={setamount}
-                itemdetail={itemdetail}
-                setitemdetail={setitemdetail}
-                quantity={quantity}
-                setquantity={setquantity}
-                rate={rate}
-                setrate={setrate}
-                price={price}
-                setprice={setprice}
-              />
-            </div>
+            <AddItemBut>
+              <Table>
+                <table>
+                  <thead>
+                    <tr>
+                      <th className="th1">Item Details</th>
+                      <th className="th2">Available</th>
+                      <th className="th3">Quantity</th>
+                      <th className="th4">Rate</th>
+                      <th className="th5">Amount</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {itemcoll.map((n) => (
+                      <ReadyItem
+                        amount={n.amount}
+                        itemdetail={n.itemdetail}
+                        quantity={n.quantity}
+                        rate={n.rate}
+                        price={n.price}
+                        decidequantity={n.decidequantity}
+                      />
+                    ))}
+                    <Invoicetable
+                      item={item}
+                      amount={amount}
+                      setamount={setamount}
+                      itemdetail={itemdetail}
+                      setitemdetail={setitemdetail}
+                      quantity={quantity}
+                      setquantity={setquantity}
+                      rate={rate}
+                      setrate={setrate}
+                      price={price}
+                      setprice={setprice}
+                      decidequantity={decidequantity}
+                      setdecidequantity={setdecidequantity}
+                    />
+                  </tbody>
+                </table>
+              </Table>
+              <div>
+                <button onClick={newitembuthandler}>Add item</button>
+              </div>
+            </AddItemBut>
+
             <div>
               <InvoiceTotal
                 subtotal={subtotal}
@@ -240,6 +298,17 @@ const ItemMaking1 = styled.div`
   flex-direction: column;
   gap: 4rem;
 `;
+const AddItemBut = styled.div`
+  button {
+    border: none;
+    background: #2fa3e6;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    margin: 1rem 0rem 0rem 8rem;
+  }
+`;
+
 const Grider = styled.div`
   display: grid !important;
   grid-gap: 2rem;
@@ -342,6 +411,45 @@ const Down = styled.div`
   .btn2 {
     background: #f5f5f5;
     color: #212529;
+  }
+`;
+const Table = styled.div`
+  font-size: 13px;
+  padding: 2rem 22rem 0rem 8rem;
+  label {
+    padding: 0rem 4rem;
+  }
+  table,
+  th {
+    padding: 8px 10px;
+    border-collapse: collapse;
+    border: 1px solid #bdc3c7;
+  }
+  .detail {
+    border: none;
+    padding: 1rem 5rem;
+  }
+
+  th,
+  td {
+    height: auto;
+    text-align: center;
+    font-size: 14px;
+    border-bottom: 1px solid #ddd;
+    word-wrap: break-word;
+    border-collapse: collapse;
+    border: 1px solid #bdc3c7;
+  }
+  input {
+    padding: 10px 8px;
+    width: 15rem;
+    height: 100%;
+    border-style: none;
+    border-color: Transparent;
+    resize: none;
+    &:focus {
+      outline: 1px solid #1ea3c4;
+    }
   }
 `;
 export default Invoice;
