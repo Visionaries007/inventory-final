@@ -12,6 +12,8 @@ const NameItems = ({
   setunit,
   returnable,
   setreturnable,
+  quantity,
+  setquantity,
 }) => {
   let radio1 = document.querySelector(".radio1");
   let radio2 = document.querySelector(".radio2");
@@ -39,6 +41,9 @@ const NameItems = ({
     if (document.getElementById("returnableitem").checked === true)
       setreturnable(true);
     else setreturnable(false);
+  };
+  const quantityHandler = (e) => {
+    setquantity(e.target.value);
   };
 
   return (
@@ -106,6 +111,17 @@ const NameItems = ({
           </select>
         </div>
         <div className="d9">
+          <label htmlFor="quantity">Quantity</label>
+        </div>
+        <div className="d10">
+          <input
+            onChange={quantityHandler}
+            id="quantity"
+            value={quantity}
+            type="text"
+          ></input>
+        </div>
+        <div className="d11">
           <input
             type="checkbox"
             id="returnableitem"
@@ -114,7 +130,7 @@ const NameItems = ({
           ></input>
           <label htmlFor="returnableitem">Returnable Item</label>
         </div>
-        <div className="d10">
+        <div className="d12">
           <label htmlFor="myfile">Select a file:</label>
           <input type="file" id="myfile" name="myfile"></input>
         </div>
@@ -199,19 +215,32 @@ const Grider = styled.div`
   }
   .d9 {
     grid-area: d9;
+    padding: 5.875px 15px;
+    color: #e54643;
+  }
+  .d10 {
+    grid-area: d10;
+    padding: 0px 15px;
+    input {
+      padding: 5px 8px;
+    }
+  }
+  .d11 {
+    grid-area: d11;
     input {
       margin: 0px 4.0625px 0px 0px;
     }
   }
-  .d10 {
-    grid-area: d10;
+  .d12 {
+    grid-area: d12;
   }
   grid-template-areas:
-    ". d1 d2  . d10"
+    ". d1 d2  . d12"
     ". d3 d4  . ."
     ". d5 d6  . ."
+    ". d9 d10  . ."
     ". d7 d8  . ."
-    ". .  d9  . .";
+    ". .  d11  . .";
 `;
 
 export default NameItems;
