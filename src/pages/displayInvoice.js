@@ -1,7 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-const DisplayInvoice = () => {
+import Invoicedisplaytable from "../Cards/invoicedisplaytable";
+const DisplayInvoice = ({ invoice }) => {
   return (
     <div>
       <Total>
@@ -45,16 +46,10 @@ const DisplayInvoice = () => {
               <th>Amount</th>
               <th>Balance Due</th>
             </tr>
-            <tr>
-              <td>21/04/2021</td>
-              <td>SO-24452 </td>
-              <td>1128822</td>
-              <td>Jeet Sharma</td>
-              <td>Confirmed</td>
-              <td>25/04/2021</td>
-              <td>Rs 32300</td>
-              <td>Rs 2300</td>
-            </tr>
+            {invoice.invoice !== undefined &&
+              invoice.invoice.map((n) => (
+                <Invoicedisplaytable n={n} key={n._id} />
+              ))}
           </tbody>
         </table>
       </Data>

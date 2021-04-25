@@ -4,7 +4,8 @@ import styled from "styled-components";
 import Invoicetable from "../Cards/invoiceitemtable";
 import InvoiceTotal from "../Cards/invoicetotal";
 import ReadyItem from "../Cards/readyitems";
-const Invoice = ({ customer, item }) => {
+import axios from "axios";
+const Invoice = ({ customer, item, invoice, setinvoice }) => {
   const termsarr = [
     "Net 15",
     "Net 30",
@@ -16,6 +17,10 @@ const Invoice = ({ customer, item }) => {
     "Custom",
   ];
   const cust = customer.customer;
+
+  const [status, setstatus] = useState("Confirmed");
+  const [balancedue, setbalancedue] = useState("0");
+
   const [itemdetail, setitemdetail] = useState("1");
   const [quantity, setquantity] = useState(0);
   const [rate, setrate] = useState(0);
@@ -30,15 +35,15 @@ const Invoice = ({ customer, item }) => {
     cust !== undefined &&
     cust.map((n) => <option key={n._id}>{n.firstname}</option>);
   const term = termsarr.map((n) => <option key={n}>{n}</option>);
-  const inputhandler = () => {};
+
   const [price, setprice] = useState(0);
-  const [customename, setcustomername] = useState("1");
+  const [customername, setcustomername] = useState("1");
   const custnamehandler = (e) => {
     setcustomername(e.target.value);
   };
-  const [invoice, setinvoice] = useState("");
-  const invoicehandler = (e) => {
-    setinvoice(e.target.value);
+  const [invoicenumber, setinvoicenumber] = useState("");
+  const invoicenumberhandler = (e) => {
+    setinvoicenumber(e.target.value);
   };
   const [ordernumber, setordernumber] = useState("");
   const ordernumberhandler = (e) => {
@@ -74,6 +79,7 @@ const Invoice = ({ customer, item }) => {
         },
       ]);
       setprice(parseInt(price) + parseInt(amount));
+      setsubtotal(parseInt(price) + parseInt(amount));
     } else {
       if (parseInt(decidequantity) < 0) alert("Quantity Cannot Be Negative");
       else if (parseInt(decidequantity) === 0) alert("Quantity Cannot Be Zero");
@@ -85,6 +91,46 @@ const Invoice = ({ customer, item }) => {
     setdecidequantity(0);
     setrate(0);
     setamount(0);
+  };
+  const inputhandler = (e) => {
+    e.preventDefault();
+    const invoicestruct = {
+      customername,
+      itemcoll,
+      subtotal,
+      discount,
+      tax,
+      total,
+      price,
+      invoicenumber,
+      ordernumber,
+      invoicedate,
+      terms,
+      duedate,
+      salesperson,
+      status,
+      balancedue,
+    };
+    console.log("hey bhade ka form submited");
+
+    axios
+      .post("http://localhost:5000/invoices/add", invoicestruct)
+      .then((res) => console.log(res.data));
+    setcustomername("");
+    setitemcoll([]);
+    setsubtotal("");
+    setdiscount("");
+    settax("");
+    settotal("");
+    setprice("");
+    setinvoicenumber("");
+    setordernumber("");
+    setinvoicedate("");
+    setterms("");
+    setduedate("");
+    setsalesperson("");
+    setstatus("");
+    setbalancedue("");
   };
   return (
     <ItemMaking1>
@@ -109,7 +155,7 @@ const Invoice = ({ customer, item }) => {
                   id="customename"
                   placeholder="Select Customer"
                   onChange={custnamehandler}
-                  value={customename}
+                  value={customername}
                 >
                   <option key={1} value="1" disabled>
                     Select
@@ -123,9 +169,9 @@ const Invoice = ({ customer, item }) => {
               </div>
               <div className="d4">
                 <input
-                  onChange={invoicehandler}
+                  onChange={invoicenumberhandler}
                   id="invoicenumber"
-                  value={invoice}
+                  value={invoicenumber}
                   type="text"
                 ></input>
               </div>

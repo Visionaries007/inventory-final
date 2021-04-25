@@ -1,0 +1,13 @@
+POST http://localhost:5000/invoices/add
+Content-Type: application/json
+
+{
+    "customername": "Jeet",
+    "itemcoll": [
+        {
+        "detail": "tapatap saboon is best in the whole universe",
+        "amount": "as the singularity of the black hole", 
+        "quantity": "250rs dega"
+        }
+    ]
+}
