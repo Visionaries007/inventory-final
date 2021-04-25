@@ -1,19 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { Bar, Line, Pie } from "react-chartjs-2";
+import styled from "styled-components";
 const DisplayReport = ({ item }) => {
-  var [data, setdata] = useState([]);
-  const [dataset, setdataset] = useState([]);
-  const [label, setlabel] = useState("");
-  const [labels, setlabels] = useState([]);
+  const [itemdata, setitemdata] = useState(
+    item.item !== undefined && item.item.map((n) => n.quantity)
+  );
+  const [itemlabels, setitemlabels] = useState(
+    item.item !== undefined && item.item.map((n) => n.name)
+  );
   const [backgroundColor, setbackgroundColor] = useState([]);
-  const numbers = item.item;
-  const listItems =
-    numbers !== undefined &&
-    numbers.map((numbers) => <option key={numbers._id}>{numbers.name}</option>);
-
   useEffect(() => {
-    setdata(["617594", "181045", "153060", "106519", "105162", " 95072"]);
-    setlabel("Population");
+    /* setdata(["617594", "181045", "153060", "106519", "105162", " 95072"]);
+
     setlabels([
       "Boston",
       "Worcester",
@@ -21,7 +19,7 @@ const DisplayReport = ({ item }) => {
       "Lowell",
       "Cambridge",
       "New Bedford",
-    ]);
+    ]); */
     setbackgroundColor([
       "rgba(255, 99, 132, 0.6)",
       "rgba(54, 162, 235, 0.6)",
@@ -31,27 +29,26 @@ const DisplayReport = ({ item }) => {
       "rgba(255, 159, 64, 0.6)",
       "rgba(255, 99, 132, 0.6)",
     ]);
-    setdataset([label, data, labels, backgroundColor]);
   }, []);
-  const [it, setit] = useState("3");
-  const InputHanndler = (e) => {
-    /*  data = data.map((n) => n * 2);
-    console.log(data); */
-    setit(e.target.value);
-  };
+  /*  useEffect(() => {
+    for (let i = 0; item.item !== undefined && i < item.item.length; i++) {
+      setnames([...names, item.item[i].name]);
+    }
+    console.log(names);
+  }, []); */
 
   return (
-    <div>
-      <div className="chart">
-        <h1>Welcome</h1>
-        <Bar
+    <Charts>
+      <div className="piechart">
+        <h2>Items and Thier Quantity</h2>
+        <Pie
           data={{
-            labels: labels,
+            labels: itemlabels,
             datasets: [
               {
-                label: label,
-                data: data,
-                backgroundColor: "rgba(255, 99, 132, 0.6)",
+                label: "Items",
+                data: itemdata,
+                backgroundColor: backgroundColor,
               },
             ],
           }}
@@ -60,23 +57,55 @@ const DisplayReport = ({ item }) => {
             scales: {
               yAxes: [
                 {
-                  ticks: {
+                  /* ticks: {
                     beginAtZero: true,
-                  },
+                  }, */
                 },
               ],
             },
           }}
         />
       </div>
-      <button onClick={InputHanndler}>Make Lowell Zero</button>
-      <select onChange={InputHanndler} value={it}>
-        <option key={1} value="1" disabled>
-          Select
-        </option>
-        {listItems}
-      </select>
-    </div>
+      <div className="barchart">
+        <h2>Invoice and amount sold</h2>
+        <Bar
+          data={{
+            labels: itemlabels,
+            datasets: [
+              {
+                label: "Invoice",
+                data: itemdata,
+                backgroundColor: backgroundColor,
+              },
+            ],
+          }}
+          options={{
+            responsive: true,
+            scales: {
+              yAxes: [
+                {
+                  /* ticks: {
+                    beginAtZero: true,
+                  }, */
+                },
+              ],
+            },
+          }}
+        />
+      </div>
+    </Charts>
   );
 };
+const Charts = styled.div`
+  display: flex;
+  flex-direction: column;
+  .piechart {
+    padding: 3rem 0rem 0rem 3rem;
+    width: 45%;
+  }
+  .barchart {
+    width: 70%;
+    padding: 10rem 0rem 0rem 3rem;
+  }
+`;
 export default DisplayReport;

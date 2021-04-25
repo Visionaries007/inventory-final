@@ -23,4 +23,7 @@ app.use("/items", itemsRouter);
 const CustomerRouter = require("./routes/customer");
 app.use("/customers", CustomerRouter);
 
+const InvoiceRouter = require("./routes/Invoice");
+app.use("/invoices", InvoiceRouter);
+
 app.listen(5000);

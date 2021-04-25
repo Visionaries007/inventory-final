@@ -33,6 +33,7 @@ function App() {
   //Collection of All the states
   const [item, setitem] = useState([]);
   const [customer, setcustomer] = useState([]);
+  const [invoice, setinvoice] = useState([]);
   useEffect(() => {
     axios
       .get("http://localhost:5000/items/")
@@ -47,6 +48,14 @@ function App() {
       .get("http://localhost:5000/customers/")
       .then((response) => {
         setcustomer({ customer: response.data });
+      })
+      .catch((error) => {
+        console.log({ error });
+      });
+    axios
+      .get("http://localhost:5000/invoices/")
+      .then((response) => {
+        setinvoice({ invoice: response.data });
       })
       .catch((error) => {
         console.log({ error });
@@ -102,10 +111,15 @@ function App() {
               <DisplayDeliveryChallans />
             </Route>
             <Route path="/addinvoice">
-              <AddInvoice customer={customer} item={item} />
+              <AddInvoice
+                customer={customer}
+                item={item}
+                invoice={invoice}
+                setinvoice={setinvoice}
+              />
             </Route>
             <Route path="/displayinvoice">
-              <DisplayInvoice customer={customer} />
+              <DisplayInvoice invoice={invoice} />
             </Route>
             <Route path="/addpaymentrecieved">
               <AddPaymentRecieved />
@@ -126,7 +140,7 @@ function App() {
               <DisplayPaymentMade />
             </Route>
             <Route path="/displayreport">
-              <DisplayReport item={item} />
+              <DisplayReport item={item} invoice={invoice} />
             </Route>
             <Route path="/adddocuments">
               <AddDocuments />
