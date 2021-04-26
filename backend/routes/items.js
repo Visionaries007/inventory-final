@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Item = require("../models/Itemsmodel");
-
+//Get All
 router.get("/", async (req, res) => {
   try {
     const items = await Item.find();
@@ -10,7 +10,16 @@ router.get("/", async (req, res) => {
     res.json({ message: err });
   }
 });
-
+//Get a Specific Post
+router.get("/:postId", async (req, res) => {
+  try {
+    const post = await Item.findById(req.params.postId);
+    res.json(post);
+  } catch (err) {
+    res.json({ message: err });
+  }
+});
+//Submit a Post
 router.post("/add", async (req, res) => {
   const item = new Item({
     type: req.body.type,

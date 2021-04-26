@@ -1,34 +1,52 @@
 import React from "react";
 import styled from "styled-components";
 import image from "../img/girl.jpg";
+import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 const itemcard = ({ n }) => {
   return (
-    <Card>
-      <div className="lim">
-        <img src={image} alt="" />
-        <strong>{n.name}</strong>
-        <label>SKU : {n.sku}</label>
-      </div>
-      <div>
-        <label>
-          Stock On Hand : <span>0.0cm</span>
-        </label>
-      </div>
-      <div className="prices">
-        <div className="inner">
-          <label>Selling Price : Rs. {n.sellingprice}.00</label>
-        </div>
-        <div className="inner">
-          <label>Cost Price : Rs. {n.costprice}.00</label>
-        </div>
-      </div>
-    </Card>
+    <ItemStyle>
+      <Link to={`/displayItems/${n._id}`}>
+        <Card>
+          <div className="lim">
+            <img src={image} alt="" />
+            <strong>{n.name}</strong>
+            <label>SKU : {n.sku}</label>
+          </div>
+          <div>
+            <label>
+              Stock On Hand : <span>0.0cm</span>
+            </label>
+          </div>
+          <div className="prices">
+            <div className="inner">
+              <label>Selling Price : Rs. {n.sellingprice}.00</label>
+            </div>
+            <div className="inner">
+              <label>Cost Price : Rs. {n.costprice}.00</label>
+            </div>
+          </div>
+        </Card>
+      </Link>
+    </ItemStyle>
   );
 };
+const ItemStyle = styled(motion.div)`
+  a {
+    text-decoration: none;
+  }
+  label,
+  strong {
+    padding-top: 0.5rem;
+    color: black;
+    word-wrap: break-word;
+    max-width: 20rem;
+  }
+`;
 const Card = styled.div`
   margin: 20px;
   padding: 10px;
-
+  cursor: pointer;
   font-size: 13px;
   display: flex;
   flex-direction: column;

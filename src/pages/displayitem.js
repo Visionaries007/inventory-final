@@ -2,9 +2,16 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import CardItem from "../Cards/itemcard";
+import ItemDetail from "../Detail/Itemdetail";
+import { useLocation } from "react-router-dom";
 const DisplayItems = ({ item, setitem }) => {
+  //get the current location
+  const location = useLocation();
+  const pathId = location.pathname.split("/")[2];
+  console.log(pathId);
   return (
     <ItemMaking>
+      {pathId && <ItemDetail pathId={pathId} />}
       <Total>
         <div>
           <Selector>
@@ -37,6 +44,7 @@ const DisplayItems = ({ item, setitem }) => {
     </ItemMaking>
   );
 };
+
 const ItemMaking = styled.div`
   display: flex;
   flex-direction: column;
@@ -84,7 +92,6 @@ const Selector = styled.select`
 const Cards = styled.div`
   display: flex;
   flex-direction: row;
-  gap: 20px;
   flex-wrap: wrap;
 `;
 
