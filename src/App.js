@@ -79,7 +79,7 @@ function App() {
             <Route path="/additems">
               <AddItems item={item} setitem={setitem} />
             </Route>
-            <Route path="/displayItems">
+            <Route path={["/displayItems/:id", "/"]}>
               <DisplayItems item={item} setitem={setitem} />
             </Route>
             <Route path="/addcustomer">
