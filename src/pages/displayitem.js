@@ -4,14 +4,15 @@ import { Link } from "react-router-dom";
 import CardItem from "../Cards/itemcard";
 import ItemDetail from "../Detail/Itemdetail";
 import { useLocation } from "react-router-dom";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence, AnimateSharedLayout } from "framer-motion";
+import { fadeIn } from "../animations";
 const DisplayItems = ({ item, setitem }) => {
   //get the current location
   const location = useLocation();
   const pathId = location.pathname.split("/")[2];
   console.log(pathId);
   return (
-    <ItemMaking>
+    <ItemMaking variants={fadeIn} initial="hidden" animate="show">
       <Total>
         <div>
           <Selector>
@@ -38,11 +39,15 @@ const DisplayItems = ({ item, setitem }) => {
         </div>
       </Total>
       <Body>
-        {pathId && <ItemDetail pathId={pathId} />}
-        <Cards>
-          {item.item !== undefined &&
-            item.item.map((n) => <CardItem n={n} key={n._id} />)}
-        </Cards>
+        <AnimateSharedLayout type="crossfade">
+          <AnimatePresence>
+            {pathId && <ItemDetail pathId={pathId} />}
+          </AnimatePresence>
+          <Cards>
+            {item.item !== undefined &&
+              item.item.map((n) => <CardItem n={n} key={n._id} />)}
+          </Cards>
+        </AnimateSharedLayout>
       </Body>
     </ItemMaking>
   );

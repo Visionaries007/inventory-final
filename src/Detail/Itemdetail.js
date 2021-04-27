@@ -6,6 +6,7 @@ import axios from "axios";
 import { useHistory } from "react-router-dom";
 const ItemDetail = ({ pathId }) => {
   const history = useHistory();
+  console.log(typeof pathId);
   const exitDetailHandler = (e) => {
     const element = e.target;
     if (element.classList.contains("shadow")) {
@@ -28,7 +29,7 @@ const ItemDetail = ({ pathId }) => {
   if (n.n !== undefined) {
     return (
       <CardShadow className="shadow" onClick={exitDetailHandler}>
-        <Detail>
+        <Detail layoutId={pathId}>
           <Grider>
             <div className="d1  de">
               <label>Type :</label>{" "}
@@ -198,6 +199,7 @@ const CardShadow = styled(motion.div)`
     border-radius: 3px;
   }
   font-size: 2rem;
+  z-index: 10;
   width: 100%;
   min-height: 100vh;
   overflow-y: scroll;

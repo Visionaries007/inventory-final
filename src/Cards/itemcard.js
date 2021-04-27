@@ -3,6 +3,7 @@ import styled from "styled-components";
 import image from "../img/girl.jpg";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import { popup } from "../animations";
 const itemcard = ({ n }) => {
   const loadDetailHandler = () => {
     document.body.style.overflow = "hidden";
@@ -10,7 +11,13 @@ const itemcard = ({ n }) => {
   return (
     <ItemStyle>
       <Link to={`/displayItems/${n._id}`}>
-        <Card onClick={loadDetailHandler}>
+        <Card
+          layoutId={n._id}
+          onClick={loadDetailHandler}
+          variants={popup}
+          initial="hidden"
+          animate="show"
+        >
           <div className="lim">
             <img src={image} alt="" />
             <strong>{n.name}</strong>
@@ -46,7 +53,8 @@ const ItemStyle = styled(motion.div)`
     max-width: 20rem;
   }
 `;
-const Card = styled.div`
+const Card = styled(motion.div)`
+  background: white;
   margin: 20px;
   padding: 10px;
   cursor: pointer;
