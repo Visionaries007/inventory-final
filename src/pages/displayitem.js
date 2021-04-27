@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import CardItem from "../Cards/itemcard";
 import ItemDetail from "../Detail/Itemdetail";
 import { useLocation } from "react-router-dom";
+import { motion } from "framer-motion";
 const DisplayItems = ({ item, setitem }) => {
   //get the current location
   const location = useLocation();
@@ -11,7 +12,6 @@ const DisplayItems = ({ item, setitem }) => {
   console.log(pathId);
   return (
     <ItemMaking>
-      {pathId && <ItemDetail pathId={pathId} />}
       <Total>
         <div>
           <Selector>
@@ -37,22 +37,26 @@ const DisplayItems = ({ item, setitem }) => {
           </button>
         </div>
       </Total>
-      <Cards>
-        {item.item !== undefined &&
-          item.item.map((n) => <CardItem n={n} key={n._id} />)}
-      </Cards>
+      <Body>
+        {pathId && <ItemDetail pathId={pathId} />}
+        <Cards>
+          {item.item !== undefined &&
+            item.item.map((n) => <CardItem n={n} key={n._id} />)}
+        </Cards>
+      </Body>
     </ItemMaking>
   );
 };
 
-const ItemMaking = styled.div`
+const ItemMaking = styled(motion.div)`
   display: flex;
   flex-direction: column;
   gap: 2rem;
   width: 100%;
   height: 100%;
 `;
-const Total = styled.div`
+const Body = styled(motion.div)``;
+const Total = styled(motion.header)`
   display: flex;
   justify-content: space-between;
   width: 100%;
@@ -77,7 +81,7 @@ const Total = styled.div`
   box-shadow: 10px 2px black;
 `;
 
-const Selector = styled.select`
+const Selector = styled(motion.select)`
   border: none;
   padding: 1rem;
   &:focus {

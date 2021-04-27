@@ -3,7 +3,16 @@ import styled from "styled-components";
 import { motion } from "framer-motion";
 import image from "../img/girl.jpg";
 import axios from "axios";
+import { useHistory } from "react-router-dom";
 const ItemDetail = ({ pathId }) => {
+  const history = useHistory();
+  const exitDetailHandler = (e) => {
+    const element = e.target;
+    if (element.classList.contains("shadow")) {
+      document.body.style.overflow = "auto";
+      history.push("/displayItems");
+    }
+  };
   const [n, setn] = useState([]);
   useEffect(() => {
     axios
@@ -18,7 +27,7 @@ const ItemDetail = ({ pathId }) => {
   console.log(n);
   if (n.n !== undefined) {
     return (
-      <CardShadow>
+      <CardShadow className="shadow" onClick={exitDetailHandler}>
         <Detail>
           <Grider>
             <div className="d1  de">

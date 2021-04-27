@@ -4,10 +4,13 @@ import image from "../img/girl.jpg";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 const itemcard = ({ n }) => {
+  const loadDetailHandler = () => {
+    document.body.style.overflow = "hidden";
+  };
   return (
     <ItemStyle>
       <Link to={`/displayItems/${n._id}`}>
-        <Card>
+        <Card onClick={loadDetailHandler}>
           <div className="lim">
             <img src={image} alt="" />
             <strong>{n.name}</strong>
