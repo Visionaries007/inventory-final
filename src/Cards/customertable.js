@@ -2,12 +2,19 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { motion } from "framer-motion";
+import { fadeIn, popup } from "../animations";
 const CustomerTable = ({ n }) => {
   const loadDetailHandler = () => {
     document.body.style.overflow = "hidden";
   };
   return (
-    <Tabel layoutId={n._id} onClick={loadDetailHandler}>
+    <Tabel
+      layoutId={n._id}
+      onClick={loadDetailHandler}
+      variants={fadeIn}
+      initial="hidden"
+      animate="show"
+    >
       <td>{n.firstname} </td>
       <td>{n.companyname} </td>
       <td>{n.customeremail}</td>

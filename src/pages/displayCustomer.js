@@ -4,6 +4,7 @@ import Customertable from "../Cards/customertable";
 import CustomerDetail from "../Detail/customerdetail";
 import { useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
+import { fadeIn, popup } from "../animations";
 const DisplayCustomer = ({ customer, setcustomer }) => {
   //get the current location
   const location = useLocation();
@@ -11,7 +12,7 @@ const DisplayCustomer = ({ customer, setcustomer }) => {
   console.log(pathId);
   return (
     <div>
-      <Total>
+      <Total variants={fadeIn} initial="hidden" animate="show">
         <div className="cust">
           <Selector>
             <option className="d1">All Customer</option>
@@ -31,7 +32,7 @@ const DisplayCustomer = ({ customer, setcustomer }) => {
           </button>
         </div>
       </Total>
-      <Data>
+      <Data variants={fadeIn} initial="hidden" animate="show">
         <table>
           <tbody>
             <tr id="header">
@@ -41,7 +42,7 @@ const DisplayCustomer = ({ customer, setcustomer }) => {
               <th>Work Phone</th>
               <th>Reciveable</th>
               <th>Unused Credit</th>
-              <th>View Details</th>
+              <th>Details</th>
             </tr>
             {customer.customer !== undefined &&
               customer.customer.map((n) => <Customertable n={n} key={n._id} />)}

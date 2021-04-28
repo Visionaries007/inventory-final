@@ -1,16 +1,30 @@
 import React, { useEffect, useState } from "react";
 import { Bar, Line, Pie } from "react-chartjs-2";
 import styled from "styled-components";
-const DisplayReport = ({ item }) => {
+const DisplayReport = ({ item, invoice }) => {
   const [itemdata, setitemdata] = useState(
     item.item !== undefined && item.item.map((n) => n.quantity)
   );
   const [itemlabels, setitemlabels] = useState(
     item.item !== undefined && item.item.map((n) => n.name)
   );
-  const [backgroundColor, setbackgroundColor] = useState([]);
-  useEffect(() => {
-    /* setdata(["617594", "181045", "153060", "106519", "105162", " 95072"]);
+  const [invoicedata, setinvoicedata] = useState(
+    invoice.invoice !== undefined && invoice.invoice.map((n) => n.subtotal)
+  );
+  const [invoicelabels, setinvoicelabels] = useState(
+    invoice.invoice !== undefined && invoice.invoice.map((n) => n.invoicenumber)
+  );
+  const [backgroundColor, setbackgroundColor] = useState([
+    "rgba(255, 99, 132, 0.6)",
+    "rgba(54, 162, 235, 0.6)",
+    "rgba(255, 206, 86, 0.6)",
+    "rgba(75, 192, 192, 0.6)",
+    "rgba(153, 102, 255, 0.6)",
+    "rgba(255, 159, 64, 0.6)",
+    "rgba(255, 99, 132, 0.6)",
+  ]);
+  /*   useEffect(() => { */
+  /* setdata(["617594", "181045", "153060", "106519", "105162", " 95072"]);
 
     setlabels([
       "Boston",
@@ -20,7 +34,7 @@ const DisplayReport = ({ item }) => {
       "Cambridge",
       "New Bedford",
     ]); */
-    setbackgroundColor([
+  /* setbackgroundColor([
       "rgba(255, 99, 132, 0.6)",
       "rgba(54, 162, 235, 0.6)",
       "rgba(255, 206, 86, 0.6)",
@@ -28,8 +42,10 @@ const DisplayReport = ({ item }) => {
       "rgba(153, 102, 255, 0.6)",
       "rgba(255, 159, 64, 0.6)",
       "rgba(255, 99, 132, 0.6)",
-    ]);
-  }, []);
+    ]); */
+
+  /*  }, []);
+   */
   /*  useEffect(() => {
     for (let i = 0; item.item !== undefined && i < item.item.length; i++) {
       setnames([...names, item.item[i].name]);
@@ -70,11 +86,11 @@ const DisplayReport = ({ item }) => {
         <h2>Invoice and amount sold</h2>
         <Bar
           data={{
-            labels: itemlabels,
+            labels: invoicelabels,
             datasets: [
               {
                 label: "Invoice",
-                data: itemdata,
+                data: invoicedata,
                 backgroundColor: backgroundColor,
               },
             ],
@@ -105,7 +121,7 @@ const Charts = styled.div`
   }
   .barchart {
     width: 70%;
-    padding: 10rem 0rem 0rem 3rem;
+    padding: 15rem 0rem 15rem 3rem;
   }
 `;
 export default DisplayReport;
