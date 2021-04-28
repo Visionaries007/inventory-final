@@ -10,6 +10,15 @@ router.get("/", async (req, res) => {
     res.json({ message: err });
   }
 });
+//Get a Specific Post
+router.get("/:postId", async (req, res) => {
+  try {
+    const post = await Customer.findById(req.params.postId);
+    res.json(post);
+  } catch (err) {
+    res.json({ message: err });
+  }
+});
 
 router.post("/add", async (req, res) => {
   const customer = new Customer({

@@ -5,7 +5,7 @@ import styled from "styled-components";
 import ItemsInfo from "../ItemsCollection/itemsinfo";
 import SalesPerInfo from "../ItemsCollection/salesperinfo";
 import NameItem from "../ItemsCollection/nameitem";
-
+import { motion } from "framer-motion";
 const AddItems = ({ item, setitem }) => {
   let unitval = 0;
   const [type, settype] = useState("Goods");
@@ -168,12 +168,23 @@ const AddItems = ({ item, setitem }) => {
         <Down>
           <div className="both">
             <div>
-              <button type="submit" className="btn1">
+              <motion.button
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                type="submit"
+                className="btn1"
+              >
                 Save
-              </button>
+              </motion.button>
             </div>
             <div>
-              <button className="btn2">Cancel</button>
+              <motion.button
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                className="btn2"
+              >
+                Cancel
+              </motion.button>
             </div>
           </div>
         </Down>

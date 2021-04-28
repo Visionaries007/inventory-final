@@ -14,6 +14,7 @@ import hand from "../img/thumbs-up-solid 1.svg";
 import graph from "../img/graph.svg";
 import packag from "../img/archive-solid 1.svg";
 import add from "../img/add_black12.svg";
+import { motion } from "framer-motion";
 const Options = () => {
   return (
     <FullPage>
@@ -23,7 +24,14 @@ const Options = () => {
             <div className="h">
               <div className="h2">
                 <img src={spedo} alt="" />
-                <Link to="/">Dashboard</Link>
+                <Link to="/">
+                  <motion.label
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.9 }}
+                  >
+                    Dashboard
+                  </motion.label>
+                </Link>
               </div>
             </div>
           </li>
@@ -35,7 +43,12 @@ const Options = () => {
               </div>
               <div className="h3">
                 <Link to="/additems" className="h22">
-                  <img src={add} alt=""></img>
+                  <motion.img
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.4 }}
+                    src={add}
+                    alt=""
+                  ></motion.img>
                 </Link>
               </div>
             </div>
@@ -50,7 +63,12 @@ const Options = () => {
               </div>
               <div className="h3">
                 <Link to="/addcustomer" className="h22">
-                  <img src={add} alt=""></img>
+                  <motion.img
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.4 }}
+                    src={add}
+                    alt=""
+                  ></motion.img>
                 </Link>
               </div>
             </div>
@@ -63,7 +81,12 @@ const Options = () => {
               </div>
               <div className="h3">
                 <Link to="/addsalesorder" className="h22">
-                  <img src={add} alt=""></img>
+                  <motion.img
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.4 }}
+                    src={add}
+                    alt=""
+                  ></motion.img>
                 </Link>
               </div>
             </div>
@@ -76,7 +99,12 @@ const Options = () => {
               </div>
               <div className="h3">
                 <Link to="/addpackages" className="h22">
-                  <img src={add} alt=""></img>
+                  <motion.img
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.4 }}
+                    src={add}
+                    alt=""
+                  ></motion.img>
                 </Link>
               </div>
             </div>
@@ -89,7 +117,12 @@ const Options = () => {
               </div>
               <div className="h3">
                 <Link to="/addDeliverychallans" className="h22">
-                  <img src={add} alt=""></img>
+                  <motion.img
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.4 }}
+                    src={add}
+                    alt=""
+                  ></motion.img>
                 </Link>
               </div>
             </div>
@@ -102,7 +135,12 @@ const Options = () => {
               </div>
               <div className="h3">
                 <Link to="/addinvoice" className="h22">
-                  <img src={add} alt=""></img>
+                  <motion.img
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.4 }}
+                    src={add}
+                    alt=""
+                  ></motion.img>
                 </Link>
               </div>
             </div>
@@ -115,7 +153,12 @@ const Options = () => {
               </div>
               <div className="h3">
                 <Link to="/addpaymentrecieved" className="h22 jj">
-                  <img src={add} alt=""></img>
+                  <motion.img
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.4 }}
+                    src={add}
+                    alt=""
+                  ></motion.img>
                 </Link>
               </div>
             </div>
@@ -130,7 +173,12 @@ const Options = () => {
               </div>
               <div className="h3">
                 <Link to="/addpurchaseorder" className="h22">
-                  <img src={add} alt=""></img>
+                  <motion.img
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.4 }}
+                    src={add}
+                    alt=""
+                  ></motion.img>
                 </Link>
               </div>
             </div>
@@ -144,7 +192,12 @@ const Options = () => {
               </div>
               <div className="h3">
                 <Link to="/addpaymentmade" className="h22">
-                  <img src={add} alt=""></img>
+                  <motion.img
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.4 }}
+                    src={add}
+                    alt=""
+                  ></motion.img>
                 </Link>
               </div>
             </div>
@@ -155,7 +208,14 @@ const Options = () => {
             <div className="h">
               <div className="h2">
                 <img src={graph} alt="" />
-                <Link to="/displayreport">Reports</Link>
+                <Link to="/displayreport">
+                  <motion.label
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.9 }}
+                  >
+                    Reports
+                  </motion.label>
+                </Link>
               </div>
             </div>
           </li>
@@ -169,7 +229,12 @@ const Options = () => {
               </div>
               <div className="h3">
                 <Link to="/adddocuments" className="h22">
-                  <img src={add} alt=""></img>
+                  <motion.img
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.4 }}
+                    src={add}
+                    alt=""
+                  ></motion.img>
                 </Link>
               </div>
             </div>
@@ -230,6 +295,9 @@ const Fully = styled.div`
     color: white;
     padding: 6px 25px 6px 15px;
     text-decoration: none;
+    label {
+      color: white;
+    }
   }
   li {
     &:hover {

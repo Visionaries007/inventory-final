@@ -199,7 +199,7 @@ const CardShadow = styled(motion.div)`
     border-radius: 3px;
   }
   font-size: 2rem;
-  z-index: 10;
+  z-index: 5;
   width: 100%;
   min-height: 100vh;
   overflow-y: scroll;
