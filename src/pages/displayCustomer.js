@@ -1,7 +1,14 @@
 import React from "react";
 import styled from "styled-components";
 import Customertable from "../Cards/customertable";
+import CustomerDetail from "../Detail/customerdetail";
+import { useLocation } from "react-router-dom";
+import { motion } from "framer-motion";
 const DisplayCustomer = ({ customer, setcustomer }) => {
+  //get the current location
+  const location = useLocation();
+  const pathId = location.pathname.split("/")[2];
+  console.log(pathId);
   return (
     <div>
       <Total>
@@ -34,16 +41,18 @@ const DisplayCustomer = ({ customer, setcustomer }) => {
               <th>Work Phone</th>
               <th>Reciveable</th>
               <th>Unused Credit</th>
+              <th>View Details</th>
             </tr>
             {customer.customer !== undefined &&
               customer.customer.map((n) => <Customertable n={n} key={n._id} />)}
           </tbody>
         </table>
+        {pathId && <CustomerDetail pathId={pathId} />}
       </Data>
     </div>
   );
 };
-const Data = styled.div`
+const Data = styled(motion.div)`
   padding: 2rem;
   table {
     width: 100%;
@@ -89,7 +98,7 @@ const Data = styled.div`
   }
 `;
 
-const Total = styled.div`
+const Total = styled(motion.div)`
   display: flex;
   justify-content: space-between;
   width: 100%;
@@ -119,7 +128,7 @@ const Total = styled.div`
     }
   }
 `;
-const Selector = styled.select`
+const Selector = styled(motion.select)`
   border: none;
   width: 70%;
   &:focus {
