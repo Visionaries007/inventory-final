@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import CardItem from "../Cards/itemcard";
 import ItemDetail from "../Detail/Itemdetail";
 import { useLocation } from "react-router-dom";
-import { motion, AnimatePresence, AnimateSharedLayout } from "framer-motion";
+import { motion } from "framer-motion";
 import { fadeIn } from "../animations";
 const DisplayItems = ({ item, setitem }) => {
   //get the current location
@@ -39,15 +39,11 @@ const DisplayItems = ({ item, setitem }) => {
         </div>
       </Total>
       <Body>
-        <AnimateSharedLayout type="crossfade">
-          <AnimatePresence>
-            {pathId && <ItemDetail pathId={pathId} />}
-          </AnimatePresence>
-          <Cards>
-            {item.item !== undefined &&
-              item.item.map((n) => <CardItem n={n} key={n._id} />)}
-          </Cards>
-        </AnimateSharedLayout>
+        {pathId && <ItemDetail pathId={pathId} />}
+        <Cards>
+          {item.item !== undefined &&
+            item.item.map((n) => <CardItem n={n} key={n._id} />)}
+        </Cards>
       </Body>
     </ItemMaking>
   );
