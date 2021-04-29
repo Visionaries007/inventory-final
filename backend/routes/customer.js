@@ -60,4 +60,13 @@ router.post("/add", async (req, res) => {
     res.json({ message: err });
   }
 });
+//Delete a Post
+router.delete("/:postId", async (req, res) => {
+  try {
+    const removedItem = await Customer.remove({ _id: req.params.postId });
+    res.json(removedItem);
+  } catch (err) {
+    res.json({ message: err });
+  }
+});
 module.exports = router;

@@ -6,8 +6,10 @@ import ItemsInfo from "../ItemsCollection/itemsinfo";
 import SalesPerInfo from "../ItemsCollection/salesperinfo";
 import NameItem from "../ItemsCollection/nameitem";
 import { motion } from "framer-motion";
+import { useHistory } from "react-router-dom";
 const AddItems = ({ item, setitem }) => {
   let unitval = 0;
+  const history = useHistory();
   const [type, settype] = useState("Goods");
   const [name, setname] = useState("");
   const [sku, setsku] = useState("");
@@ -91,6 +93,9 @@ const AddItems = ({ item, setitem }) => {
     setcpaccount("");
     setcpdescription("");
     setquantity("");
+
+    history.push("/displayItems");
+    window.location.reload(false);
   };
   return (
     <ItemMaking>
