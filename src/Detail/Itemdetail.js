@@ -3,8 +3,10 @@ import styled from "styled-components";
 import { motion } from "framer-motion";
 import image from "../img/girl.jpg";
 import axios from "axios";
+import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
-const ItemDetail = ({ pathId, item, setitem }) => {
+import ItemUpdate from "../Update/itemupdate";
+const ItemDetail = ({ pathId, item, setitem, setupdate, update }) => {
   const history = useHistory();
   console.log(typeof pathId);
   const exitDetailHandler = (e) => {
@@ -39,9 +41,15 @@ const ItemDetail = ({ pathId, item, setitem }) => {
       });
   }, []);
   console.log(n);
+  const Updatehandler = () => {
+    setupdate(true);
+  };
   if (n.n !== undefined) {
     return (
       <CardShadow className="shadow" onClick={exitDetailHandler}>
+        <div className="upd">
+          {update && <ItemUpdate pathId={pathId} n={n} setupdate={setupdate} />}
+        </div>
         <Detail layoutId={pathId}>
           <Grider>
             <div className="d1  de">
@@ -73,7 +81,7 @@ const ItemDetail = ({ pathId, item, setitem }) => {
               <label>Returnable Item :</label>{" "}
             </div>
             <div className="d12 df">
-              <label>{n.n.returnable}</label>{" "}
+              <label>{n.n.returnable ? "True" : "False"}</label>{" "}
             </div>
             <div className="d13 de">
               <label>Dimension :</label>{" "}
@@ -138,7 +146,7 @@ const ItemDetail = ({ pathId, item, setitem }) => {
               <label>{n.n.isbn}</label>{" "}
             </div>
             <div className="d33">
-              <label>Purchase Information</label>{" "}
+              <label>Purchase Information </label>{" "}
             </div>
             <div className="d34 de">
               <label>Cost Price :</label>{" "}
@@ -196,10 +204,12 @@ const ItemDetail = ({ pathId, item, setitem }) => {
               <motion.button
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.9 }}
+                onClick={Updatehandler}
                 className="btn1"
               >
                 Edit
               </motion.button>
+
               <motion.button
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.9 }}
@@ -221,6 +231,9 @@ const Image = styled(motion.div)`
   align-items: center;
 `;
 const CardShadow = styled(motion.div)`
+  .upd {
+    background: white;
+  }
   button {
     padding: 1rem 2rem;
     border: none;

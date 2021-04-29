@@ -5,7 +5,10 @@ import Invoicetable from "../Cards/invoiceitemtable";
 import InvoiceTotal from "../Cards/invoicetotal";
 import ReadyItem from "../Cards/readyitems";
 import axios from "axios";
+
+import { useHistory } from "react-router-dom";
 const Invoice = ({ customer, item, invoice, setinvoice }) => {
+  const history = useHistory();
   const termsarr = [
     "Net 15",
     "Net 30",
@@ -131,6 +134,9 @@ const Invoice = ({ customer, item, invoice, setinvoice }) => {
     setsalesperson("");
     setstatus("");
     setbalancedue("");
+
+    history.push("/displayinvoice");
+    window.location.reload(false);
   };
   return (
     <ItemMaking1>

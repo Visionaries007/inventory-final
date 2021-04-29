@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import CardItem from "../Cards/itemcard";
@@ -6,11 +6,13 @@ import ItemDetail from "../Detail/Itemdetail";
 import { useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 import { fadeIn } from "../animations";
+
 const DisplayItems = ({ item, setitem }) => {
+  const [update, setupdate] = useState(false);
+
   //get the current location
   const location = useLocation();
   const pathId = location.pathname.split("/")[2];
-  console.log(pathId);
   return (
     <ItemMaking variants={fadeIn} initial="hidden" animate="show">
       <Total>
@@ -39,10 +41,21 @@ const DisplayItems = ({ item, setitem }) => {
         </div>
       </Total>
       <Body>
-        {pathId && <ItemDetail pathId={pathId} setitem={setitem} item={item} />}
+        {pathId && (
+          <ItemDetail
+            pathId={pathId}
+            setitem={setitem}
+            item={item}
+            setupdate={setupdate}
+            update={update}
+          />
+        )}
+
         <Cards>
           {item.item !== undefined &&
-            item.item.map((n) => <CardItem n={n} key={n._id} />)}
+            item.item.map((n) => (
+              <CardItem n={n} key={n._id} update={update} />
+            ))}
         </Cards>
       </Body>
     </ItemMaking>

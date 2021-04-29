@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import styled from "styled-components";
 const NameItems = ({
@@ -17,7 +17,13 @@ const NameItems = ({
 }) => {
   let radio1 = document.querySelector(".radio1");
   let radio2 = document.querySelector(".radio2");
-
+  useEffect(() => {
+    if (returnable === true)
+      document.querySelector(".returnableitem").checked = true;
+    if (type === "Goods") document.querySelector(".radio1").checked = true;
+    else if (type === "Service")
+      document.querySelector(".radio2").checked = true;
+  }, []);
   const typeHandler = () => {
     if (radio1 !== null && radio1.checked) {
       settype("Goods");
@@ -32,9 +38,8 @@ const NameItems = ({
     setsku(e.target.value);
   };
 
-  const unitHandler = () => {
-    var x = document.getElementById("mySelect").selectedIndex;
-    setunit(x);
+  const unitHandler = (e) => {
+    setunit(e.target.value);
   };
 
   const returnableHandler = () => {
@@ -83,32 +88,31 @@ const NameItems = ({
             id="name"
             value={name}
             type="text"
+            placeholder="Name"
           ></input>
         </div>
         <div className="d5">
           <label htmlFor="sku">SKU</label>
         </div>
         <div className="d6">
-          <input onChange={skuHandler} id="sku" value={sku} type="text"></input>
+          <input
+            onChange={skuHandler}
+            id="sku"
+            value={sku}
+            type="text"
+            placeholder="SKU"
+          ></input>
         </div>
         <div className="d7">
           <label htmlFor="mySelect">Unit*</label>
         </div>
         <div className="d8">
-          <select onChange={unitHandler} id="mySelect">
-            <option value="box">box</option>
-            <option value="cm">cm</option>
-            <option value="dz">dz</option>
-            <option value="ft">ft</option>
-            <option value="g">g</option>
-            <option value="in">in</option>
-            <option value="kg">kg</option>
-            <option value="km">km</option>
-            <option value="lb">lb</option>
-            <option value="mg">mg</option>
-            <option value="m">m</option>
-            <option value="pcs">pcs</option>
-          </select>
+          <input
+            selected={unit}
+            onChange={unitHandler}
+            id="mySelect"
+            placeholder="Unit"
+          ></input>
         </div>
         <div className="d9">
           <label htmlFor="quantity">Quantity</label>
@@ -119,13 +123,14 @@ const NameItems = ({
             id="quantity"
             value={quantity}
             type="text"
+            placeholder="Quanity"
           ></input>
         </div>
         <div className="d11">
           <input
             type="checkbox"
             id="returnableitem"
-            name="returnableitem"
+            className="returnableitem"
             onChange={returnableHandler}
           ></input>
           <label htmlFor="returnableitem">Returnable Item</label>
@@ -207,10 +212,7 @@ const Grider = styled.div`
     padding: 0px 15px;
     width: 100%;
     input {
-      padding: 5px 30px 5px 8px;
-    }
-    select {
-      padding: 2px 50px;
+      padding: 5px 8px;
     }
   }
   .d9 {
@@ -235,12 +237,12 @@ const Grider = styled.div`
     grid-area: d12;
   }
   grid-template-areas:
-    ". d1 d2  . d12"
-    ". d3 d4  . ."
+    ". d3 d4  . d12"
     ". d5 d6  . ."
-    ". d9 d10  . ."
+    ". d9 d10 . ."
     ". d7 d8  . ."
-    ". .  d11  . .";
+    ". d1 d2  . ."
+    ". .  d11 . .";
 `;
 
 export default NameItems;
