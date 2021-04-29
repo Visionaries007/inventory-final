@@ -3,7 +3,9 @@ import close from "../img/close.svg";
 import styled from "styled-components";
 import CustomerAddress from "../customerCollection/customeraddress";
 import axios from "axios";
-const AddCustomer = ({ customer, setcustomer, item, country }) => {
+import { useHistory } from "react-router-dom";
+const AddCustomer = ({ customer, setcustomer, country }) => {
+  const history = useHistory();
   const [type, settype] = useState("Business");
   const [salu, setsalu] = useState("1");
   const [firstname, setfirstname] = useState("");
@@ -37,10 +39,6 @@ const AddCustomer = ({ customer, setcustomer, item, country }) => {
   const salutation = ["Mr.", "Mrs.", "Ms.", "Miss.", "Dr."];
 
   const sal = salutation.map((n) => <option key={n}>{n}</option>);
-  const items = item.item;
-  const listItems =
-    items !== undefined &&
-    items.map((n) => <option key={n._id}>{n.name}</option>);
 
   let radio1 = document.querySelector(".radio1");
   let radio2 = document.querySelector(".radio2");
@@ -145,6 +143,8 @@ const AddCustomer = ({ customer, setcustomer, item, country }) => {
     setshipzipcode("");
     setshipphone("");
     setshipfax("");
+    history.push("/displaycustomer");
+    window.location.reload(false);
   };
   return (
     <ItemMaking1>
@@ -242,16 +242,11 @@ const AddCustomer = ({ customer, setcustomer, item, country }) => {
                 </label>
               </div>
               <div className="d10">
-                <select
+                <input
                   id="customerdisplayname"
                   onChange={customerdisplaynameHandler}
                   value={customerdisplayname}
-                >
-                  <option key={1} value="1" disabled>
-                    Select
-                  </option>
-                  {listItems}
-                </select>
+                ></input>
               </div>
               <div className="d11">
                 <label htmlFor="customeremail">Customer Email </label>
@@ -460,8 +455,8 @@ const Grider = styled.div`
   }
   .d10 {
     grid-area: d10;
-    select {
-      padding: 5px 30px 5px 8px;
+    input {
+      padding: 5px 8px;
     }
   }
   .d11 {

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-
+import UpdateItem from "../src/Update/itemupdate";
 import axios from "axios";
 import "./styles/app.scss";
 import CombStatCards from "./components/CombStatCards";
@@ -147,6 +147,9 @@ function App() {
             </Route>
             <Route path="/displaydocuments">
               <DisplayDocuments />
+            </Route>
+            <Route path="/updateitem">
+              <UpdateItem />
             </Route>
           </Switch>
         </Hashy>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 const ItemsInfo = ({
   salesprice,
@@ -18,6 +18,12 @@ const ItemsInfo = ({
   cpdescription,
   setcpdescription,
 }) => {
+  useEffect(() => {
+    if (salesprice === true)
+      document.querySelector(".salesprice").checked = true;
+    if (purchaseInfo === true)
+      document.querySelector(".purchaseinformation").checked = true;
+  }, []);
   const sellingpricehandler = (e) => {
     setsellingprice(e.target.value);
   };
@@ -34,13 +40,11 @@ const ItemsInfo = ({
       setpurchaseinfo(true);
     else setpurchaseinfo(false);
   };
-  const accountsphandler = () => {
-    var x = document.getElementById("accountsp").selectedIndex;
-    setspaccount(x);
+  const accountsphandler = (e) => {
+    setspaccount(e.target.value);
   };
-  const accountcphandler = () => {
-    var x = document.getElementById("accountcp").selectedIndex;
-    setcpaccount(x);
+  const accountcphandler = (e) => {
+    setcpaccount(e.target.value);
   };
   const cpdescriphandler = (e) => {
     setcpdescription(e.target.value);
@@ -54,7 +58,7 @@ const ItemsInfo = ({
         <input
           type="checkbox"
           id="salesprice"
-          name="salesprice"
+          className="salesprice"
           onChange={salespricehandler}
         ></input>
         <label htmlFor="salesprice">Sales Price</label>
@@ -72,6 +76,7 @@ const ItemsInfo = ({
             onChange={sellingpricehandler}
             value={sellingprice}
             type="text"
+            placeholder="Selling Price"
           ></input>
         </div>
       </div>
@@ -79,10 +84,11 @@ const ItemsInfo = ({
         <label htmlFor="accountsp">Acount*</label>
       </div>
       <div className="d5">
-        <select id="accountsp" onChange={accountsphandler}>
-          <option value="tel">Chanchal tel</option>
-          <option value="Manage Manufacter">Manage Manufacter</option>
-        </select>
+        <input
+          id="accountsp"
+          onChange={accountsphandler}
+          placeholder="Account"
+        ></input>
       </div>
       <div className="d6">
         <label htmlFor="description">Description</label>
@@ -92,16 +98,17 @@ const ItemsInfo = ({
           id="description"
           value={spdescription}
           onChange={spdescriphandler}
-          name="review"
+          className="review"
           rows="5"
           cols="30"
+          placeholder="Description"
         ></textarea>
       </div>
       <div className="d8">
         <input
           type="checkbox"
           id="purchaseinformation"
-          name="purchaseinformation"
+          className="purchaseinformation"
           onChange={purchaseInfohandler}
         ></input>
         <label htmlFor="purchaseinformation">Purchase Information</label>
@@ -119,6 +126,7 @@ const ItemsInfo = ({
             onChange={Costpricehandler}
             value={costprice}
             type="text"
+            placeholder="Cost Price"
           ></input>
         </div>
       </div>
@@ -126,10 +134,11 @@ const ItemsInfo = ({
         <label htmlFor="accountcp">Account*</label>
       </div>
       <div className="d12">
-        <select id="accountcp" onChange={accountcphandler}>
-          <option value="tel">Chanchal tel</option>
-          <option value="Manage Manufacter">Manage Manufacter</option>
-        </select>
+        <input
+          id="accountcp"
+          onChange={accountcphandler}
+          placeholder="Account"
+        ></input>
       </div>
       <div className="d13">
         <label htmlFor="description1">Description</label>
@@ -139,9 +148,10 @@ const ItemsInfo = ({
           id="description1"
           value={cpdescription}
           onChange={cpdescriphandler}
-          name="review"
+          className="review"
           rows="5"
           cols="30"
+          placeholder="Description"
         ></textarea>
       </div>
     </ItemMaking>
@@ -204,7 +214,7 @@ const ItemMaking = styled.div`
   }
   .d5 {
     grid-area: b5;
-    select {
+    input {
       padding: 0.5rem 0rem 0.5rem 1rem;
       width: 70%;
     }
@@ -264,7 +274,7 @@ const ItemMaking = styled.div`
   }
   .d12 {
     grid-area: b12;
-    select {
+    input {
       padding: 0.5rem 0rem 0.5rem 1rem;
       width: 70%;
     }

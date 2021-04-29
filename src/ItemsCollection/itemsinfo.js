@@ -32,9 +32,8 @@ const ItemsInfo = ({
     setdimension3(e.target.value);
   };
 
-  const ManufacterHandler = () => {
-    var x = document.getElementById("myManufacter").selectedIndex;
-    setmanufacturer(x);
+  const ManufacterHandler = (e) => {
+    setmanufacturer(e.target.value);
   };
   const upchandler = (e) => {
     setupc(e.target.value);
@@ -45,9 +44,8 @@ const ItemsInfo = ({
   const weighthandler = (e) => {
     setweight(e.target.value);
   };
-  const BrandHandler = () => {
-    var x = document.getElementById("myBrand").selectedIndex;
-    setbrand(x);
+  const BrandHandler = (e) => {
+    setbrand(e.target.value);
   };
   const mpnhandler = (e) => {
     setmpn(e.target.value);
@@ -73,6 +71,7 @@ const ItemsInfo = ({
             className="f1"
             type="text"
             id="dimi"
+            placeholder="D1"
           ></input>
           <span>x</span>
           <input
@@ -80,6 +79,7 @@ const ItemsInfo = ({
             onChange={updatedim2}
             className="f2"
             type="text"
+            placeholder="D2"
           ></input>
           <span>x</span>
           <input
@@ -87,6 +87,7 @@ const ItemsInfo = ({
             onChange={updatedim3}
             className="f3"
             type="text"
+            placeholder="D3"
           ></input>
         </div>
       </div>
@@ -94,22 +95,35 @@ const ItemsInfo = ({
         <label htmlFor="myManufacter">Manufacturer</label>
       </div>
       <div className="dimension4">
-        <select id="myManufacter" onChange={ManufacterHandler}>
-          <option value="tel">Chanchal tel</option>
-          <option value="Manage Manufacter">Manage Manufacter</option>
-        </select>
+        <input
+          id="myManufacter"
+          onChange={ManufacterHandler}
+          placeholder="Manufacter"
+        ></input>
       </div>
       <div className="dimension5">
         <label htmlFor="upc">UPC</label>
       </div>
       <div className="dimension6">
-        <input id="upc" value={upc} type="text" onChange={upchandler}></input>
+        <input
+          id="upc"
+          value={upc}
+          type="text"
+          onChange={upchandler}
+          placeholder="UPC"
+        ></input>
       </div>
       <div className="dimension7">
         <label htmlFor="ean">EAN</label>
       </div>
       <div className="dimension8">
-        <input id="ean" value={ean} type="text" onChange={eanhandler}></input>
+        <input
+          id="ean"
+          value={ean}
+          type="text"
+          onChange={eanhandler}
+          placeholder="EAN"
+        ></input>
       </div>
       <div className="dimension9">
         <label htmlFor="weight">Weight</label>
@@ -121,6 +135,7 @@ const ItemsInfo = ({
             value={weight}
             type="text"
             onChange={weighthandler}
+            placeholder="Weight"
           ></input>
           <label>Kg</label>
         </div>
@@ -129,16 +144,19 @@ const ItemsInfo = ({
         <label htmlFor="myBrand">Brand</label>
       </div>
       <div className="dimension12">
-        <select id="myBrand" onChange={BrandHandler}>
-          <option value="tel">Chanchal tel</option>
-          <option value="Manage Manufacter">Manage Manufacter</option>
-        </select>
+        <input id="myBrand" onChange={BrandHandler} placeholder="Brand"></input>
       </div>
       <div className="dimension13">
         <label htmlFor="mpn">MPN</label>
       </div>
       <div className="dimension14">
-        <input id="mpn" value={mpn} type="text" onChange={mpnhandler}></input>
+        <input
+          id="mpn"
+          value={mpn}
+          type="text"
+          onChange={mpnhandler}
+          placeholder="MPN"
+        ></input>
       </div>
       <div className="dimension15">
         <label htmlFor="isbn">ISBN</label>
@@ -149,6 +167,7 @@ const ItemsInfo = ({
           value={isbn}
           type="text"
           onChange={isbnhandler}
+          placeholder="ISBN"
         ></input>
       </div>
     </ItemMaking>
@@ -190,6 +209,7 @@ const ItemMaking = styled.div`
     }
     span {
       padding: 0rem 0.2rem;
+      color: gray;
     }
   }
   .dimension3 {
@@ -197,7 +217,7 @@ const ItemMaking = styled.div`
   }
   .dimension4 {
     grid-area: b4;
-    select {
+    input {
       padding: 0.5rem 0rem 0.5rem 1rem;
       width: 70%;
     }
@@ -256,7 +276,7 @@ const ItemMaking = styled.div`
   .dimension12 {
     grid-area: b12;
 
-    select {
+    input {
       padding: 0.5rem 0rem 0.5rem 1rem;
       width: 70%;
     }
