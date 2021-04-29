@@ -39,7 +39,7 @@ const DisplayItems = ({ item, setitem }) => {
         </div>
       </Total>
       <Body>
-        {pathId && <ItemDetail pathId={pathId} />}
+        {pathId && <ItemDetail pathId={pathId} setitem={setitem} item={item} />}
         <Cards>
           {item.item !== undefined &&
             item.item.map((n) => <CardItem n={n} key={n._id} />)}

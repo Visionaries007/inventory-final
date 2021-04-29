@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import image from "../img/girl.jpg";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
-const ItemDetail = ({ pathId }) => {
+const ItemDetail = ({ pathId, customer, setcustomer }) => {
   const history = useHistory();
   const exitDetailHandler = (e) => {
     const element = e.target;
@@ -12,6 +12,20 @@ const ItemDetail = ({ pathId }) => {
       document.body.style.overflow = "auto";
       history.push("/displaycustomer");
     }
+  };
+
+  const deleteItemHandler = () => {
+    axios
+      .delete(`http://localhost:5000/customers/${pathId}`)
+      .then((response) => {
+        setcustomer(customer.filter((t) => t._id !== pathId));
+      })
+      .catch((error) => {
+        console.log({ error });
+      });
+
+    history.push("/displaycustomer");
+    window.location.reload(false);
   };
   const [n, setn] = useState([]);
   useEffect(() => {
@@ -38,20 +52,7 @@ const ItemDetail = ({ pathId }) => {
                 <div className="d2 df">
                   <label>{n.n.type}</label>{" "}
                 </div>
-                <div className="d5 de">
-                  <label>Name :</label>{" "}
-                </div>
-                <div className="d6 df">
-                  <div className="d67 df">
-                    <label>{n.n.salu}</label>{" "}
-                  </div>
-                  <div className="d68 df">
-                    <label>{n.n.firstname}</label>{" "}
-                  </div>
-                  <div className="d69 df">
-                    <label>{n.n.lastname}</label>{" "}
-                  </div>
-                </div>
+
                 <div className="d11 de">
                   <label>Company Name :</label>{" "}
                 </div>
@@ -109,8 +110,16 @@ const ItemDetail = ({ pathId }) => {
                   <div className="d3 de">
                     <label>Name :</label>{" "}
                   </div>
-                  <div className="d4 df">
-                    <label>{n.n.name}</label>{" "}
+                  <div className="d6 df">
+                    <div className="d67 df">
+                      <label>{n.n.salu}</label>{" "}
+                    </div>
+                    <div className="d68 df">
+                      <label>{n.n.firstname}</label>{" "}
+                    </div>
+                    <div className="d69 df">
+                      <label>{n.n.lastname}</label>{" "}
+                    </div>
                   </div>
                 </div>
                 <div className="nut">
@@ -124,6 +133,7 @@ const ItemDetail = ({ pathId }) => {
                   <motion.button
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.9 }}
+                    onClick={deleteItemHandler}
                     className="btn2"
                   >
                     Delete
@@ -133,115 +143,115 @@ const ItemDetail = ({ pathId }) => {
             </Comb>
             <DownGrider>
               <Bil>
-                <div className="d27 de">
-                  <label>Billing Address</label>{" "}
+                <div className="d27 df">
+                  <label>Billing Address</label>
                 </div>
                 <div className="d28 de">
-                  <label>Attention :</label>{" "}
+                  <label>Attention :</label>
                 </div>
                 <div className="d29 df">
-                  <label>{n.n.biladdattension}</label>{" "}
+                  <label>{n.n.biladdattension}</label>
                 </div>
                 <div className="d30 de">
-                  <label>Country :</label>{" "}
+                  <label>Country :</label>
                 </div>
                 <div className="d31 df">
-                  <label>{n.n.bilcountry}</label>{" "}
+                  <label>{n.n.bilcountry}</label>
                 </div>
                 <div className="d32 de">
-                  <label>Address :</label>{" "}
+                  <label>Address :</label>
                 </div>
                 <div className="d33 df">
-                  <label>{n.n.biladdrestreet1}</label>{" "}
+                  <label>{n.n.biladdrestreet1}</label>
                 </div>
                 <div className="d34 df">
-                  <label>{n.n.biladdrestreet2}</label>{" "}
+                  <label>{n.n.biladdrestreet2}</label>
                 </div>
                 <div className="d35 de">
-                  <label>City :</label>{" "}
+                  <label>City :</label>
                 </div>
                 <div className="d36 df">
-                  <label>{n.n.biladcity}</label>{" "}
+                  <label>{n.n.biladcity}</label>
                 </div>
                 <div className="d37 de">
-                  <label>State :</label>{" "}
+                  <label>State :</label>
                 </div>
                 <div className="d38 df">
-                  <label>{n.n.bilstate}</label>{" "}
+                  <label>{n.n.bilstate}</label>
                 </div>
                 <div className="d39 de">
-                  <label>Zip Code :</label>{" "}
+                  <label>Zip Code :</label>
                 </div>
                 <div className="d40 df">
-                  <label>{n.n.bilzipcode}</label>{" "}
+                  <label>{n.n.bilzipcode}</label>
                 </div>
                 <div className="d41 de">
-                  <label>Phone :</label>{" "}
+                  <label>Phone :</label>
                 </div>
                 <div className="d42 df">
-                  <label>{n.n.bilphone}</label>{" "}
+                  <label>{n.n.bilphone}</label>
                 </div>
-                <div className="d43 ">
-                  <label>Fax :</label>{" "}
+                <div className="d43 de">
+                  <label>Fax :</label>
                 </div>
                 <div className="d44 df">
-                  <label>{n.n.bilfax}</label>{" "}
+                  <label>{n.n.bilfax}</label>
                 </div>
               </Bil>
               <Ship>
-                <div className="d45 de">
-                  <label>Shipping Address</label>{" "}
+                <div className="d45 df">
+                  <label>Shipping Address</label>
                 </div>
                 <div className="d46 de">
-                  <label>Attension :</label>{" "}
+                  <label>Attension :</label>
                 </div>
                 <div className="d47 df">
-                  <label>{n.n.shipaddattension}</label>{" "}
+                  <label>{n.n.shipaddattension}</label>
                 </div>
                 <div className="d48 de">
-                  <label>Country :</label>{" "}
+                  <label>Country :</label>
                 </div>
                 <div className="d49 df">
-                  <label>{n.n.shipcountry}</label>{" "}
+                  <label>{n.n.shipcountry}</label>
                 </div>
                 <div className="d50 de">
-                  <label>Address :</label>{" "}
+                  <label>Address :</label>
                 </div>
                 <div className="d51 df">
-                  <label>{n.n.shipaddrestreet1}</label>{" "}
+                  <label>{n.n.shipaddrestreet1}</label>
                 </div>
                 <div className="d52 df">
-                  <label>{n.n.shipaddrestreet2}</label>{" "}
+                  <label>{n.n.shipaddrestreet2}</label>
                 </div>
                 <div className="d53 de">
-                  <label>City :</label>{" "}
+                  <label>City :</label>
                 </div>
                 <div className="d54 df">
-                  <label>{n.n.shipadcity}</label>{" "}
+                  <label>{n.n.shipadcity}</label>
                 </div>
                 <div className="d55 de">
-                  <label>State :</label>{" "}
+                  <label>State :</label>
                 </div>
                 <div className="d56 df">
-                  <label>{n.n.shipstate}</label>{" "}
+                  <label>{n.n.shipstate}</label>
                 </div>
                 <div className="d57 de">
-                  <label>Zip Code :</label>{" "}
+                  <label>Zip Code :</label>
                 </div>
                 <div className="d58 df">
-                  <label>{n.n.shipzipcode}</label>{" "}
+                  <label>{n.n.shipzipcode}</label>
                 </div>
                 <div className="d59 de">
-                  <label>Phone :</label>{" "}
+                  <label>Phone :</label>
                 </div>
                 <div className="d60 df">
-                  <label>{n.n.shipphone}</label>{" "}
+                  <label>{n.n.shipphone}</label>
                 </div>
                 <div className="d61 de">
-                  <label>Fax :</label>{" "}
+                  <label>Fax :</label>
                 </div>
                 <div className="d62 df">
-                  <label>{n.n.shipfax}</label>{" "}
+                  <label>{n.n.shipfax}</label>
                 </div>
               </Ship>
             </DownGrider>
@@ -251,11 +261,37 @@ const ItemDetail = ({ pathId }) => {
     );
   } else return null;
 };
-const Image = styled(motion.div)``;
+const Grider = styled(motion.div)`
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+  .de {
+    color: grey !important;
+    max-width: 25rem;
+    word-wrap: break-word;
+  }
+  .df {
+    color: black;
+    max-width: 25rem;
+    word-wrap: break-word;
+  }
+`;
+const Image = styled(motion.div)`
+  .d6 {
+    grid-area: d6;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
 const Comb = styled.div`
   display: flex;
   flex-direction: row;
-  gap: 10rem;
+  gap: 20rem;
 `;
 const CardShadow = styled(motion.div)`
   button {
@@ -303,12 +339,7 @@ const UpGrider = styled(motion.div)`
   .d5 {
     grid-area: d5;
   }
-  .d6 {
-    grid-area: d6;
-    display: flex;
-    flex-direction: row;
-    gap: 10px;
-  }
+
   .d7 {
     grid-area: d7;
   }
@@ -391,7 +422,6 @@ const UpGrider = styled(motion.div)`
   grid-gap: 2rem;
   grid-template-areas:
     " d1  d2   .    .   "
-    " d5  d6   .    .   "
     " d11 d12  .    .   "
     " d13 d14  .    .   "
     " d16 d18  .    .   "
@@ -405,7 +435,7 @@ const UpGrider = styled(motion.div)`
 const DownGrider = styled(motion.div)`
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  gap: 25rem;
 `;
 const Bil = styled.div`
   display: grid;
@@ -465,6 +495,7 @@ const Bil = styled.div`
   }
   grid-template-areas:
     " d27  .  "
+    "  .  .  "
     " d28 d29 "
     " d30 d31 "
     " d32 d33 "
@@ -536,6 +567,7 @@ const Ship = styled(motion.div)`
   grid-gap: 2rem;
   grid-template-areas:
     "  d45  .   "
+    "  .    .  "
     "  d46  d47 "
     "  d48  d49 "
     "  d50  d51 "
@@ -546,24 +578,14 @@ const Ship = styled(motion.div)`
     "  d59  d60 "
     "  d61  d62 ";
 `;
-const Grider = styled(motion.div)`
-  display: flex;
-  flex-direction: column;
-  gap: 5rem;
-  .de {
-    color: grey !important;
-  }
-  .df {
-    color: black;
-  }
-`;
+
 const Detail = styled(motion.div)`
   border-radius: 1rem;
   padding: 4rem 5rem;
   margin-top: 3rem;
   background: white;
   position: absolute;
-  left: 25%;
+  left: 15%;
   color: black;
   img {
     width: 30rem;

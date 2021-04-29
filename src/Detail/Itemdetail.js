@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import image from "../img/girl.jpg";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
-const ItemDetail = ({ pathId }) => {
+const ItemDetail = ({ pathId, item, setitem }) => {
   const history = useHistory();
   console.log(typeof pathId);
   const exitDetailHandler = (e) => {
@@ -13,6 +13,19 @@ const ItemDetail = ({ pathId }) => {
       document.body.style.overflow = "auto";
       history.push("/displayItems");
     }
+  };
+  const deleteItemHandler = () => {
+    axios
+      .delete(`http://localhost:5000/items/${pathId}`)
+      .then((response) => {
+        setitem(item.filter((t) => t._id !== pathId));
+      })
+      .catch((error) => {
+        console.log({ error });
+      });
+
+    history.push("/displayItems");
+    window.location.reload(false);
   };
   const [n, setn] = useState([]);
   useEffect(() => {
@@ -167,7 +180,7 @@ const ItemDetail = ({ pathId }) => {
               <label>{n.n.spdescription}</label>{" "}
             </div>
           </Grider>
-          <div>
+          <Image>
             <div className="d47">
               <img src={image} alt="" />
             </div>
@@ -180,15 +193,33 @@ const ItemDetail = ({ pathId }) => {
               </div>
             </div>
             <div className="nut">
-              <button className="btn1">Edit</button>
-              <button className="btn2">Delete</button>
+              <motion.button
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.9 }}
+                className="btn1"
+              >
+                Edit
+              </motion.button>
+              <motion.button
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.9 }}
+                onClick={deleteItemHandler}
+                className="btn2"
+              >
+                Delete
+              </motion.button>
             </div>
-          </div>
+          </Image>
         </Detail>
       </CardShadow>
     );
   } else return null;
 };
+const Image = styled(motion.div)`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
 const CardShadow = styled(motion.div)`
   button {
     padding: 1rem 2rem;

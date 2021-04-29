@@ -2,10 +2,18 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import Invoicedisplaytable from "../Cards/invoicedisplaytable";
-const DisplayInvoice = ({ invoice }) => {
+import { useLocation } from "react-router-dom";
+import { motion } from "framer-motion";
+import { fadeIn } from "../animations";
+import InvoiceDetail from "../Detail/invoicedetail";
+const DisplayInvoice = ({ invoice, setinvoice }) => {
+  //get the current location
+  const location = useLocation();
+  const pathId = location.pathname.split("/")[2];
+  console.log(pathId);
   return (
     <div>
-      <Total>
+      <Total variants={fadeIn} initial="hidden" animate="show">
         <div>
           <Selector className="inv">
             <option className="d1">All</option>
@@ -32,8 +40,7 @@ const DisplayInvoice = ({ invoice }) => {
           </button>
         </div>
       </Total>
-
-      <Data>
+      <Data variants={fadeIn} initial="hidden" animate="show">
         <table>
           <tbody>
             <tr id="header">
@@ -45,6 +52,7 @@ const DisplayInvoice = ({ invoice }) => {
               <th>Due Date</th>
               <th>Amount</th>
               <th>Balance Due</th>
+              <th>Details</th>
             </tr>
             {invoice.invoice !== undefined &&
               invoice.invoice.map((n) => (
@@ -52,12 +60,19 @@ const DisplayInvoice = ({ invoice }) => {
               ))}
           </tbody>
         </table>
+        {pathId && (
+          <InvoiceDetail
+            pathId={pathId}
+            invoice={invoice}
+            setinvoice={setinvoice}
+          />
+        )}
       </Data>
     </div>
   );
 };
 
-const Data = styled.div`
+const Data = styled(motion.div)`
   padding: 2rem;
   table {
     width: 100%;
@@ -102,7 +117,7 @@ const Data = styled.div`
     }
   }
 `;
-const Total = styled.div`
+const Total = styled(motion.div)`
   display: flex;
   justify-content: space-between;
   width: 100%;
@@ -132,7 +147,7 @@ const Total = styled.div`
     }
   }
 `;
-const Selector = styled.select`
+const Selector = styled(motion.select)`
   border: none;
   width: auto;
   &:focus {

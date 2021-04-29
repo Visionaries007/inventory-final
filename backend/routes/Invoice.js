@@ -10,7 +10,15 @@ router.get("/", async (req, res) => {
     res.json({ message: err });
   }
 });
-
+//Get a Specific Post
+router.get("/:postId", async (req, res) => {
+  try {
+    const post = await Invoice.findById(req.params.postId);
+    res.json(post);
+  } catch (err) {
+    res.json({ message: err });
+  }
+});
 router.post("/add", async (req, res) => {
   const invoice = new Invoice({
     customername: req.body.customername,
@@ -32,6 +40,15 @@ router.post("/add", async (req, res) => {
   try {
     const savedInvoice = await invoice.save();
     res.json(savedInvoice);
+  } catch (err) {
+    res.json({ message: err });
+  }
+});
+//Delete a Post
+router.delete("/:postId", async (req, res) => {
+  try {
+    const removedItem = await Invoice.remove({ _id: req.params.postId });
+    res.json(removedItem);
   } catch (err) {
     res.json({ message: err });
   }
