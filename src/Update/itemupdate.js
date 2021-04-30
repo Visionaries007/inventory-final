@@ -6,7 +6,7 @@ import ItemsInfo from "../ItemsCollection/itemsinfo";
 import SalesPerInfo from "../ItemsCollection/salesperinfo";
 import NameItem from "../ItemsCollection/nameitem";
 import { motion } from "framer-motion";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 const ItemUpdate = ({ n, pathId, setupdate }) => {
   console.log(pathId);
   const history = useHistory();
@@ -131,10 +131,8 @@ const ItemUpdate = ({ n, pathId, setupdate }) => {
     <ItemMaking>
       <Heading12>
         <h3>Update Item</h3>
-        <span>
-          <a className="labels" href="/displayItems">
-            <img src={close} alt="" />
-          </a>
+        <span onClick={CancelHandler}>
+          <img src={close} alt="" />
         </span>
       </Heading12>
       <form>
@@ -295,8 +293,8 @@ const Down = styled.div`
     color: #ffffff;
   }
   .btn2 {
-    background: #f5f5f5;
-    color: #212529;
+    background: #2fa3e6;
+    color: #ffffff;
   }
 `;
 

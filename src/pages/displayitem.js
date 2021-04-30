@@ -9,7 +9,6 @@ import { fadeIn } from "../animations";
 
 const DisplayItems = ({ item, setitem }) => {
   const [update, setupdate] = useState(false);
-
   //get the current location
   const location = useLocation();
   const pathId = location.pathname.split("/")[2];

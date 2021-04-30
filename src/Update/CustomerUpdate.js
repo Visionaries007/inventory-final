@@ -1,41 +1,103 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import close from "../img/close.svg";
 import styled from "styled-components";
 import CustomerAddress from "../customerCollection/customeraddress";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
-const AddCustomer = ({ customer, setcustomer, country }) => {
+import { motion } from "framer-motion";
+const CustomerUpdate = ({
+  n,
+  customer,
+  setcustomer,
+  country,
+  pathId,
+  setupdate,
+}) => {
   const history = useHistory();
-  const [type, settype] = useState("Business");
-  const [salu, setsalu] = useState("1");
-  const [firstname, setfirstname] = useState("");
-  const [lastname, setlastname] = useState("");
-  const [companyname, setcompanyname] = useState("");
-  const [customerdisplayname, setcustomerdisplayname] = useState("1");
-  const [customeremail, setcustomeremail] = useState("");
-  const [cusworkphone, setcusworkphone] = useState("");
-  const [cusmobilephone, setcusmobilephone] = useState("");
-  const [website, setwebsite] = useState("");
-  const [biladdattension, setbiladdattension] = useState("");
-  const [bilcountry, setbilcountry] = useState("1");
-  const [biladdrestreet1, setbiladdrestreet1] = useState("");
-  const [biladdrestreet2, setbiladdrestreet2] = useState("");
-  const [biladcity, setbiladcity] = useState("");
-  const [bilstate, setbilstate] = useState("1");
-  const [bilzipcode, setbilzipcode] = useState("");
-  const [bilphone, setbilphone] = useState("");
-  const [bilfax, setbilfax] = useState("");
-  const [shipaddattension, setshipaddattension] = useState("");
-  const [shipcountry, setshipcountry] = useState("1");
-  const [shipaddrestreet1, setshipaddrestreet1] = useState("");
-  const [shipaddrestreet2, setshipaddrestreet2] = useState("");
-  const [shipadcity, setshipadcity] = useState("");
-  const [shipstate, setshipstate] = useState("1");
-  const [shipzipcode, setshipzipcode] = useState("");
-  const [shipphone, setshipphone] = useState("");
-  const [shipfax, setshipfax] = useState("");
-  const [reciveable, setreciveable] = useState("0");
-  const [unusedcredit, setunusedcredit] = useState("0");
+  const [type, settype] = useState(n.n.type === null ? "" : n.n.type);
+  const [salu, setsalu] = useState(n.n.salu === null ? "" : n.n.salu);
+  const [firstname, setfirstname] = useState(
+    n.n.firstname === null ? "" : n.n.firstname
+  );
+  const [lastname, setlastname] = useState(
+    n.n.lastname === null ? "" : n.n.lastname
+  );
+  const [companyname, setcompanyname] = useState(
+    n.n.companyname === null ? "" : n.n.companyname
+  );
+  const [customerdisplayname, setcustomerdisplayname] = useState(
+    n.n.customerdisplayname === null ? "" : n.n.customerdisplayname
+  );
+  const [customeremail, setcustomeremail] = useState(
+    n.n.customeremail === null ? "" : n.n.customeremail
+  );
+  const [cusworkphone, setcusworkphone] = useState(
+    n.n.cusworkphone === null ? "" : n.n.cusworkphone
+  );
+  const [cusmobilephone, setcusmobilephone] = useState(
+    n.n.cusmobilephone === null ? "" : n.n.cusmobilephone
+  );
+  const [website, setwebsite] = useState(
+    n.n.website === null ? "" : n.n.website
+  );
+  const [biladdattension, setbiladdattension] = useState(
+    n.n.biladdattension === null ? "" : n.n.biladdattension
+  );
+  const [bilcountry, setbilcountry] = useState(
+    n.n.bilcountry === null ? "" : n.n.bilcountry
+  );
+  const [biladdrestreet1, setbiladdrestreet1] = useState(
+    n.n.biladdrestreet1 === null ? "" : n.n.biladdrestreet1
+  );
+  const [biladdrestreet2, setbiladdrestreet2] = useState(
+    n.n.biladdrestreet2 === null ? "" : n.n.biladdrestreet2
+  );
+  const [biladcity, setbiladcity] = useState(
+    n.n.biladcity === null ? "" : n.n.biladcity
+  );
+  const [bilstate, setbilstate] = useState(
+    n.n.bilstate === null ? "" : n.n.bilstate
+  );
+  const [bilzipcode, setbilzipcode] = useState(
+    n.n.bilzipcode === null ? "" : n.n.bilzipcode
+  );
+  const [bilphone, setbilphone] = useState(
+    n.n.bilphone === null ? "" : n.n.bilphone
+  );
+  const [bilfax, setbilfax] = useState(n.n.bilfax === null ? "" : n.n.bilfax);
+  const [shipaddattension, setshipaddattension] = useState(
+    n.n.shipaddattension === null ? "" : n.n.shipaddattension
+  );
+  const [shipcountry, setshipcountry] = useState(
+    n.n.shipcountry === null ? "" : n.n.shipcountry
+  );
+  const [shipaddrestreet1, setshipaddrestreet1] = useState(
+    n.n.shipaddrestreet1 === null ? "" : n.n.shipaddrestreet1
+  );
+  const [shipaddrestreet2, setshipaddrestreet2] = useState(
+    n.n.shipaddrestreet2 === null ? "" : n.n.shipaddrestreet2
+  );
+  const [shipadcity, setshipadcity] = useState(
+    n.n.shipadcity === null ? "" : n.n.shipadcity
+  );
+  const [shipstate, setshipstate] = useState(
+    n.n.shipstate === null ? "" : n.n.shipstate
+  );
+  const [shipzipcode, setshipzipcode] = useState(
+    n.n.shipzipcode === null ? "" : n.n.shipzipcode
+  );
+  const [shipphone, setshipphone] = useState(
+    n.n.shipphone === null ? "" : n.n.shipphone
+  );
+  const [shipfax, setshipfax] = useState(
+    n.n.shipfax === null ? "" : n.n.shipfax
+  );
+  const [reciveable, setreciveable] = useState(
+    n.n.reciveable === null ? "" : n.n.reciveable
+  );
+  const [unusedcredit, setunusedcredit] = useState(
+    n.n.unusedcredit === null ? "" : n.n.unusedcredit
+  );
   const salutation = ["Mr.", "Mrs.", "Ms.", "Miss.", "Dr."];
 
   const sal = salutation.map((n) => <option key={n}>{n}</option>);
@@ -49,6 +111,12 @@ const AddCustomer = ({ customer, setcustomer, country }) => {
       settype("Individual");
     }
   };
+  useEffect(() => {
+    if (n.n.type === "Business")
+      document.querySelector(".radio1").checked = true;
+    else if (n.n.type === "Individual")
+      document.querySelector(".radio2").checked = true;
+  }, []);
   const salutationHandler = (e) => {
     setsalu(e.target.value);
   };
@@ -111,10 +179,15 @@ const AddCustomer = ({ customer, setcustomer, country }) => {
       reciveable,
       unusedcredit,
     };
-
     axios
-      .post("http://localhost:5000/customers/add", custostruct)
-      .then((res) => console.log(res.data));
+      .patch(`http://localhost:5000/customers/${pathId}`, custostruct)
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log({ error });
+      });
+
     settype("");
     setsalu("");
     setfirstname("");
@@ -146,14 +219,15 @@ const AddCustomer = ({ customer, setcustomer, country }) => {
     history.push("/displaycustomer");
     window.location.reload(false);
   };
+  const CancelHandler = () => {
+    setupdate(false);
+  };
   return (
     <ItemMaking1>
       <Heading12>
-        <h3>New Customer</h3>
-        <span>
-          <a className="labels" href="/displaycustomer">
-            <img src={close} alt="" />
-          </a>
+        <h3>Update Customer</h3>
+        <span onClick={CancelHandler}>
+          <img src={close} alt="" />
         </span>
       </Heading12>
       <div>
@@ -341,13 +415,24 @@ const AddCustomer = ({ customer, setcustomer, country }) => {
           <Down>
             <div className="both">
               <div>
-                <button type="submit" className="btn1">
-                  Save
-                </button>
+                <motion.button
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                  type="submit"
+                  className="btn1"
+                  onClick={inputhandler}
+                >
+                  Update
+                </motion.button>
               </div>
-              <div>
-                <button className="btn2">Cancel</button>
-              </div>
+              <motion.button
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                className="btn2"
+                onClick={CancelHandler}
+              >
+                Cancel
+              </motion.button>
             </div>
           </Down>
         </form>
@@ -390,6 +475,7 @@ const ItemMaking1 = styled.div`
   display: flex;
   flex-direction: column;
   gap: 4rem;
+  background: white;
 `;
 const Grider = styled.div`
   display: grid !important;
@@ -530,8 +616,8 @@ const Down = styled.div`
     color: #ffffff;
   }
   .btn2 {
-    background: #f5f5f5;
-    color: #212529;
+    background: #2fa3e6;
+    color: #ffffff;
   }
 `;
-export default AddCustomer;
+export default CustomerUpdate;

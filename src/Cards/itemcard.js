@@ -1,13 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import image from "../img/girl.jpg";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { popup } from "../animations";
-const itemcard = ({ n }) => {
+const ItemCard = ({ n }) => {
   const loadDetailHandler = () => {
     document.body.style.overflow = "hidden";
   };
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+  }, []);
   return (
     <ItemStyle>
       <Link to={`/displayItems/${n._id}`}>
@@ -88,4 +91,4 @@ const Card = styled(motion.div)`
     gap: 10px;
   }
 `;
-export default itemcard;
+export default ItemCard;

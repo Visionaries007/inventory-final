@@ -38,282 +38,6 @@ const AddCustomer = ({
   setshipphone,
   setshipfax,
 }) => {
-  const country = [
-    "Greenland",
-    "Niger",
-    "Sierra-Leone",
-    "Montserrat",
-    "Burundi",
-    "Grenada",
-    "Channel-Islands",
-    "Micronesia",
-    "Macao",
-    "Anguilla",
-    "Vatican-City",
-    "Iceland",
-    "New-Caledonia",
-    "Antigua-and-Barbuda",
-    "San-Marino",
-    "Seychelles",
-    "Timor-Leste",
-    "St-Barth",
-    "Bhutan",
-    "Benin",
-    "Gambia",
-    "Monaco",
-    "Turks-and-Caicos",
-    "Saint-Martin",
-    "Caribbean-Netherlands",
-    "Faeroe-Islands",
-    "Cayman-Islands",
-    "Comoros",
-    "Bermuda",
-    "Samoa",
-    "Marshall-Islands",
-    "CAR",
-    "Saint-Lucia",
-    "Sint-Maarten",
-    "Nicaragua",
-    "Tanzania",
-    "Liberia",
-    "Chad",
-    "Guinea-Bissau",
-    "Eritrea",
-    "Liechtenstein",
-    "Vanuatu",
-    "Sao-Tome-and-Principe",
-    "St-Vincent-Grenadines",
-    "Isle-of-Man",
-    "Brunei",
-    "New-Zealand",
-    "China",
-    "Diamond-Princess",
-    "MS-Zaandam",
-    "Saint-Kitts-and-Nevis",
-    "Yemen",
-    "Equatorial-Guinea",
-    "Barbados",
-    "Solomon-Islands",
-    "Western-Sahara",
-    "British-Virgin-Islands",
-    "Taiwan",
-    "Gibraltar",
-    "Mauritius",
-    "Fiji",
-    "Falkland-Islands",
-    "Saint-Pierre-Miquelon",
-    "Laos",
-    "Wallis-and-Futuna",
-    "Dominica",
-    "Vietnam",
-    "R&eacute;union",
-    "Myanmar",
-    "Slovenia",
-    "Guadeloupe",
-    "Hong-Kong",
-    "Togo",
-    "Oman",
-    "Afghanistan",
-    "Congo",
-    "Latvia",
-    "Tajikistan",
-    "Ghana",
-    "Cuba",
-    "Senegal",
-    "Madagascar",
-    "Somalia",
-    "Malta",
-    "Kenya",
-    "North-Macedonia",
-    "Libya",
-    "Sri-Lanka",
-    "Montenegro",
-    "Finland",
-    "Lesotho",
-    "Guatemala",
-    "Jamaica",
-    "Bahrain",
-    "Algeria",
-    "Luxembourg",
-    "Cyprus",
-    "DRC",
-    "Botswana",
-    "Uganda",
-    "Bosnia-and-Herzegovina",
-    "Maldives",
-    "Andorra",
-    "Gabon",
-    "Guinea",
-    "Syria",
-    "Cabo-Verde",
-    "Mayotte",
-    "French-Polynesia",
-    "French-Guiana",
-    "Mali",
-    "Burkina-Faso",
-    "Belize",
-    "Martinique",
-    "Zambia",
-    "Aruba",
-    "Bahamas",
-    "Albania",
-    "Namibia",
-    "Suriname",
-    "Norway",
-    "Eswatini",
-    "Trinidad-and-Tobago",
-    "Costa-Rica",
-    "Haiti",
-    "Mozambique",
-    "Rwanda",
-    "Malawi",
-    "Ireland",
-    "Venezuela",
-    "Uruguay",
-    "S-Korea",
-    "Australia",
-    "Zimbabwe",
-    "Mongolia",
-    "Honduras",
-    "Djibouti",
-    "Thailand",
-    "Cameroon",
-    "Guyana",
-    "Cura&ccedil;ao",
-    "Uzbekistan",
-    "Kyrgyzstan",
-    "El-Salvador",
-    "Qatar",
-    "Angola",
-    "Nigeria",
-    "Armenia",
-    "Cambodia",
-    "Egypt",
-    "Lithuania",
-    "Ivory-Coast",
-    "Papua-New-Guinea",
-    "Sudan",
-    "Estonia",
-    "Mauritania",
-    "Singapore",
-    "South-Sudan",
-    "Poland",
-    "Croatia",
-    "Brazil",
-    "Turkey",
-    "Austria",
-    "Argentina",
-    "Colombia",
-    "Iran",
-    "Malaysia",
-    "South-Africa",
-    "Chile",
-    "UK",
-    "Jordan",
-    "Romania",
-    "Lebanon",
-    "Bulgaria",
-    "Indonesia",
-    "Ecuador",
-    "Bangladesh",
-    "Greece",
-    "Japan",
-    "Italy",
-    "UAE",
-    "Tunisia",
-    "Switzerland",
-    "Dominican-Republic",
-    "Kuwait",
-    "Paraguay",
-    "Belarus",
-    "Nepal",
-    "Sweden",
-    "Palestine",
-    "Moldova",
-    "Denmark",
-    "Azerbaijan",
-    "Morocco",
-    "Philippines",
-    "Serbia",
-    "Spain",
-    "Netherlands",
-    "Iraq",
-    "Saudi-Arabia",
-    "Portugal",
-    "Africa",
-    "North-America",
-    "Asia",
-    "Europe",
-    "All",
-    "USA",
-    "India",
-    "Peru",
-    "Ethiopia",
-    "Panama",
-    "Canada",
-    "South-America",
-    "France",
-    "Mexico",
-    "Israel",
-    "Bolivia",
-    "Germany",
-    "Pakistan",
-    "Kazakhstan",
-    "Belgium",
-    "Ukraine",
-    "Czechia",
-    "Hungary",
-    "Georgia",
-    "Oceania",
-    "Slovakia",
-    "Russia",
-    "MS-Zaandam-",
-    "Diamond-Princess-",
-    "US-Virgin-Islands",
-    "Puerto-Rico",
-    "Guam",
-  ];
-  const states = [
-    "Andaman and Nicobar Islands",
-    "Andhra Pradesh",
-    "Arunachal Pradesh",
-    "Assam",
-    "Bihar",
-    "Chandigarh",
-    "Chhattisgarh",
-    "Dadra and Nagar Haveli and Daman and Diu",
-    "Daman and Diu",
-    "Delhi",
-    "Goa",
-    "Gujarat",
-    "Haryana",
-    "Himachal Pradesh",
-    "Jammu and Kashmir",
-    "Jharkhand",
-    "Karnataka",
-    "Kerala",
-    "Ladakh",
-    "Lakshadweep",
-    "Madhya Pradesh",
-    "Maharashtra",
-    "Manipur",
-    "Meghalaya",
-    "Mizoram",
-    "Nagaland",
-    "Odisha",
-    "Puducherry",
-    "Punjab",
-    "Rajasthan",
-    "Sikkim",
-    "Tamil Nadu",
-    "Telangana",
-    "Tripura",
-    "Uttar Pradesh",
-    "West Bengal",
-  ];
-
-  const countrylist = country.map((n) => <option key={n}>{n}</option>);
-  const statelist = states.map((n) => <option key={n}>{n}</option>);
   const biladdattensionHandler = (e) => {
     setbiladdattension(e.target.value);
   };
@@ -393,17 +117,12 @@ const AddCustomer = ({
           <label htmlFor="country">Country</label>
         </div>
         <div className="d4">
-          <select
+          <input
             onChange={bilcountryHandler}
             id="country"
             placeholder="Country"
             value={bilcountry}
-          >
-            <option key={1} value="1" disabled>
-              Select
-            </option>
-            {countrylist}
-          </select>
+          ></input>
         </div>
 
         <div className="d5">
@@ -448,12 +167,7 @@ const AddCustomer = ({
           <label htmlFor="state">State</label>
         </div>
         <div className="d11">
-          <select onChange={bilstateHandler} id="state" value={bilstate}>
-            <option key={1} value="1" disabled>
-              Select
-            </option>
-            {statelist}
-          </select>
+          <input onChange={bilstateHandler} id="state" value={bilstate}></input>
         </div>
 
         <div className="d12">
@@ -508,16 +222,11 @@ const AddCustomer = ({
           <label htmlFor="country1">Country</label>
         </div>
         <div className="d21">
-          <select
+          <input
             onChange={shipcountryHandler}
             id="country1"
             value={shipcountry}
-          >
-            <option key={1} value="1" disabled>
-              Select
-            </option>
-            {countrylist}
-          </select>
+          ></input>
         </div>
 
         <div className="d22">
@@ -562,12 +271,11 @@ const AddCustomer = ({
           <label htmlFor="state1">State</label>
         </div>
         <div className="d28">
-          <select onChange={shipstateHandler} id="state1" value={shipstate}>
-            <option key={1} value="1" disabled>
-              Select
-            </option>
-            {statelist}
-          </select>
+          <input
+            onChange={shipstateHandler}
+            id="state1"
+            value={shipstate}
+          ></input>
         </div>
 
         <div className="d29">
@@ -633,8 +341,8 @@ const Grider = styled.div`
   }
   .d4 {
     grid-area: d4;
-    select {
-      padding: 5px 30px 5px 8px;
+    input {
+      padding: 5px 8px;
     }
   }
   .d5 {
@@ -666,9 +374,8 @@ const Grider = styled.div`
   }
   .d11 {
     grid-area: d11;
-    select {
-      padding: 5px 30px 5px 8px;
-      width: 53%;
+    input {
+      padding: 5px 8px;
     }
   }
   .d12 {
@@ -712,8 +419,8 @@ const Grider = styled.div`
   }
   .d21 {
     grid-area: d21;
-    select {
-      padding: 5px 30px 5px 8px;
+    input {
+      padding: 5px 8px;
     }
   }
   .d22 {
@@ -745,9 +452,8 @@ const Grider = styled.div`
   }
   .d28 {
     grid-area: d28;
-    select {
-      padding: 5px 30px 5px 8px;
-      width: 53%;
+    input {
+      padding: 5px 8px;
     }
   }
   .d29 {
