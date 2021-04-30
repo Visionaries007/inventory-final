@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import Invoicedisplaytable from "../Cards/invoicedisplaytable";
@@ -6,7 +6,9 @@ import { useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 import { fadeIn } from "../animations";
 import InvoiceDetail from "../Detail/invoicedetail";
-const DisplayInvoice = ({ invoice, setinvoice }) => {
+const DisplayInvoice = ({ invoice, setinvoice, customer, item }) => {
+  const [update, setupdate] = useState(false);
+
   //get the current location
   const location = useLocation();
   const pathId = location.pathname.split("/")[2];
@@ -56,15 +58,19 @@ const DisplayInvoice = ({ invoice, setinvoice }) => {
             </tr>
             {invoice.invoice !== undefined &&
               invoice.invoice.map((n) => (
-                <Invoicedisplaytable n={n} key={n._id} />
+                <Invoicedisplaytable pathId={pathId} n={n} key={n._id} />
               ))}
           </tbody>
         </table>
         {pathId && (
           <InvoiceDetail
             pathId={pathId}
+            item={item}
             invoice={invoice}
+            setupdate={setupdate}
+            update={update}
             setinvoice={setinvoice}
+            customer={customer}
           />
         )}
       </Data>

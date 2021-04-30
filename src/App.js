@@ -119,7 +119,12 @@ function App() {
               />
             </Route>
             <Route path="/displayinvoice">
-              <DisplayInvoice invoice={invoice} setinvoice={setinvoice} />
+              <DisplayInvoice
+                customer={customer}
+                item={item}
+                invoice={invoice}
+                setinvoice={setinvoice}
+              />
             </Route>
             <Route path="/addpaymentrecieved">
               <AddPaymentRecieved />
