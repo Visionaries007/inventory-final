@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import Customertable from "../Cards/customertable";
 import CustomerDetail from "../Detail/customerdetail";
@@ -6,10 +6,10 @@ import { useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 import { fadeIn, popup } from "../animations";
 const DisplayCustomer = ({ customer, setcustomer }) => {
+  const [update, setupdate] = useState(false);
   //get the current location
   const location = useLocation();
   const pathId = location.pathname.split("/")[2];
-  console.log(pathId);
   return (
     <div>
       <Total variants={fadeIn} initial="hidden" animate="show">
@@ -48,7 +48,15 @@ const DisplayCustomer = ({ customer, setcustomer }) => {
               customer.customer.map((n) => <Customertable n={n} key={n._id} />)}
           </tbody>
         </table>
-        {pathId && <CustomerDetail pathId={pathId} />}
+        {pathId && (
+          <CustomerDetail
+            pathId={pathId}
+            setcustomer={setcustomer}
+            customer={customer}
+            setupdate={setupdate}
+            update={update}
+          />
+        )}
       </Data>
     </div>
   );

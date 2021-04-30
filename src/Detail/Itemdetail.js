@@ -3,8 +3,7 @@ import styled from "styled-components";
 import { motion } from "framer-motion";
 import image from "../img/girl.jpg";
 import axios from "axios";
-import { Link } from "react-router-dom";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import ItemUpdate from "../Update/itemupdate";
 const ItemDetail = ({ pathId, item, setitem, setupdate, update }) => {
   const history = useHistory();
@@ -13,6 +12,7 @@ const ItemDetail = ({ pathId, item, setitem, setupdate, update }) => {
     const element = e.target;
     if (element.classList.contains("shadow")) {
       document.body.style.overflow = "auto";
+      setupdate(false);
       history.push("/displayItems");
     }
   };
@@ -42,7 +42,7 @@ const ItemDetail = ({ pathId, item, setitem, setupdate, update }) => {
   }, []);
   console.log(n);
   const Updatehandler = () => {
-    setupdate(true);
+    setupdate(!update);
   };
   if (n.n !== undefined) {
     return (

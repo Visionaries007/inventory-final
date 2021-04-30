@@ -69,4 +69,49 @@ router.delete("/:postId", async (req, res) => {
     res.json({ message: err });
   }
 });
+//Update a Post
+router.patch("/:postId", async (req, res) => {
+  try {
+    const updateItem = await Customer.updateOne(
+      { _id: req.params.postId },
+      {
+        $set: {
+          type: req.body.type,
+          salu: req.body.salu,
+          firstname: req.body.firstname,
+          lastname: req.body.lastname,
+          companyname: req.body.companyname,
+          customerdisplayname: req.body.customerdisplayname,
+          customeremail: req.body.customeremail,
+          cusworkphone: req.body.cusworkphone,
+          cusmobilephone: req.body.cusmobilephone,
+          website: req.body.website,
+          biladdattension: req.body.biladdattension,
+          bilcountry: req.body.bilcountry,
+          biladdrestreet1: req.body.biladdrestreet1,
+          biladdrestreet2: req.body.biladdrestreet2,
+          biladcity: req.body.biladcity,
+          bilstate: req.body.bilstates,
+          bilzipcode: req.body.bilzipcode,
+          bilphone: req.body.bilphone,
+          bilfax: req.body.bilfax,
+          shipaddattension: req.body.shipaddattension,
+          shipcountry: req.body.shipcountry,
+          shipaddrestreet1: req.body.shipaddrestreet1,
+          shipaddrestreet2: req.body.shipaddrestreet2,
+          shipadcity: req.body.shipadcity,
+          shipstate: req.body.shipstate,
+          shipzipcode: req.body.shipzipcode,
+          shipphone: req.body.shipphone,
+          shipfax: req.body.shipfax,
+          reciveable: req.body.reciveable,
+          unusedcredit: req.body.unusedcredit,
+        },
+      }
+    );
+    res.json(updateItem);
+  } catch (err) {
+    res.json({ message: err });
+  }
+});
 module.exports = router;

@@ -4,7 +4,14 @@ import { motion } from "framer-motion";
 import image from "../img/girl.jpg";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
-const ItemDetail = ({ pathId, customer, setcustomer }) => {
+import CustomerUpdate from "../Update/CustomerUpdate";
+const CustomerDetail = ({
+  pathId,
+  customer,
+  setcustomer,
+  setupdate,
+  update,
+}) => {
   const history = useHistory();
   const exitDetailHandler = (e) => {
     const element = e.target;
@@ -39,9 +46,17 @@ const ItemDetail = ({ pathId, customer, setcustomer }) => {
       });
   }, []);
   console.log(n);
+  const Updatehandler = () => {
+    setupdate(!update);
+  };
   if (n.n !== undefined) {
     return (
       <CardShadow className="shadow" onClick={exitDetailHandler}>
+        <div className="upd">
+          {update && (
+            <CustomerUpdate pathId={pathId} n={n} setupdate={setupdate} />
+          )}
+        </div>
         <Detail layoutId={pathId}>
           <Grider>
             <Comb>
@@ -126,6 +141,7 @@ const ItemDetail = ({ pathId, customer, setcustomer }) => {
                   <motion.button
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.9 }}
+                    onClick={Updatehandler}
                     className="btn1"
                   >
                     Edit
@@ -630,4 +646,4 @@ const Detail = styled(motion.div)`
   }
 `;
 
-export default ItemDetail;
+export default CustomerDetail;
