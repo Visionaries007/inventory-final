@@ -18,6 +18,9 @@ const Readyitems = ({ itemdetail, quantity, decidequantity, rate, amount }) => {
       <td>
         <label>Rs. {amount}</label>
       </td>
+      <td className="del">
+        <button>Delete</button>
+      </td>
     </Trr>
   );
 };

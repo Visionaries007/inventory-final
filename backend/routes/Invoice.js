@@ -53,4 +53,34 @@ router.delete("/:postId", async (req, res) => {
     res.json({ message: err });
   }
 });
+//Update a Post
+router.patch("/:postId", async (req, res) => {
+  try {
+    const updateInvoice = await Invoice.updateOne(
+      { _id: req.params.postId },
+      {
+        $set: {
+          customername: req.body.customername,
+          itemcoll: req.body.itemcoll,
+          subtotal: req.body.subtotal,
+          discount: req.body.discount,
+          tax: req.body.tax,
+          total: req.body.total,
+          price: req.body.price,
+          invoicenumber: req.body.invoicenumber,
+          ordernumber: req.body.ordernumber,
+          invoicedate: req.body.invoicedate,
+          terms: req.body.terms,
+          duedate: req.body.duedate,
+          salesperson: req.body.salesperson,
+          status: req.body.status,
+          balancedue: req.body.balancedue,
+        },
+      }
+    );
+    res.json(updateInvoice);
+  } catch (err) {
+    res.json({ message: err });
+  }
+});
 module.exports = router;

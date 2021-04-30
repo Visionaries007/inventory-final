@@ -72,7 +72,7 @@ router.delete("/:postId", async (req, res) => {
 //Update a Post
 router.patch("/:postId", async (req, res) => {
   try {
-    const updateItem = await Customer.updateOne(
+    const updateCustomer = await Customer.updateOne(
       { _id: req.params.postId },
       {
         $set: {
@@ -109,7 +109,7 @@ router.patch("/:postId", async (req, res) => {
         },
       }
     );
-    res.json(updateItem);
+    res.json(updateCustomer);
   } catch (err) {
     res.json({ message: err });
   }

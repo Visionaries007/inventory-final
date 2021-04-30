@@ -5,13 +5,23 @@ import image from "../img/girl.jpg";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 import InvoiceDetailTable from "../Cards/invoicedetailtable";
-const InvoiceDetail = ({ pathId, invoice, setinvoice }) => {
+import InvoiceUpdate from "../Update/InvoiceUpdate";
+const InvoiceDetail = ({
+  pathId,
+  invoice,
+  setinvoice,
+  setupdate,
+  update,
+  customer,
+  item,
+}) => {
   const history = useHistory();
   console.log(typeof pathId);
   const exitDetailHandler = (e) => {
     const element = e.target;
     if (element.classList.contains("shadow")) {
       document.body.style.overflow = "auto";
+      setupdate(false);
       history.push("/displayinvoice");
     }
   };
@@ -41,9 +51,23 @@ const InvoiceDetail = ({ pathId, invoice, setinvoice }) => {
       });
   }, []);
   console.log(n);
+  const Updatehandler = () => {
+    setupdate(!update);
+  };
   if (n.n !== undefined) {
     return (
       <CardShadow className="shadow" onClick={exitDetailHandler}>
+        <div className="upd">
+          {update && (
+            <InvoiceUpdate
+              pathId={pathId}
+              n={n}
+              setupdate={setupdate}
+              customer={customer}
+              item={item}
+            />
+          )}
+        </div>
         <Detail layoutId={pathId}>
           <Grider>
             <UpGrid>
@@ -162,6 +186,7 @@ const InvoiceDetail = ({ pathId, invoice, setinvoice }) => {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.9 }}
                 className="btn1"
+                onClick={Updatehandler}
               >
                 Edit
               </motion.button>
