@@ -1,25 +1,45 @@
 import React from "react";
 import styled from "styled-components";
-const Readyitems = ({ itemdetail, quantity, decidequantity, rate, amount }) => {
+const Readyitems = ({
+  p,
+  setitemcoll,
+  itemcoll,
+  n,
+  price,
+  setprice,
+  setsubtotal,
+  tax,
+  discount,
+}) => {
+  const deletehandler = (e) => {
+    e.preventDefault();
+    setprice(price - p.amount);
+    setsubtotal(
+      parseInt(price - p.amount) +
+        parseInt((tax * (price - p.amount)) / 100) -
+        parseInt(discount)
+    );
+    setitemcoll(itemcoll.filter((state) => state._id !== p._id));
+  };
   return (
     <Trr>
       <td className="det">
-        <label>{itemdetail}</label>
+        <label>{p.itemdetail}</label>
       </td>
       <td>
-        <label>{quantity}</label>
+        <label>{p.quantity}</label>
       </td>
       <td>
-        <label>{decidequantity}</label>
+        <label>{p.decidequantity}</label>
       </td>
       <td>
-        <label>{rate}</label>
+        <label>{p.rate}</label>
       </td>
       <td>
-        <label>Rs. {amount}</label>
+        <label>Rs. {p.amount}</label>
       </td>
       <td className="del">
-        <button>Delete</button>
+        <button onClick={deletehandler}>Delete</button>
       </td>
     </Trr>
   );
