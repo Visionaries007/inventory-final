@@ -182,7 +182,7 @@ const InvoiceUpdate = ({
   return (
     <ItemMaking1>
       <Heading12>
-        <h3>New Invoice</h3>
+        <h3>Update Invoice</h3>
         <span onClick={CancelHandler}>
           <img src={close} alt="" />
         </span>
@@ -288,18 +288,22 @@ const InvoiceUpdate = ({
                       <th className="th3">Quantity</th>
                       <th className="th4">Rate</th>
                       <th className="th5">Amount</th>
-                      <th className="th6">Delete</th>
+                      {itemcoll.length >= 1 && <th className="th6">Delete</th>}
                     </tr>
                   </thead>
                   <tbody>
-                    {itemcoll.map((n) => (
+                    {itemcoll.map((p) => (
                       <ReadyItem
-                        amount={n.amount}
-                        itemdetail={n.itemdetail}
-                        quantity={n.quantity}
-                        rate={n.rate}
-                        price={n.price}
-                        decidequantity={n.decidequantity}
+                        p={p}
+                        n={n}
+                        setitemcoll={setitemcoll}
+                        itemcoll={itemcoll}
+                        key={p._id}
+                        price={price}
+                        setprice={setprice}
+                        setsubtotal={setsubtotal}
+                        tax={tax}
+                        discount={discount}
                       />
                     ))}
                     <Invoicetable

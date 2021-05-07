@@ -3,7 +3,7 @@ import close from "../img/close.svg";
 import styled from "styled-components";
 import Invoicetable from "../Cards/invoiceitemtable";
 import InvoiceTotal from "../Cards/invoicetotal";
-import ReadyItem from "../Cards/readyitems";
+import InvoiceReady from "../Cards/InvoiceReady";
 import axios from "axios";
 
 import { useHistory } from "react-router-dom";
@@ -253,13 +253,15 @@ const Invoice = ({ customer, item, invoice, setinvoice }) => {
                   </thead>
                   <tbody>
                     {itemcoll.map((n) => (
-                      <ReadyItem
+                      <InvoiceReady
                         amount={n.amount}
                         itemdetail={n.itemdetail}
                         quantity={n.quantity}
                         rate={n.rate}
                         price={n.price}
                         decidequantity={n.decidequantity}
+                        setitemcoll={setitemcoll}
+                        itemcoll={itemcoll}
                       />
                     ))}
                     <Invoicetable
