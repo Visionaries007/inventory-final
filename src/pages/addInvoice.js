@@ -5,6 +5,7 @@ import Invoicetable from "../Cards/invoiceitemtable";
 import InvoiceTotal from "../Cards/invoicetotal";
 import InvoiceReady from "../Cards/InvoiceReady";
 import axios from "axios";
+import { v4 as uuidv4 } from "uuid";
 
 import { useHistory } from "react-router-dom";
 const Invoice = ({ customer, item, invoice, setinvoice }) => {
@@ -79,6 +80,7 @@ const Invoice = ({ customer, item, invoice, setinvoice }) => {
           rate,
           amount,
           decidequantity,
+          key: uuidv4(),
         },
       ]);
       setprice(parseInt(price) + parseInt(amount));
@@ -134,7 +136,6 @@ const Invoice = ({ customer, item, invoice, setinvoice }) => {
     setsalesperson("");
     setstatus("");
     setbalancedue("");
-
     history.push("/displayinvoice");
     window.location.reload(false);
   };
@@ -262,6 +263,7 @@ const Invoice = ({ customer, item, invoice, setinvoice }) => {
                         decidequantity={n.decidequantity}
                         setitemcoll={setitemcoll}
                         itemcoll={itemcoll}
+                        key={n._id}
                       />
                     ))}
                     <Invoicetable
