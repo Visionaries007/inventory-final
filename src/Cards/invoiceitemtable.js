@@ -44,7 +44,6 @@ const Invoiceitemtable = ({
           required
           id="detail"
           onChange={itemdetailhandler}
-          value={itemdetail}
           defaultValue={1}
         >
           <option key={1} value="1" disabled>
