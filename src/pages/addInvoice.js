@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import close from "../img/close.svg";
 import styled from "styled-components";
 import Invoicetable from "../Cards/invoiceitemtable";
@@ -69,6 +69,7 @@ const Invoice = ({ customer, item, invoice, setinvoice }) => {
   const salespersonhanlder = (e) => {
     setsalesperson(e.target.value);
   };
+  const [iden, setiden] = useState("hello");
   const newitembuthandler = (e) => {
     e.preventDefault();
     if (decidequantity <= quantity && decidequantity > 0) {
@@ -80,6 +81,7 @@ const Invoice = ({ customer, item, invoice, setinvoice }) => {
           rate,
           amount,
           decidequantity,
+          iden,
           key: uuidv4(),
         },
       ]);
@@ -96,6 +98,7 @@ const Invoice = ({ customer, item, invoice, setinvoice }) => {
     setdecidequantity(0);
     setrate(0);
     setamount(0);
+    setiden("");
   };
   const inputhandler = (e) => {
     e.preventDefault();
@@ -117,10 +120,20 @@ const Invoice = ({ customer, item, invoice, setinvoice }) => {
       balancedue,
     };
     console.log("hey bhade ka form submited");
-
     axios
-      .post("http://localhost:5000/invoices/add", invoicestruct)
-      .then((res) => console.log(res.data));
+      .all([
+        axios.put(`http://localhost:5000/items/609522d9a0d95052d476a0a2`, {
+          quantity: "5000",
+        }),
+        axios.post("http://localhost:5000/invoices/add", invoicestruct),
+      ])
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log({ error });
+      });
+
     setcustomername("");
     setitemcoll([]);
     setsubtotal("");
@@ -136,8 +149,6 @@ const Invoice = ({ customer, item, invoice, setinvoice }) => {
     setsalesperson("");
     setstatus("");
     setbalancedue("");
-    history.push("/displayinvoice");
-    window.location.reload(false);
   };
   return (
     <ItemMaking1>
@@ -263,7 +274,7 @@ const Invoice = ({ customer, item, invoice, setinvoice }) => {
                         decidequantity={n.decidequantity}
                         setitemcoll={setitemcoll}
                         itemcoll={itemcoll}
-                        key={n._id}
+                        key={n.iden}
                       />
                     ))}
                     <Invoicetable
@@ -280,6 +291,7 @@ const Invoice = ({ customer, item, invoice, setinvoice }) => {
                       setprice={setprice}
                       decidequantity={decidequantity}
                       setdecidequantity={setdecidequantity}
+                      setiden={setiden}
                     />
                   </tbody>
                 </table>

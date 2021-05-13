@@ -102,4 +102,12 @@ router.patch("/:postId", async (req, res) => {
     res.json({ message: err });
   }
 });
+
+router.put("/:postId", function (req, res, next) {
+  Item.findByIdAndUpdate({ _id: req.params.id }, req.body).then(function () {
+    Item.findOne({ _id: req.params.id }).then(function (item) {
+      res.send(item);
+    });
+  });
+});
 module.exports = router;

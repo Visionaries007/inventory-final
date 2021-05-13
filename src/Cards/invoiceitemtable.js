@@ -13,6 +13,7 @@ const Invoiceitemtable = ({
   price,
   decidequantity,
   setdecidequantity,
+  setiden,
 }) => {
   const items = item.item;
 
@@ -25,6 +26,7 @@ const Invoiceitemtable = ({
     setquantity(
       parseInt(item.item[e.target.options.selectedIndex - 1].quantity)
     );
+    setiden(item.item[e.target.options.selectedIndex - 1]._id);
   };
   const decidequantityhandler = (e) => {
     setdecidequantity(e.target.value);
