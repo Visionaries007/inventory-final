@@ -40,7 +40,6 @@ const ItemDetail = ({ pathId, item, setitem, setupdate, update }) => {
         console.log({ error });
       });
   }, []);
-  console.log(n);
   const Updatehandler = () => {
     setupdate(!update);
   };
