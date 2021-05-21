@@ -5,6 +5,7 @@ import Invoicetable from "../Cards/invoiceitemtable";
 import InvoiceTotal from "../Cards/invoicetotal";
 import ReadyItem from "../Cards/readyitems";
 import axios from "axios";
+import { v4 as uuidv4 } from "uuid";
 import { motion } from "framer-motion";
 import { useHistory } from "react-router-dom";
 const InvoiceUpdate = ({
@@ -15,6 +16,7 @@ const InvoiceUpdate = ({
   n,
   pathId,
   setupdate,
+  setitem,
 }) => {
   const history = useHistory();
   const termsarr = [
@@ -28,7 +30,7 @@ const InvoiceUpdate = ({
     "Custom",
   ];
   const cust = customer.customer;
-
+  const [itemn, setitemn] = useState("");
   const [status, setstatus] = useState("Confirmed");
   const [balancedue, setbalancedue] = useState("0");
 
@@ -101,9 +103,17 @@ const InvoiceUpdate = ({
   const salespersonhanlder = (e) => {
     setsalesperson(e.target.value);
   };
+  const [iden, setiden] = useState("hello");
   const newitembuthandler = (e) => {
     e.preventDefault();
-    if (decidequantity <= quantity && decidequantity > 0) {
+    let flag = 0;
+    for (let i = 0; i < itemcoll.length; i++) {
+      if (itemcoll[i].iden === iden) {
+        flag = 1;
+        break;
+      }
+    }
+    if (decidequantity <= quantity && decidequantity > 0 && flag === 0) {
       setitemcoll([
         ...itemcoll,
         {
@@ -112,12 +122,17 @@ const InvoiceUpdate = ({
           rate,
           amount,
           decidequantity,
+          iden,
+          key: uuidv4(),
+          itemn,
         },
       ]);
       setprice(parseInt(price) + parseInt(amount));
       setsubtotal(parseInt(price) + parseInt(amount));
     } else {
-      if (parseInt(decidequantity) < 0) alert("Quantity Cannot Be Negative");
+      if (flag === 1) alert("Same Item Cannot Appear Twice");
+      else if (parseInt(decidequantity) < 0)
+        alert("Quantity Cannot Be Negative");
       else if (parseInt(decidequantity) === 0) alert("Quantity Cannot Be Zero");
       else alert("Quantity is More Than Available");
     }
@@ -127,6 +142,7 @@ const InvoiceUpdate = ({
     setdecidequantity(0);
     setrate(0);
     setamount(0);
+    setiden("");
   };
   const inputhandler = (e) => {
     e.preventDefault();
@@ -147,6 +163,7 @@ const InvoiceUpdate = ({
       status,
       balancedue,
     };
+    console.log("hey bhade ka form submited");
 
     axios
       .patch(`http://localhost:5000/invoices/${pathId}`, invoicestruct)
@@ -156,6 +173,59 @@ const InvoiceUpdate = ({
       .catch((error) => {
         console.log({ error });
       });
+    for (let i = 0; i < itemcoll.length; i++) {
+      if (
+        parseInt(itemcoll[i].itemn.quantity) -
+          parseInt(itemcoll[i].decidequantity) ===
+        parseInt(0)
+      ) {
+        axios
+          .delete(`http://localhost:5000/items/${itemcoll[i].iden}`)
+          .then((response) => {
+            setitem(item.filter((t) => t._id !== itemcoll[i].iden));
+          })
+          .catch((error) => {
+            console.log({ error });
+          });
+      } else {
+        axios
+          .put(`http://localhost:5000/items/${itemcoll[i].iden}`, {
+            type: itemcoll[i].itemn.type,
+            name: itemcoll[i].itemn.name,
+            sku: itemcoll[i].itemn.sku,
+            quantity:
+              parseInt(itemcoll[i].itemn.quantity) -
+              parseInt(itemcoll[i].decidequantity),
+            unit: itemcoll[i].itemn.unit,
+            returnable: itemcoll[i].itemn.returnable,
+            dimension1: itemcoll[i].itemn.dimension1,
+            dimension2: itemcoll[i].itemn.dimension2,
+            dimension3: itemcoll[i].itemn.dimension3,
+            manufacturer: itemcoll[i].itemn.manufacturer,
+            upc: itemcoll[i].itemn.upc,
+            ean: itemcoll[i].itemn.ean,
+            weight: itemcoll[i].itemn.weight,
+            brand: itemcoll[i].itemn.brand,
+            mpn: itemcoll[i].itemn.mpn,
+            isbn: itemcoll[i].itemn.isbn,
+            salesprice: itemcoll[i].itemn.salesprice,
+            purchaseInfo: itemcoll[i].itemn.purchaseInfo,
+            sellingprice: itemcoll[i].itemn.sellingprice,
+            spaccount: itemcoll[i].itemn.spaccount,
+            spdescription: itemcoll[i].itemn.spdescription,
+            costprice: itemcoll[i].itemn.costprice,
+            cpaccount: itemcoll[i].itemn.cpaccount,
+            cpdescription: itemcoll[i].itemn.cpdescription,
+          })
+
+          .then((response) => {
+            console.log(response.data);
+          })
+          .catch((error) => {
+            console.log({ error });
+          });
+      }
+    }
 
     setcustomername("");
     setitemcoll([]);
@@ -172,7 +242,6 @@ const InvoiceUpdate = ({
     setsalesperson("");
     setstatus("");
     setbalancedue("");
-
     history.push("/displayinvoice");
     window.location.reload(false);
   };
@@ -304,6 +373,8 @@ const InvoiceUpdate = ({
                         setsubtotal={setsubtotal}
                         tax={tax}
                         discount={discount}
+                        item={item}
+                        setitem={setitem}
                       />
                     ))}
                     <Invoicetable
@@ -320,6 +391,9 @@ const InvoiceUpdate = ({
                       setprice={setprice}
                       decidequantity={decidequantity}
                       setdecidequantity={setdecidequantity}
+                      setiden={setiden}
+                      itemn={itemn}
+                      setitemn={setitemn}
                     />
                   </tbody>
                 </table>

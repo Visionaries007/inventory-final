@@ -14,6 +14,7 @@ const Invoiceitemtable = ({
   decidequantity,
   setdecidequantity,
   setiden,
+  setitemn,
 }) => {
   const items = item.item;
 
@@ -22,6 +23,7 @@ const Invoiceitemtable = ({
     items.map((n) => <option key={n._id}>{n.name}</option>);
 
   const itemdetailhandler = (e) => {
+    setitemn(item.item[e.target.options.selectedIndex - 1]);
     setitemdetail(e.target.value);
     setquantity(
       parseInt(item.item[e.target.options.selectedIndex - 1].quantity)
@@ -32,12 +34,10 @@ const Invoiceitemtable = ({
     setdecidequantity(e.target.value);
     setamount(parseInt(parseInt(rate) * parseInt(e.target.value)));
   };
-
   const ratehandler = (e) => {
     setrate(e.target.value);
     setamount(parseInt(parseInt(e.target.value) * parseInt(decidequantity)));
   };
-
   return (
     <tr>
       <td className="det">

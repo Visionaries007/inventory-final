@@ -14,9 +14,9 @@ const InvoiceDetail = ({
   update,
   customer,
   item,
+  setitem,
 }) => {
   const history = useHistory();
-  console.log(typeof pathId);
   const exitDetailHandler = (e) => {
     const element = e.target;
     if (element.classList.contains("shadow")) {
@@ -29,7 +29,7 @@ const InvoiceDetail = ({
   const deleteItemHandler = () => {
     axios
       .delete(`http://localhost:5000/invoices/${pathId}`)
-      .then((response) => {
+      .then((res) => {
         setinvoice(invoice.filter((t) => t._id !== pathId));
       })
       .catch((error) => {
@@ -50,7 +50,6 @@ const InvoiceDetail = ({
         console.log({ error });
       });
   }, []);
-  console.log(n);
   const Updatehandler = () => {
     setupdate(!update);
   };
@@ -65,6 +64,7 @@ const InvoiceDetail = ({
               setupdate={setupdate}
               customer={customer}
               item={item}
+              setitem={setitem}
             />
           )}
         </div>

@@ -103,11 +103,42 @@ router.patch("/:postId", async (req, res) => {
   }
 });
 
-router.put("/:postId", function (req, res, next) {
-  Item.findByIdAndUpdate({ _id: req.params.id }, req.body).then(function () {
-    Item.findOne({ _id: req.params.id }).then(function (item) {
-      res.send(item);
-    });
-  });
+router.put("/:postId", async (req, res, next) => {
+  try {
+    const updateItem = await Item.findOneAndUpdate(
+      { _id: req.params.postId },
+      {
+        $set: {
+          type: req.body.type,
+          name: req.body.name,
+          sku: req.body.sku,
+          quantity: req.body.quantity,
+          unit: req.body.unit,
+          returnable: req.body.returnable,
+          dimension1: req.body.dimension1,
+          dimension2: req.body.dimension2,
+          dimension3: req.body.dimension3,
+          manufacturer: req.body.manufacturer,
+          upc: req.body.upc,
+          ean: req.body.ean,
+          weight: req.body.weight,
+          brand: req.body.brand,
+          mpn: req.body.mpn,
+          isbn: req.body.isbn,
+          salesprice: req.body.salesprice,
+          purchaseInfo: req.body.purchaseInfo,
+          sellingprice: req.body.sellingprice,
+          spaccount: req.body.spaccount,
+          spdescription: req.body.spdescription,
+          costprice: req.body.costprice,
+          cpaccount: req.body.cpaccount,
+          cpdescription: req.body.cpdescription,
+        },
+      }
+    );
+    res.json(updateItem);
+  } catch (err) {
+    res.json({ message: err });
+  }
 });
 module.exports = router;

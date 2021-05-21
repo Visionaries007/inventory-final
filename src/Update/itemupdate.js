@@ -6,9 +6,8 @@ import ItemsInfo from "../ItemsCollection/itemsinfo";
 import SalesPerInfo from "../ItemsCollection/salesperinfo";
 import NameItem from "../ItemsCollection/nameitem";
 import { motion } from "framer-motion";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 const ItemUpdate = ({ n, pathId, setupdate }) => {
-  console.log(pathId);
   const history = useHistory();
   const [type, settype] = useState(n.n.type === null ? "" : n.n.type);
   const [name, setname] = useState(n.n.name === null ? "" : n.n.name);

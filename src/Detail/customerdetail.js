@@ -45,7 +45,6 @@ const CustomerDetail = ({
         console.log({ error });
       });
   }, []);
-  console.log(n);
   const Updatehandler = () => {
     setupdate(!update);
   };
