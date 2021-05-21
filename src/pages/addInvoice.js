@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import close from "../img/close.svg";
 import styled from "styled-components";
 import Invoicetable from "../Cards/invoiceitemtable";
@@ -6,9 +6,9 @@ import InvoiceTotal from "../Cards/invoicetotal";
 import InvoiceReady from "../Cards/InvoiceReady";
 import axios from "axios";
 import { v4 as uuidv4 } from "uuid";
-
+import { motion } from "framer-motion";
 import { useHistory } from "react-router-dom";
-const Invoice = ({ customer, item, invoice, setinvoice }) => {
+const Invoice = ({ customer, item, invoice, setinvoice, setitem }) => {
   const history = useHistory();
   const termsarr = [
     "Net 15",
@@ -21,10 +21,9 @@ const Invoice = ({ customer, item, invoice, setinvoice }) => {
     "Custom",
   ];
   const cust = customer.customer;
-
+  const [itemn, setitemn] = useState("");
   const [status, setstatus] = useState("Confirmed");
   const [balancedue, setbalancedue] = useState("0");
-
   const [itemdetail, setitemdetail] = useState("1");
   const [quantity, setquantity] = useState(0);
   const [rate, setrate] = useState(0);
@@ -72,7 +71,14 @@ const Invoice = ({ customer, item, invoice, setinvoice }) => {
   const [iden, setiden] = useState("hello");
   const newitembuthandler = (e) => {
     e.preventDefault();
-    if (decidequantity <= quantity && decidequantity > 0) {
+    let flag = 0;
+    for (let i = 0; i < itemcoll.length; i++) {
+      if (itemcoll[i].iden === iden) {
+        flag = 1;
+        break;
+      }
+    }
+    if (decidequantity <= quantity && decidequantity > 0 && flag === 0) {
       setitemcoll([
         ...itemcoll,
         {
@@ -83,12 +89,15 @@ const Invoice = ({ customer, item, invoice, setinvoice }) => {
           decidequantity,
           iden,
           key: uuidv4(),
+          itemn,
         },
       ]);
       setprice(parseInt(price) + parseInt(amount));
       setsubtotal(parseInt(price) + parseInt(amount));
     } else {
-      if (parseInt(decidequantity) < 0) alert("Quantity Cannot Be Negative");
+      if (flag === 1) alert("Same Item Cannot Appear Twice");
+      else if (parseInt(decidequantity) < 0)
+        alert("Quantity Cannot Be Negative");
       else if (parseInt(decidequantity) === 0) alert("Quantity Cannot Be Zero");
       else alert("Quantity is More Than Available");
     }
@@ -120,19 +129,68 @@ const Invoice = ({ customer, item, invoice, setinvoice }) => {
       balancedue,
     };
     console.log("hey bhade ka form submited");
+
     axios
-      .all([
-        axios.put(`http://localhost:5000/items/609522d9a0d95052d476a0a2`, {
-          quantity: "5000",
-        }),
-        axios.post("http://localhost:5000/invoices/add", invoicestruct),
-      ])
+      .post("http://localhost:5000/invoices/add", invoicestruct)
       .then((response) => {
         console.log(response.data);
       })
       .catch((error) => {
         console.log({ error });
       });
+    for (let i = 0; i < itemcoll.length; i++) {
+      if (
+        parseInt(itemcoll[i].itemn.quantity) -
+          parseInt(itemcoll[i].decidequantity) ===
+        parseInt(0)
+      ) {
+        axios
+          .delete(`http://localhost:5000/items/${itemcoll[i].iden}`)
+          .then((response) => {
+            setitem(item.filter((t) => t._id !== itemcoll[i].iden));
+          })
+          .catch((error) => {
+            console.log({ error });
+          });
+      } else {
+        axios
+          .put(`http://localhost:5000/items/${itemcoll[i].iden}`, {
+            type: itemcoll[i].itemn.type,
+            name: itemcoll[i].itemn.name,
+            sku: itemcoll[i].itemn.sku,
+            quantity:
+              parseInt(itemcoll[i].itemn.quantity) -
+              parseInt(itemcoll[i].decidequantity),
+            unit: itemcoll[i].itemn.unit,
+            returnable: itemcoll[i].itemn.returnable,
+            dimension1: itemcoll[i].itemn.dimension1,
+            dimension2: itemcoll[i].itemn.dimension2,
+            dimension3: itemcoll[i].itemn.dimension3,
+            manufacturer: itemcoll[i].itemn.manufacturer,
+            upc: itemcoll[i].itemn.upc,
+            ean: itemcoll[i].itemn.ean,
+            weight: itemcoll[i].itemn.weight,
+            brand: itemcoll[i].itemn.brand,
+            mpn: itemcoll[i].itemn.mpn,
+            isbn: itemcoll[i].itemn.isbn,
+            salesprice: itemcoll[i].itemn.salesprice,
+            purchaseInfo: itemcoll[i].itemn.purchaseInfo,
+            sellingprice: itemcoll[i].itemn.sellingprice,
+            spaccount: itemcoll[i].itemn.spaccount,
+            spdescription: itemcoll[i].itemn.spdescription,
+            costprice: itemcoll[i].itemn.costprice,
+            cpaccount: itemcoll[i].itemn.cpaccount,
+            cpdescription: itemcoll[i].itemn.cpdescription,
+          })
+
+          .then((response) => {
+            console.log(response.data);
+          })
+          .catch((error) => {
+            console.log({ error });
+          });
+      }
+    }
 
     setcustomername("");
     setitemcoll([]);
@@ -149,6 +207,11 @@ const Invoice = ({ customer, item, invoice, setinvoice }) => {
     setsalesperson("");
     setstatus("");
     setbalancedue("");
+    history.push("/displayinvoice");
+    window.location.reload(false);
+  };
+  const CancelHandler = () => {
+    history.push("/displayinvoice");
   };
   return (
     <ItemMaking1>
@@ -261,20 +324,21 @@ const Invoice = ({ customer, item, invoice, setinvoice }) => {
                       <th className="th3">Quantity</th>
                       <th className="th4">Rate</th>
                       <th className="th5">Amount</th>
+                      {itemcoll.length >= 1 && <th className="th6">Delete</th>}
                     </tr>
                   </thead>
                   <tbody>
-                    {itemcoll.map((n) => (
+                    {itemcoll.map((p) => (
                       <InvoiceReady
-                        amount={n.amount}
-                        itemdetail={n.itemdetail}
-                        quantity={n.quantity}
-                        rate={n.rate}
-                        price={n.price}
-                        decidequantity={n.decidequantity}
+                        p={p}
                         setitemcoll={setitemcoll}
                         itemcoll={itemcoll}
-                        key={n.iden}
+                        key={p._id}
+                        price={price}
+                        setprice={setprice}
+                        setsubtotal={setsubtotal}
+                        tax={tax}
+                        discount={discount}
                       />
                     ))}
                     <Invoicetable
@@ -292,6 +356,8 @@ const Invoice = ({ customer, item, invoice, setinvoice }) => {
                       decidequantity={decidequantity}
                       setdecidequantity={setdecidequantity}
                       setiden={setiden}
+                      itemn={itemn}
+                      setitemn={setitemn}
                     />
                   </tbody>
                 </table>
@@ -318,13 +384,24 @@ const Invoice = ({ customer, item, invoice, setinvoice }) => {
           <Down>
             <div className="both">
               <div>
-                <button type="submit" className="btn1">
+                <motion.button
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                  type="submit"
+                  className="btn1"
+                  onClick={inputhandler}
+                >
                   Save
-                </button>
+                </motion.button>
               </div>
-              <div>
-                <button className="btn2">Cancel</button>
-              </div>
+              <motion.button
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                className="btn2"
+                onClick={CancelHandler}
+              >
+                Cancel
+              </motion.button>
             </div>
           </Down>
         </form>
@@ -365,6 +442,7 @@ const ItemMaking1 = styled.div`
   display: flex;
   flex-direction: column;
   gap: 4rem;
+  background: white;
 `;
 const AddItemBut = styled.div`
   button {
@@ -477,8 +555,8 @@ const Down = styled.div`
     color: #ffffff;
   }
   .btn2 {
-    background: #f5f5f5;
-    color: #212529;
+    background: #2fa3e6;
+    color: #ffffff;
   }
 `;
 const Table = styled.div`
@@ -497,7 +575,10 @@ const Table = styled.div`
     border: none;
     padding: 1rem 5rem;
   }
-
+  button {
+    padding: 1rem 2rem;
+    align-items: center;
+  }
   th,
   td {
     height: auto;
@@ -507,7 +588,17 @@ const Table = styled.div`
     word-wrap: break-word;
     border-collapse: collapse;
     border: 1px solid #bdc3c7;
+    padding: 2rem 1rem;
   }
+  .th1,
+  .th2,
+  .th3,
+  .th4,
+  .th5,
+  .th6 {
+    padding: 2rem 2rem;
+  }
+
   input {
     padding: 10px 8px;
     width: 15rem;

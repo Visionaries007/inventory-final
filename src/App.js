@@ -116,6 +116,7 @@ function App() {
                 item={item}
                 invoice={invoice}
                 setinvoice={setinvoice}
+                setitem={setitem}
               />
             </Route>
             <Route path="/displayinvoice">
@@ -124,6 +125,7 @@ function App() {
                 item={item}
                 invoice={invoice}
                 setinvoice={setinvoice}
+                setitem={setitem}
               />
             </Route>
             <Route path="/addpaymentrecieved">

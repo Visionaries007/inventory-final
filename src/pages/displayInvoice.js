@@ -6,13 +6,13 @@ import { useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 import { fadeIn } from "../animations";
 import InvoiceDetail from "../Detail/invoicedetail";
-const DisplayInvoice = ({ invoice, setinvoice, customer, item }) => {
+const DisplayInvoice = ({ invoice, setinvoice, customer, item, setitem }) => {
   const [update, setupdate] = useState(false);
 
   //get the current location
   const location = useLocation();
   const pathId = location.pathname.split("/")[2];
-  console.log(pathId);
+
   return (
     <div>
       <Total variants={fadeIn} initial="hidden" animate="show">
@@ -71,6 +71,7 @@ const DisplayInvoice = ({ invoice, setinvoice, customer, item }) => {
             update={update}
             setinvoice={setinvoice}
             customer={customer}
+            setitem={setitem}
           />
         )}
       </Data>
