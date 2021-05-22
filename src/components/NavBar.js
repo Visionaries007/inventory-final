@@ -8,12 +8,16 @@ import bell from "../img/bell-regular.svg";
 import settings from "../img/settings.svg";
 import question from "../img/question-circle-regular.svg";
 import me from "../img/me.svg";
+import { Link } from "react-router-dom";
 
 const NavBar = () => {
   return (
     <StyledNav>
       <div className="box1">
-        <h1>Inventory</h1>
+        <Link to="/">
+          {" "}
+          <h1>Inventory</h1>{" "}
+        </Link>
       </div>
       <div className="searchplusadd">
         <Image>
@@ -74,6 +78,13 @@ const StyledNav = styled.nav`
     padding: 0.5rem 0rem 0rem 1.5rem;
     h1 {
       font-size: 2rem;
+      color: black;
+    }
+    a {
+      color: black;
+      &:focus {
+        color: black;
+      }
     }
   }
   .searchplusadd {

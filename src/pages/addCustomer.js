@@ -11,26 +11,26 @@ const AddCustomer = ({ customer, setcustomer, country }) => {
   const [firstname, setfirstname] = useState("");
   const [lastname, setlastname] = useState("");
   const [companyname, setcompanyname] = useState("");
-  const [customerdisplayname, setcustomerdisplayname] = useState("1");
+  const [customerdisplayname, setcustomerdisplayname] = useState("");
   const [customeremail, setcustomeremail] = useState("");
   const [cusworkphone, setcusworkphone] = useState("");
   const [cusmobilephone, setcusmobilephone] = useState("");
   const [website, setwebsite] = useState("");
   const [biladdattension, setbiladdattension] = useState("");
-  const [bilcountry, setbilcountry] = useState("1");
+  const [bilcountry, setbilcountry] = useState("");
   const [biladdrestreet1, setbiladdrestreet1] = useState("");
   const [biladdrestreet2, setbiladdrestreet2] = useState("");
   const [biladcity, setbiladcity] = useState("");
-  const [bilstate, setbilstate] = useState("1");
+  const [bilstate, setbilstate] = useState("");
   const [bilzipcode, setbilzipcode] = useState("");
   const [bilphone, setbilphone] = useState("");
   const [bilfax, setbilfax] = useState("");
   const [shipaddattension, setshipaddattension] = useState("");
-  const [shipcountry, setshipcountry] = useState("1");
+  const [shipcountry, setshipcountry] = useState("");
   const [shipaddrestreet1, setshipaddrestreet1] = useState("");
   const [shipaddrestreet2, setshipaddrestreet2] = useState("");
   const [shipadcity, setshipadcity] = useState("");
-  const [shipstate, setshipstate] = useState("1");
+  const [shipstate, setshipstate] = useState("");
   const [shipzipcode, setshipzipcode] = useState("");
   const [shipphone, setshipphone] = useState("");
   const [shipfax, setshipfax] = useState("");
@@ -146,6 +146,9 @@ const AddCustomer = ({ customer, setcustomer, country }) => {
     history.push("/displaycustomer");
     window.location.reload(false);
   };
+  const cancelhandler = (e) => {
+    history.push("/displaycustomer");
+  };
   return (
     <ItemMaking1>
       <Heading12>
@@ -157,7 +160,7 @@ const AddCustomer = ({ customer, setcustomer, country }) => {
         </span>
       </Heading12>
       <div>
-        <form onSubmit={inputhandler}>
+        <form>
           <Top>
             <Grider>
               <div className="d1">
@@ -340,12 +343,12 @@ const AddCustomer = ({ customer, setcustomer, country }) => {
           </Top>
           <Down>
             <div className="both">
-              <div>
+              <div onClick={inputhandler}>
                 <button type="submit" className="btn1">
                   Save
                 </button>
               </div>
-              <div>
+              <div onClick={cancelhandler}>
                 <button className="btn2">Cancel</button>
               </div>
             </div>
