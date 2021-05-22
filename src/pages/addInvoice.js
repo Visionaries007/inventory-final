@@ -131,7 +131,10 @@ const Invoice = ({ customer, item, invoice, setinvoice, setitem }) => {
     console.log("hey bhade ka form submited");
 
     axios
-      .post("http://localhost:5000/invoices/add", invoicestruct)
+      .post(
+        "https://inventory-management-vision.herokuapp.com/invoices/add",
+        invoicestruct
+      )
       .then((response) => {
         console.log(response.data);
       })
@@ -145,7 +148,9 @@ const Invoice = ({ customer, item, invoice, setinvoice, setitem }) => {
         parseInt(0)
       ) {
         axios
-          .delete(`http://localhost:5000/items/${itemcoll[i].iden}`)
+          .delete(
+            `https://inventory-management-vision.herokuapp.com/items/${itemcoll[i].iden}`
+          )
           .then((response) => {
             setitem(item.filter((t) => t._id !== itemcoll[i].iden));
           })
@@ -154,34 +159,37 @@ const Invoice = ({ customer, item, invoice, setinvoice, setitem }) => {
           });
       } else {
         axios
-          .put(`http://localhost:5000/items/${itemcoll[i].iden}`, {
-            type: itemcoll[i].itemn.type,
-            name: itemcoll[i].itemn.name,
-            sku: itemcoll[i].itemn.sku,
-            quantity:
-              parseInt(itemcoll[i].itemn.quantity) -
-              parseInt(itemcoll[i].decidequantity),
-            unit: itemcoll[i].itemn.unit,
-            returnable: itemcoll[i].itemn.returnable,
-            dimension1: itemcoll[i].itemn.dimension1,
-            dimension2: itemcoll[i].itemn.dimension2,
-            dimension3: itemcoll[i].itemn.dimension3,
-            manufacturer: itemcoll[i].itemn.manufacturer,
-            upc: itemcoll[i].itemn.upc,
-            ean: itemcoll[i].itemn.ean,
-            weight: itemcoll[i].itemn.weight,
-            brand: itemcoll[i].itemn.brand,
-            mpn: itemcoll[i].itemn.mpn,
-            isbn: itemcoll[i].itemn.isbn,
-            salesprice: itemcoll[i].itemn.salesprice,
-            purchaseInfo: itemcoll[i].itemn.purchaseInfo,
-            sellingprice: itemcoll[i].itemn.sellingprice,
-            spaccount: itemcoll[i].itemn.spaccount,
-            spdescription: itemcoll[i].itemn.spdescription,
-            costprice: itemcoll[i].itemn.costprice,
-            cpaccount: itemcoll[i].itemn.cpaccount,
-            cpdescription: itemcoll[i].itemn.cpdescription,
-          })
+          .put(
+            `https://inventory-management-vision.herokuapp.com/items/${itemcoll[i].iden}`,
+            {
+              type: itemcoll[i].itemn.type,
+              name: itemcoll[i].itemn.name,
+              sku: itemcoll[i].itemn.sku,
+              quantity:
+                parseInt(itemcoll[i].itemn.quantity) -
+                parseInt(itemcoll[i].decidequantity),
+              unit: itemcoll[i].itemn.unit,
+              returnable: itemcoll[i].itemn.returnable,
+              dimension1: itemcoll[i].itemn.dimension1,
+              dimension2: itemcoll[i].itemn.dimension2,
+              dimension3: itemcoll[i].itemn.dimension3,
+              manufacturer: itemcoll[i].itemn.manufacturer,
+              upc: itemcoll[i].itemn.upc,
+              ean: itemcoll[i].itemn.ean,
+              weight: itemcoll[i].itemn.weight,
+              brand: itemcoll[i].itemn.brand,
+              mpn: itemcoll[i].itemn.mpn,
+              isbn: itemcoll[i].itemn.isbn,
+              salesprice: itemcoll[i].itemn.salesprice,
+              purchaseInfo: itemcoll[i].itemn.purchaseInfo,
+              sellingprice: itemcoll[i].itemn.sellingprice,
+              spaccount: itemcoll[i].itemn.spaccount,
+              spdescription: itemcoll[i].itemn.spdescription,
+              costprice: itemcoll[i].itemn.costprice,
+              cpaccount: itemcoll[i].itemn.cpaccount,
+              cpdescription: itemcoll[i].itemn.cpdescription,
+            }
+          )
 
           .then((response) => {
             console.log(response.data);

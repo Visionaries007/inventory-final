@@ -180,7 +180,10 @@ const CustomerUpdate = ({
       unusedcredit,
     };
     axios
-      .patch(`http://localhost:5000/customers/${pathId}`, custostruct)
+      .patch(
+        `https://inventory-management-vision.herokuapp.com/customers/${pathId}`,
+        custostruct
+      )
       .then((response) => {
         console.log(response.data);
       })

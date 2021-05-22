@@ -31,4 +31,4 @@ app.use("/customers", CustomerRouter);
 const InvoiceRouter = require("./routes/Invoice");
 app.use("/invoices", InvoiceRouter);
 
-app.listen(5000);
+app.listen(process.env.PORT || 5000);

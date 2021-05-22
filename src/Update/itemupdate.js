@@ -90,7 +90,10 @@ const ItemUpdate = ({ n, pathId, setupdate }) => {
     console.log("hey form submited");
 
     axios
-      .patch(`http://localhost:5000/items/${pathId}`, itemstruct)
+      .patch(
+        `https://inventory-management-vision.herokuapp.com/items/${pathId}`,
+        itemstruct
+      )
       .then((response) => {
         console.log(response.data);
       })

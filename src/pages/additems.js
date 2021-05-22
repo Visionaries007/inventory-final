@@ -66,7 +66,10 @@ const AddItems = ({ item, setitem }) => {
     console.log("hey form submited");
 
     axios
-      .post("http://localhost:5000/items/add", itemstruct)
+      .post(
+        "https://inventory-management-vision.herokuapp.com/items/add",
+        itemstruct
+      )
       .then((res) => console.log(res.data));
 
     settype("");
@@ -97,6 +100,9 @@ const AddItems = ({ item, setitem }) => {
     history.push("/displayItems");
     window.location.reload(false);
   };
+  const cancelhandler = (e) => {
+    history.push("/displayItems");
+  };
   return (
     <ItemMaking>
       <Heading12>
@@ -107,7 +113,7 @@ const AddItems = ({ item, setitem }) => {
           </a>
         </span>
       </Heading12>
-      <form onSubmit={inputhandler}>
+      <form>
         <Toper>
           <div className="hello1">
             <NameItem
@@ -172,7 +178,7 @@ const AddItems = ({ item, setitem }) => {
         </Toper>
         <Down>
           <div className="both">
-            <div>
+            <div onClick={inputhandler}>
               <motion.button
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
@@ -182,7 +188,7 @@ const AddItems = ({ item, setitem }) => {
                 Save
               </motion.button>
             </div>
-            <div>
+            <div onClick={cancelhandler}>
               <motion.button
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
