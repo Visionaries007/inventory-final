@@ -66,7 +66,10 @@ const AddItems = ({ item, setitem }) => {
     console.log("hey form submited");
 
     axios
-      .post("http://localhost:5000/items/add", itemstruct)
+      .post(
+        "https://inventory-management-vision.herokuapp.com/items/add",
+        itemstruct
+      )
       .then((res) => console.log(res.data));
 
     settype("");

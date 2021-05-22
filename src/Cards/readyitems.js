@@ -34,32 +34,35 @@ const Readyitems = ({
         parseInt((tax * (price - p.amount)) / 100) -
         parseInt(discount)
     );
-    axios.put(`http://localhost:5000/items/${p.iden}`, {
-      type: p.itemn.type,
-      name: p.itemn.name,
-      sku: p.itemn.sku,
-      quantity: parseInt(cur) + parseInt(p.decidequantity),
-      unit: p.itemn.unit,
-      returnable: p.itemn.returnable,
-      dimension1: p.itemn.dimension1,
-      dimension2: p.itemn.dimension2,
-      dimension3: p.itemn.dimension3,
-      manufacturer: p.itemn.manufacturer,
-      upc: p.itemn.upc,
-      ean: p.itemn.ean,
-      weight: p.itemn.weight,
-      brand: p.itemn.brand,
-      mpn: p.itemn.mpn,
-      isbn: p.itemn.isbn,
-      salesprice: p.itemn.salesprice,
-      purchaseInfo: p.itemn.purchaseInfo,
-      sellingprice: p.itemn.sellingprice,
-      spaccount: p.itemn.spaccount,
-      spdescription: p.itemn.spdescription,
-      costprice: p.itemn.costprice,
-      cpaccount: p.itemn.cpaccount,
-      cpdescription: p.itemn.cpdescription,
-    });
+    axios.put(
+      `https://inventory-management-vision.herokuapp.com/items/${p.iden}`,
+      {
+        type: p.itemn.type,
+        name: p.itemn.name,
+        sku: p.itemn.sku,
+        quantity: parseInt(cur) + parseInt(p.decidequantity),
+        unit: p.itemn.unit,
+        returnable: p.itemn.returnable,
+        dimension1: p.itemn.dimension1,
+        dimension2: p.itemn.dimension2,
+        dimension3: p.itemn.dimension3,
+        manufacturer: p.itemn.manufacturer,
+        upc: p.itemn.upc,
+        ean: p.itemn.ean,
+        weight: p.itemn.weight,
+        brand: p.itemn.brand,
+        mpn: p.itemn.mpn,
+        isbn: p.itemn.isbn,
+        salesprice: p.itemn.salesprice,
+        purchaseInfo: p.itemn.purchaseInfo,
+        sellingprice: p.itemn.sellingprice,
+        spaccount: p.itemn.spaccount,
+        spdescription: p.itemn.spdescription,
+        costprice: p.itemn.costprice,
+        cpaccount: p.itemn.cpaccount,
+        cpdescription: p.itemn.cpdescription,
+      }
+    );
 
     setitemcoll(itemcoll.filter((state) => state.iden !== p.iden));
   };

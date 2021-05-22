@@ -23,7 +23,9 @@ const CustomerDetail = ({
 
   const deleteItemHandler = () => {
     axios
-      .delete(`http://localhost:5000/customers/${pathId}`)
+      .delete(
+        `https://inventory-management-vision.herokuapp.com/customers/${pathId}`
+      )
       .then((response) => {
         setcustomer(customer.filter((t) => t._id !== pathId));
       })
@@ -37,7 +39,9 @@ const CustomerDetail = ({
   const [n, setn] = useState([]);
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/customers/${pathId}`)
+      .get(
+        `https://inventory-management-vision.herokuapp.com/customers/${pathId}`
+      )
       .then((response) => {
         setn({ n: response.data });
       })

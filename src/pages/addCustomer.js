@@ -113,7 +113,10 @@ const AddCustomer = ({ customer, setcustomer, country }) => {
     };
 
     axios
-      .post("http://localhost:5000/customers/add", custostruct)
+      .post(
+        "https://inventory-management-vision.herokuapp.com/customers/add",
+        custostruct
+      )
       .then((res) => console.log(res.data));
     settype("");
     setsalu("");

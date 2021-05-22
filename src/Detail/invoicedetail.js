@@ -28,7 +28,9 @@ const InvoiceDetail = ({
 
   const deleteItemHandler = () => {
     axios
-      .delete(`http://localhost:5000/invoices/${pathId}`)
+      .delete(
+        `https://inventory-management-vision.herokuapp.com/invoices/${pathId}`
+      )
       .then((res) => {
         setinvoice(invoice.filter((t) => t._id !== pathId));
       })
@@ -42,7 +44,9 @@ const InvoiceDetail = ({
   const [n, setn] = useState([]);
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/invoices/${pathId}`)
+      .get(
+        `https://inventory-management-vision.herokuapp.com/invoices/${pathId}`
+      )
       .then((response) => {
         setn({ n: response.data });
       })

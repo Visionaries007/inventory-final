@@ -18,7 +18,9 @@ const ItemDetail = ({ pathId, item, setitem, setupdate, update }) => {
   };
   const deleteItemHandler = () => {
     axios
-      .delete(`http://localhost:5000/items/${pathId}`)
+      .delete(
+        `https://inventory-management-vision.herokuapp.com/items/${pathId}`
+      )
       .then((response) => {
         setitem(item.filter((t) => t._id !== pathId));
       })
@@ -32,7 +34,7 @@ const ItemDetail = ({ pathId, item, setitem, setupdate, update }) => {
   const [n, setn] = useState([]);
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/items/${pathId}`)
+      .get(`https://inventory-management-vision.herokuapp.com/items/${pathId}`)
       .then((response) => {
         setn({ n: response.data });
       })

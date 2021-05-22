@@ -36,7 +36,7 @@ function App() {
   const [invoice, setinvoice] = useState([]);
   useEffect(() => {
     axios
-      .get("http://localhost:5000/items/")
+      .get("https://inventory-management-vision.herokuapp.com/items/")
       .then((response) => {
         setitem({ item: response.data });
       })
@@ -45,7 +45,7 @@ function App() {
       });
 
     axios
-      .get("http://localhost:5000/customers/")
+      .get("https://inventory-management-vision.herokuapp.com/customers/")
       .then((response) => {
         setcustomer({ customer: response.data });
       })
@@ -53,7 +53,7 @@ function App() {
         console.log({ error });
       });
     axios
-      .get("http://localhost:5000/invoices/")
+      .get("https://inventory-management-vision.herokuapp.com/invoices/")
       .then((response) => {
         setinvoice({ invoice: response.data });
       })
